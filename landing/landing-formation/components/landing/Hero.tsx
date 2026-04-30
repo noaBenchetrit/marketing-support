@@ -42,6 +42,39 @@ export default function Hero() {
     };
   }, []);
 
+  useEffect(() => {
+    const visual = visualRef.current;
+    const card = cardRef.current;
+    if (!visual || !card) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const badge = visual.querySelector<HTMLElement>('.compliance-badge');
+    let raf = 0;
+
+    const update = () => {
+      raf = 0;
+      const rect = visual.getBoundingClientRect();
+      const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+      const t = Math.max(-1, Math.min(1, center / window.innerHeight));
+      card.style.translate = `0 ${t * -18}px`;
+      if (badge) badge.style.translate = `0 ${t * -42}px`;
+    };
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <section className="hero">
       <div className="container">

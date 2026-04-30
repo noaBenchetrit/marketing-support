@@ -4,7 +4,7 @@ const FAQ_ITEMS = [
     a: (
       <>
         Nous reprenons votre catalogue, vos sessions et votre base stagiaires sans coupure. Import depuis Excel,
-        Sage, Digiforma ou EDOF — l&apos;équipe betool s&apos;occupe du transfert pendant votre onboarding (entre 3
+        Sage, Digiforma ou EDOF — l&apos;équipe beTool s&apos;occupe du transfert pendant votre onboarding (entre 3
         et 7 jours en général).
       </>
     ),

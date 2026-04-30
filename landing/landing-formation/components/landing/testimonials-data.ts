@@ -16,7 +16,7 @@ export const TESTIMONIALS: Testimonial[] = [
     avatar: 'CL',
     color: 'green',
     quote:
-      "Avant betool, on perdait deux jours par mois à courir après les signatures. Aujourd'hui, on absorbe 200 stagiaires sans recruter.",
+      "Avant beTool, on perdait deux jours par mois à courir après les signatures. Aujourd'hui, on absorbe 200 stagiaires sans recruter.",
     metric: { num: '+200', label: 'stagiaires absorbés' },
   },
   {
@@ -106,7 +106,7 @@ export const TESTIMONIALS: Testimonial[] = [
     avatar: 'TL',
     color: 'purple',
     quote:
-      "Migration depuis Digiforma faite en cinq jours. Pas une donnée perdue, pas une session manquante. L'équipe betool a tout pris en charge.",
+      "Migration depuis Digiforma faite en cinq jours. Pas une donnée perdue, pas une session manquante. L'équipe beTool a tout pris en charge.",
     metric: { num: '5 jours', label: 'de migration' },
   },
   {

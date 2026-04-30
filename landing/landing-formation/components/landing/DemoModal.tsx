@@ -56,7 +56,8 @@ export default function DemoModal() {
     startTransition(async () => {
       const result = await submitDemo(formData);
       if (result.ok) {
-        setSubmittedCentre(result.centre);
+        const firstName = result.centre.trim().split(/\s+/)[0] ?? '';
+        setSubmittedCentre(firstName);
         setStatus('success');
         form.reset();
       } else {
@@ -103,7 +104,7 @@ export default function DemoModal() {
               </svg>
             </div>
             <h3 id="demo-modal-title">
-              C&apos;est noté{submittedCentre ? `, ${submittedCentre}` : ''} !
+              C&apos;est noté{submittedCentre ? ` ${submittedCentre}` : ''} !
             </h3>
             <p>
               On vous appelle très vite. En attendant, surveillez votre boîte mail :
@@ -125,9 +126,13 @@ export default function DemoModal() {
                 </svg>
               </div>
               <div>
+                <span className="demo-modal-badge">
+                  <span className="demo-modal-badge-dot" aria-hidden="true" />
+                  2 créneaux restants aujourd&apos;hui
+                </span>
                 <h3 id="demo-modal-title">Dernière étape pour votre démo personnalisée</h3>
                 <p className="demo-modal-sub">
-                  15 minutes en visio avec un expert betool. Aucun engagement.
+                  15 minutes en visio avec un expert beTool. Aucun engagement.
                 </p>
               </div>
             </div>
@@ -151,12 +156,12 @@ export default function DemoModal() {
                 </p>
               )}
 
-              <label htmlFor="demo-modal-centre">Nom du centre</label>
+              <label htmlFor="demo-modal-centre">Votre nom ou celui du centre</label>
               <input
                 id="demo-modal-centre"
                 name="centre"
                 type="text"
-                placeholder="Ex : FormaPlus"
+                placeholder="ex. Jean de FormaPlus"
                 required
                 disabled={pending}
                 autoComplete="organization"
@@ -173,6 +178,34 @@ export default function DemoModal() {
                 required
                 disabled={pending}
                 autoComplete="tel"
+              />
+
+              <label htmlFor="demo-modal-stagiaires">
+                Nombre de stagiaires / an <small>(optionnel)</small>
+              </label>
+              <select
+                id="demo-modal-stagiaires"
+                name="stagiaires"
+                defaultValue=""
+                disabled={pending}
+              >
+                <option value="">Sélectionner…</option>
+                <option value="<50">Moins de 50</option>
+                <option value="50-200">50 à 200</option>
+                <option value="200-500">200 à 500</option>
+                <option value="500+">Plus de 500</option>
+              </select>
+
+              <label htmlFor="demo-modal-message">
+                Message <small>(optionnel)</small>
+              </label>
+              <textarea
+                id="demo-modal-message"
+                name="message"
+                rows={3}
+                placeholder="Une question ou un besoin spécifique ?"
+                disabled={pending}
+                maxLength={500}
               />
 
               <button type="submit" className="demo-modal-submit" disabled={pending}>

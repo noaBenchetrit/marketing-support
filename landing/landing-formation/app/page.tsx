@@ -1,8 +1,10 @@
 import Nav from '@/components/landing/Nav';
+import ScrollProgress from '@/components/landing/ScrollProgress';
 import Hero from '@/components/landing/Hero';
 import Credibility from '@/components/landing/Credibility';
 import LoveBar from '@/components/landing/LoveBar';
 import Bento from '@/components/landing/Bento';
+import LmsPartners from '@/components/landing/LmsPartners';
 import Comparison from '@/components/landing/Comparison';
 import Testimonials from '@/components/landing/Testimonials';
 import Roi from '@/components/landing/Roi';
@@ -18,12 +20,14 @@ import RevealEffects from '@/components/landing/RevealEffects';
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
       <Nav />
       <main>
         <Hero />
-        <Credibility />
         <LoveBar />
+        <Credibility />
         <Bento />
+        <LmsPartners />
         <Comparison />
         <Testimonials />
         <Roi />

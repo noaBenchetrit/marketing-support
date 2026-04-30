@@ -1,4 +1,51 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+
+function useCountUpOnView(target: number, duration = 1200) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [value, setValue] = useState(0);
+  const startedRef = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setValue(target);
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !startedRef.current) {
+            startedRef.current = true;
+            const start = performance.now();
+            const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+            const step = (now: number) => {
+              const p = Math.min((now - start) / duration, 1);
+              setValue(Math.round(target * ease(p)));
+              if (p < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [target, duration]);
+
+  return { ref, value };
+}
+
 export default function Satisfaction() {
+  const days = useCountUpOnView(14);
+  const renew = useCountUpOnView(98);
+  const ops = useCountUpOnView(7);
+
   return (
     <section className="satisfaction">
       <div className="container">
@@ -11,7 +58,9 @@ export default function Satisfaction() {
               </svg>
             </div>
             <div>
-              <strong>14 jours d&apos;essai gratuit</strong>
+              <strong>
+                <span ref={days.ref}>{days.value}</span> jours d&apos;essai gratuit
+              </strong>
               <span>Sans carte bancaire. Sans engagement.</span>
             </div>
           </div>
@@ -22,8 +71,10 @@ export default function Satisfaction() {
               </svg>
             </div>
             <div>
-              <strong>98% de clients renouvellent</strong>
-              <span>Si betool ne vous convient pas, on rembourse.</span>
+              <strong>
+                <span ref={renew.ref}>{renew.value}</span>% de clients renouvellent
+              </strong>
+              <span>Si beTool ne vous convient pas, on rembourse.</span>
             </div>
           </div>
           <div className="sat-item reveal delay-2">
@@ -33,7 +84,9 @@ export default function Satisfaction() {
               </svg>
             </div>
             <div>
-              <strong>Opérationnel en 7 jours</strong>
+              <strong>
+                Opérationnel en <span ref={ops.ref}>{ops.value}</span> jours
+              </strong>
               <span>Onboarding et migration inclus.</span>
             </div>
           </div>

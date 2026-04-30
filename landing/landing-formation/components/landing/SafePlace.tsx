@@ -97,7 +97,7 @@ export default function SafePlace() {
             type="button"
             className="btn btn-primary safe-cta"
             onClick={() =>
-              open({ source: 'safe-place', ctaLabel: 'Discuter avec un expert betool' })
+              open({ source: 'safe-place', ctaLabel: 'Discuter avec un expert beTool' })
             }
           >
             Discuter avec un expert

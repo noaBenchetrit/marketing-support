@@ -10,6 +10,32 @@ function formatNumber(n: number) {
   return n.toLocaleString('fr-FR');
 }
 
+function useAnimatedNumber(target: number, duration = 220) {
+  const [value, setValue] = useState(target);
+  const fromRef = useRef(target);
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    fromRef.current = value;
+    let start: number | null = null;
+    const from = fromRef.current;
+    const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+    const step = (t: number) => {
+      if (start === null) start = t;
+      const progress = Math.min((t - start) / duration, 1);
+      setValue(Math.round(from + (target - from) * ease(progress)));
+      if (progress < 1) rafRef.current = requestAnimationFrame(step);
+    };
+    rafRef.current = requestAnimationFrame(step);
+    return () => {
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [target, duration]);
+
+  return value;
+}
+
 export default function Roi() {
   const [n, setN] = useState(30);
   const { open } = useDemoModal();
@@ -24,6 +50,9 @@ export default function Roi() {
     }),
     [n],
   );
+
+  const animatedHours = useAnimatedNumber(hours);
+  const animatedMoney = useAnimatedNumber(money);
 
   // Met à jour le remplissage vert du track
   useEffect(() => {
@@ -50,7 +79,7 @@ export default function Roi() {
         <div className="section-head reveal">
           <span className="eyebrow">Le gain</span>
           <h2>
-            Combien betool peut <span style={{ color: 'var(--accent)' }}>vous rendre</span> ?
+            Combien beTool peut <span style={{ color: 'var(--accent)' }}>vous rendre</span> ?
           </h2>
           <p className="lead">Faites glisser le curseur pour estimer votre gain mensuel.</p>
         </div>
@@ -86,7 +115,7 @@ export default function Roi() {
                 </svg>
               </div>
               <div className="roi-result-num" ref={hoursRef}>
-                <span>{formatNumber(hours)}</span>
+                <span>{formatNumber(animatedHours)}</span>
                 <small>h / mois</small>
               </div>
               <div className="roi-result-label">
@@ -101,7 +130,7 @@ export default function Roi() {
                 </svg>
               </div>
               <div className="roi-result-num" ref={moneyRef}>
-                <span>{formatNumber(money)}</span>
+                <span>{formatNumber(animatedMoney)}</span>
                 <small>€ / mois</small>
               </div>
               <div className="roi-result-label">

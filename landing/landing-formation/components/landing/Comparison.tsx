@@ -44,7 +44,7 @@ export default function Comparison() {
         <div className="comparison-grid">
           <div className="comp-card comp-before reveal">
             <span className="comp-label">Méthode manuelle</span>
-            <h3>Avant betool</h3>
+            <h3>Avant beTool</h3>
             <ul className="comp-list">
               {BEFORE.map((item) => (
                 <li key={item}>
@@ -79,7 +79,7 @@ export default function Comparison() {
                 </svg>
               </button>
             </div>
-            <h3>Avec betool</h3>
+            <h3>Avec beTool</h3>
             <ul className="comp-list">
               {AFTER.map((item) => (
                 <li key={item}>
