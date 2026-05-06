@@ -113,7 +113,7 @@ export default function Bento() {
                 <path d="M9 12l2 2 4-4" />
               </svg>
             </div>
-            <h3>Catalogue Qualiopi &amp; suivi du RAC.</h3>
+            <h3>Du catalogue Qualiopi au suivi du RAC.</h3>
             <p>
               Importez votre catalogue sans double saisie. Suivez le Reste à Charge (RAC) de chaque stagiaire
               pour une facturation sans erreur.

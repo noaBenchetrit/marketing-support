@@ -83,7 +83,7 @@ export default function LmsPartners() {
       <div className="container">
         <div className="lms-head reveal">
           <span className="lms-label">L&apos;écosystème connecté</span>
-          <h3 className="lms-title">Les outils connectables avec notre API.</h3>
+          <h3 className="lms-title">Les outils connectables avec nos API.</h3>
           <p className="lms-sub">
             En amont avec vos outils métier, en aval avec vos canaux de communication. beTool orchestre, tout
             le reste continue de parler.

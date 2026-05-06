@@ -17,13 +17,13 @@ const IconCheck = () => (
 
 const BEFORE = [
   'Données éparpillées sur Excel',
-  'Relances manuelles sans fin',
+  'Mise en page manuelle sur Word',
   "Peur permanente de l'audit",
 ];
 
 const AFTER = [
   "Une seule source de vérité pour toute l'équipe",
-  'Relances robotisées 24/7',
+  'Édition de conventions/factures en 1 clic',
   'Dossiers 100 % conformes',
 ];
 

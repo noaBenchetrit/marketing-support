@@ -7,7 +7,6 @@ import AiAssistant from '@/components/formation/AiAssistant';
 import LmsPartners from '@/components/formation/LmsPartners';
 import Testimonials from '@/components/formation/Testimonials';
 import Comparison from '@/components/formation/Comparison';
-import Roi from '@/components/formation/Roi';
 import Emotional from '@/components/formation/Emotional';
 import SafePlace from '@/components/formation/SafePlace';
 import Faq from '@/components/formation/Faq';
@@ -28,7 +27,6 @@ export default function Home() {
         <AiAssistant />
         <LmsPartners />
         <Comparison />
-        <Roi />
         <Emotional />
         <SafePlace />
         <Faq />
