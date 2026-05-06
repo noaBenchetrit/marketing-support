@@ -221,16 +221,6 @@
       --section-y: clamp(80px, 12vw, 160px);
     }
 
-    /* ============== Body defaults ============== */
-    body {
-      font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.5;
-    }
-    a { color: inherit; text-decoration: none; }
-
     /* ============== Home (/) — landing index ============== */
     .home { min-height: 100vh; display: flex; flex-direction: column; }
     .home-container { width: 100%; max-width: var(--max); margin: 0 auto; padding-left: var(--pad-x); padding-right: var(--pad-x); }
