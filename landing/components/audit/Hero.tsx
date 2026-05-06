@@ -85,12 +85,8 @@ export default function Hero() {
               L&apos;audit est une science. <span className="accent">beTool</span> est votre laboratoire.
             </h1>
             <p className="sub-h1 reveal delay-2">
-              Sécurisez vos missions de la collecte à la signature.
-            </p>
-            <p className="intro reveal delay-3">
-              Centralisez vos preuves, automatisez vos rapports et laissez l&apos;IA booster votre vigilance.
-              De la checklist sur le terrain au rapport signé, tout reste sous votre contrôle — sans saisie
-              double, sans oubli, sans stress.
+              Centralisez vos dossiers, mandats et historique des échanges au même endroit. Votre source de
+              vérité unique pour une conformité sans faille.
             </p>
             <div className="cta-row reveal delay-3">
               <button

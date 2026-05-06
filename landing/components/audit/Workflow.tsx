@@ -5,23 +5,23 @@ import { useEffect, useRef, useState } from 'react';
 const STEPS = [
   {
     num: 1,
-    title: 'Collecte',
-    text: 'Saisie sur mobile ou tablette via vos checklists personnalisées, sur site, en mode hors-connexion possible.',
+    title: 'Planification & Logistique',
+    text: 'Gestion des rendez-vous et affectation intelligente. Optimisation des tournées pour réduire les frais kilométriques.',
   },
   {
     num: 2,
-    title: 'Diagnostic Assisté',
-    text: 'Passez vos pièces critiques au crible de l’IA pour confirmer les dates et les signatures sans lecture manuelle.',
+    title: 'Collecte Terrain',
+    text: 'Saisie mobile via vos formulaires personnalisés, en mode hors-connexion.',
   },
   {
     num: 3,
-    title: 'Certification',
-    text: 'Signature électronique sur place et scellage horodaté Certigna des documents.',
+    title: 'Signature & Scellage',
+    text: 'Signature électronique sur place et scellage Certigna.',
   },
   {
     num: 4,
     title: 'Diffusion',
-    text: 'Envoi automatique du rapport et des tâches de suivi par mail ou SMS au client.',
+    text: 'Envoi automatique du rapport et des tâches de suivi.',
   },
 ];
 
@@ -58,7 +58,7 @@ export default function Workflow() {
     };
   }, []);
 
-  const thresholds = [0.05, 0.35, 0.65, 0.92];
+  const thresholds = [0.05, 0.35, 0.65, 0.95];
 
   return (
     <section className="workflow" id="workflow">
@@ -66,7 +66,7 @@ export default function Workflow() {
         <div className="workflow-head reveal">
           <span className="eyebrow">Le flux de la certitude</span>
           <h2>
-            Du terrain au client, en <strong>4 étapes</strong>.
+            Du planning à la diffusion, en <strong>4 étapes</strong>.
           </h2>
           <p className="lead">Chaque étape ferme la précédente. Aucune rupture, aucune perte d&apos;information.</p>
         </div>

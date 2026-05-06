@@ -16,17 +16,15 @@ const IconCheck = () => (
 );
 
 const BEFORE = [
-  'Photos éparpillées sur le téléphone',
-  'Saisie en double sur Word et Excel',
-  'Oublis de signatures et de pièces',
-  'Stress permanent à la relecture',
+  'Photos sur WhatsApp',
+  'Saisie Word le soir',
+  'Dossiers rejetés par les financeurs',
 ];
 
 const AFTER = [
-  'Saisie unique sur tablette, sur place',
-  "IA de contrôle qui détecte les manques",
-  'Rapport instantané signé numériquement',
-  'Sérénité totale face aux autorités',
+  'Dossier complet dès la sortie du site',
+  'Calculs énergétiques justes',
+  'Sérénité totale',
 ];
 
 export default function Comparison() {

@@ -8,37 +8,35 @@ const PILLARS: Pillar[] = [
   {
     title: 'Vérification de cohérence assistée',
     description:
-      "D'un simple clic, sollicitez l'IA pour analyser vos PDF. Elle détecte les dates de validité, vérifie la présence des mentions obligatoires et vous alerte sur les documents périmés.",
+      "Scan des documents (CNI, attestations, certificats) pour vérifier les dates et mentions obligatoires avant validation.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-        <polyline points="22 4 12 14.01 9 11.01" />
+        <path d="M9 11l3 3L22 4" />
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
       </svg>
     ),
   },
   {
-    title: 'Synthèse Décisionnelle',
+    title: 'Synthèse décisionnelle',
     description:
-      "À partir de vos notes de terrain, l'IA prépare conclusions, résumés exécutifs et points de vigilance — formatés selon votre charte, prêts à signer.",
+      "Rédaction assistée des conclusions à partir de vos notes terrain — vous gardez la main sur la signature.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
         <polyline points="14 2 14 8 20 8" />
-        <line x1="16" y1="13" x2="8" y2="13" />
-        <line x1="16" y1="17" x2="8" y2="17" />
-        <polyline points="10 9 9 9 8 9" />
+        <line x1="9" y1="13" x2="15" y2="13" />
+        <line x1="9" y1="17" x2="13" y2="17" />
       </svg>
     ),
   },
   {
-    title: 'Communication Instantanée',
+    title: 'Communication instantanée',
     description:
-      "Génération automatique d'emails de relance, de listes de tâches de remédiation et de SMS clients en cas d'anomalie. Vous validez, beTool envoie.",
+      "Génération de résumés d'emails et SMS de relance pour les pièces manquantes — prêts à envoyer en un clic.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-        <line x1="8" y1="9" x2="16" y2="9" />
-        <line x1="8" y1="13" x2="13" y2="13" />
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22 6 12 13 2 6" />
       </svg>
     ),
   },
@@ -50,11 +48,11 @@ export default function AiAssistant() {
       <div className="ai-glow" aria-hidden="true" />
       <div className="container">
         <div className="section-head reveal">
-          <span className="eyebrow">L&apos;assistant IA</span>
-          <h2>Rédigez moins, auditez mieux.</h2>
+          <span className="eyebrow">L&apos;assistant opérationnel</span>
+          <h2>L&apos;IA prépare le diagnostic. Vous gardez la décision.</h2>
           <p className="lead">
-            L&apos;IA prépare le message — vous gardez le contrôle total sur la validation. Aucun envoi
-            automatique sans votre clic.
+            Aucun envoi automatique sans votre clic. beTool prépare, vous validez — chaque action reste
+            tracée et signée par l&apos;auditeur.
           </p>
         </div>
 

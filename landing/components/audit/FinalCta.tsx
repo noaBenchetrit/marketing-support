@@ -99,7 +99,7 @@ export default function FinalCta() {
               autoComplete="tel"
             />
 
-            <label htmlFor="cta-type">Type d&apos;audit</label>
+            <label htmlFor="cta-type">Quel est votre domaine d&apos;audit&nbsp;?</label>
             <select
               id="cta-type"
               name="taille"
@@ -108,8 +108,9 @@ export default function FinalCta() {
               required
             >
               <option value="">Sélectionner…</option>
-              <option value="qualite">Qualité</option>
-              <option value="securite">Sécurité</option>
+              <option value="energetique">Audit Énergétique (MaPrimeRénov / CEE)</option>
+              <option value="securite">Audit Sécurité / Incendie</option>
+              <option value="qualite">Audit Qualité / ISO</option>
               <option value="autre">Autre</option>
             </select>
 

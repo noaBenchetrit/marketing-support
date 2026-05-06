@@ -3,11 +3,10 @@ import ScrollProgress from '@/components/audit/ScrollProgress';
 import Hero from '@/components/audit/Hero';
 import Credibility from '@/components/audit/Credibility';
 import Bento from '@/components/audit/Bento';
-import Roi from '@/components/audit/Roi';
 import AiAssistant from '@/components/audit/AiAssistant';
 import Workflow from '@/components/audit/Workflow';
+import EnergyNiche from '@/components/audit/EnergyNiche';
 import Comparison from '@/components/audit/Comparison';
-import Emotional from '@/components/audit/Emotional';
 import SafePlace from '@/components/audit/SafePlace';
 import FinalCta from '@/components/audit/FinalCta';
 import Footer from '@/components/audit/Footer';
@@ -22,11 +21,10 @@ export default function Home() {
         <Hero />
         <Credibility />
         <Bento />
-        <Roi />
         <AiAssistant />
         <Workflow />
+        <EnergyNiche />
         <Comparison />
-        <Emotional />
         <SafePlace />
         <FinalCta />
       </main>

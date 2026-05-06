@@ -12,8 +12,7 @@ export default function Bento() {
           <span className="eyebrow">L&apos;expertise</span>
           <h2>La maîtrise opérationnelle, du terrain au rapport.</h2>
           <p className="lead">
-            Quatre piliers qui couvrent toute la chaîne de valeur de l&apos;auditeur — guidage, vigilance,
-            archivage, livraison.
+            Trois capacités qui couvrent le quotidien de l&apos;auditeur — du terrain à la livraison.
           </p>
         </div>
 
@@ -26,12 +25,8 @@ export default function Bento() {
                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
               </svg>
             </div>
-            <h3>Scénarios de contrôle intelligents.</h3>
-            <p>
-              Zéro oubli. Vos scénarios guident chaque étape de l&apos;inspection. Les checklists s&apos;adaptent
-              dynamiquement aux réponses de l&apos;auditeur, ouvrent les bonnes sous-questions, ferment les
-              irrelevantes.
-            </p>
+            <h3>Checklists dynamiques.</h3>
+            <p>Créez vos scénarios de contrôle sans code. Interfaces pensées pour le mobile et la tablette, gros boutons compatibles gants de chantier.</p>
 
             <div className="checklist-mock" aria-hidden="true">
               <div className="checklist-item checklist-item--done">
@@ -96,11 +91,8 @@ export default function Bento() {
                 <line x1="7" y1="12" x2="17" y2="12" />
               </svg>
             </div>
-            <h3>Analyse OCR à la demande.</h3>
-            <p>
-              Ne lisez plus, scannez. Envoyez vos pièces à l&apos;IA pour extraire les dates clés et vérifier la
-              conformité en un clic.
-            </p>
+            <h3>Analyse IA au clic.</h3>
+            <p>Ne lisez plus vos PDF : scannez dates et certifications. Détection d&apos;anomalies en temps réel.</p>
 
             <div className="ocr-scan" aria-hidden="true">
               <div className="ocr-doc">
@@ -148,45 +140,8 @@ export default function Bento() {
             </button>
           </div>
 
-          {/* C : Small — Coffre-fort de Preuves */}
+          {/* C : Rapports Haute-Précision */}
           <div className="bento-card bento-c reveal delay-2">
-            <div className="bento-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" />
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-              </svg>
-            </div>
-            <h3>Coffre-fort de preuves.</h3>
-            <p>
-              Une piste d&apos;audit immuable. Photos horodatées et documents scellés numériquement — chaque
-              preuve est ancrée dans le temps.
-            </p>
-
-            <div className="vault-mock" aria-hidden="true">
-              <div className="vault-stack">
-                <div className="vault-doc">
-                  <span className="vault-hash">📷 Cliché_001.jpg</span>
-                  <span className="vault-date">14:22:08</span>
-                </div>
-                <div className="vault-doc">
-                  <span className="vault-hash">📄 Attestation.pdf</span>
-                  <span className="vault-date">14:24:12</span>
-                </div>
-              </div>
-              <div className="vault-badge">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="3" y="11" width="18" height="11" rx="2" />
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                </svg>
-                Scellé Certigna
-              </div>
-            </div>
-
-            <div className="bento-accroche">Inviolable. Opposable juridiquement.</div>
-          </div>
-
-          {/* D : Small — Rapports Haute-Précision */}
-          <div className="bento-card bento-d reveal delay-3">
             <div className="bento-icon">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -196,7 +151,7 @@ export default function Bento() {
               </svg>
             </div>
             <h3>Rapports haute-précision.</h3>
-            <p>Générez vos rapports officiels en 1 clic dès la fin de mission, prêts à signer.</p>
+            <p>Génération automatique de vos rapports PDF officiels pré-remplis. Exportation prête à l&apos;envoi dès la fin de mission.</p>
 
             <div className="report-mock" aria-hidden="true">
               <div className="report-page">

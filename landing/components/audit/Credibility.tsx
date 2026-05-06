@@ -1,8 +1,9 @@
 const ITEMS = [
-  'Compatible Qualiopi & ISO',
-  'Horodatage légal Certigna',
-  'Signature électronique sécurisée',
-  'Données hébergées en France',
+  'Signature eIDAS',
+  'Horodatage Certigna',
+  'Multi-référentiels ISO',
+  'RGPD Compliant',
+  'Coffre-fort numérique',
 ];
 
 export default function Credibility() {

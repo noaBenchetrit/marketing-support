@@ -27,7 +27,7 @@ export default function SafePlace() {
             </div>
           </div>
           <div className="safe-text reveal delay-1">
-            <span className="eyebrow">La rigueur juridique</span>
+            <span className="eyebrow">La souveraineté</span>
             <h2>Une preuve, pour toujours.</h2>
             <p className="lead">
               Journal d&apos;audit immuable, hébergement souverain, secret professionnel strict. Chaque action est
