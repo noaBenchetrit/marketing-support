@@ -77,17 +77,18 @@ export default function Roi() {
     <section className="roi" id="roi">
       <div className="container">
         <div className="section-head reveal">
-          <span className="eyebrow">Le gain</span>
+          <span className="eyebrow">Le calculateur ROI</span>
           <h2>
-            Combien beTool peut <span style={{ color: 'var(--accent)' }}>vous rendre</span> ?
+            Calculez votre <span style={{ color: 'var(--accent)' }}>temps libéré</span>.
           </h2>
-          <p className="lead">Faites glisser le curseur pour estimer votre gain mensuel.</p>
+          <p className="lead">
+            Combien de stagiaires formez-vous par mois&nbsp;? Faites glisser le curseur.
+          </p>
         </div>
 
-        <div className="roi-row">
         <div className="roi-card reveal delay-1">
           <div className="roi-slider-wrap">
-            <label htmlFor="roi-slider">Stagiaires accompagnés / mois</label>
+            <label htmlFor="roi-slider">Combien de stagiaires formez-vous par mois&nbsp;?</label>
             <div className="roi-slider-row">
               <input
                 ref={sliderRef}
@@ -119,7 +120,8 @@ export default function Roi() {
                 <small>h / mois</small>
               </div>
               <div className="roi-result-label">
-                Vous libérez du temps administratif pour vous concentrer sur la pédagogie.
+                Vous économisez ces heures de paperasse chaque mois — autant de temps réinvesti dans la
+                pédagogie.
               </div>
             </div>
             <div className="roi-result">
@@ -134,24 +136,22 @@ export default function Roi() {
                 <small>€ / mois</small>
               </div>
               <div className="roi-result-label">
-                Trésorerie sécurisée des erreurs de conformité et des dossiers refusés.
+                Vous sécurisez ces financements annuels contre les refus pour non-conformité.
               </div>
             </div>
           </div>
-        </div>
 
-        <aside className="roi-aside reveal delay-2">
           <button
             type="button"
             className="btn btn-accent btn-large roi-cta"
             onClick={() =>
               open({
                 source: `roi-${n}-stagiaires`,
-                ctaLabel: `Récupérer mes ${formatNumber(hours)}h par mois`,
+                ctaLabel: `Je veux mon temps libre (${formatNumber(hours)}h, ${formatNumber(money)}€ sécurisés)`,
               })
             }
           >
-            Récupérer mes {formatNumber(hours)}h par mois
+            Je veux mon temps libre
             <svg
               className="arrow"
               width="18"
@@ -164,7 +164,9 @@ export default function Roi() {
               <path d="M5 12h14M13 5l7 7-7 7" />
             </svg>
           </button>
-        </aside>
+          <p className="roi-disclaimer">
+            Basé sur l&apos;économie moyenne constatée chez nos clients en 2025.
+          </p>
         </div>
       </div>
     </section>

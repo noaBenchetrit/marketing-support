@@ -1,6 +1,7 @@
 type Brand =
   | { name: string; kind: 'icon'; slug: string; color: string }
-  | { name: string; kind: 'wordmark'; display: string; color: string };
+  | { name: string; kind: 'wordmark'; display: string; color: string }
+  | { name: string; kind: 'image'; src: string };
 
 const lmsPartners: Brand[] = [
   { name: 'Digiforma', kind: 'wordmark', display: 'Digiforma', color: '#FF6B35' },
@@ -9,11 +10,13 @@ const lmsPartners: Brand[] = [
   { name: 'Moodle', kind: 'icon', slug: 'moodle', color: '#F98012' },
   { name: 'Rise Up', kind: 'wordmark', display: 'Rise Up', color: '#0066FF' },
   { name: 'Edflex', kind: 'wordmark', display: 'Edflex', color: '#00B894' },
+  { name: 'Make', kind: 'icon', slug: 'make', color: '#6D00CC' },
+  { name: 'Zapier', kind: 'icon', slug: 'zapier', color: '#FF4A00' },
 ];
 
 const dailyTools: Brand[] = [
   { name: 'Drive', kind: 'icon', slug: 'googledrive', color: '#1FA463' },
-  { name: 'Slack', kind: 'icon', slug: 'slack', color: '#4A154B' },
+  { name: 'Slack', kind: 'image', src: '/slack.ico' },
   { name: 'WhatsApp', kind: 'icon', slug: 'whatsapp', color: '#25D366' },
   { name: 'Mail', kind: 'icon', slug: 'gmail', color: '#EA4335' },
   { name: 'Maps', kind: 'icon', slug: 'googlemaps', color: '#4285F4' },
@@ -25,10 +28,18 @@ function BrandCard({ brand, ariaHidden }: { brand: Brand; ariaHidden: boolean })
       <div className="lms-card lms-card--icon" aria-hidden={ariaHidden}>
         <img
           className="lms-icon"
-          src={`https://cdn.simpleicons.org/${brand.slug}/${brand.color.slice(1)}`}
+          src={`/logos/${brand.slug}.svg`}
           alt={brand.name}
           loading="lazy"
         />
+        <span className="lms-name">{brand.name}</span>
+      </div>
+    );
+  }
+  if (brand.kind === 'image') {
+    return (
+      <div className="lms-card lms-card--icon" aria-hidden={ariaHidden}>
+        <img className="lms-icon" src={brand.src} alt={brand.name} loading="lazy" />
         <span className="lms-name">{brand.name}</span>
       </div>
     );
@@ -72,7 +83,7 @@ export default function LmsPartners() {
       <div className="container">
         <div className="lms-head reveal">
           <span className="lms-label">L&apos;écosystème connecté</span>
-          <h3 className="lms-title">beTool s&apos;invite dans votre quotidien.</h3>
+          <h3 className="lms-title">Les outils connectables avec notre API.</h3>
           <p className="lms-sub">
             En amont avec vos outils métier, en aval avec vos canaux de communication. beTool orchestre, tout
             le reste continue de parler.
@@ -86,7 +97,9 @@ export default function LmsPartners() {
           <MarqueeRow items={lmsPartners} ariaLabel="Partenaires LMS" />
 
           <div className="lms-bridge" aria-hidden="true">
+            <span className="lms-bridge-flow lms-bridge-flow--in" />
             <span className="lms-bridge-pill">beTool</span>
+            <span className="lms-bridge-flow lms-bridge-flow--out" />
           </div>
 
           <MarqueeRow items={dailyTools} reverse ariaLabel="Outils du quotidien" />

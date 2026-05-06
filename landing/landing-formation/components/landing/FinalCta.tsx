@@ -37,14 +37,13 @@ export default function FinalCta() {
         <div className="cta-final-grid">
           <div className="reveal">
             <span className="eyebrow" style={{ background: 'rgba(0,168,120,0.15)', color: '#5BC8A8' }}>
-              Démo gratuite
+              Le passage à l&apos;action
             </span>
             <h2>
-              Prêt à gagner <strong>10h par semaine</strong> ?
+              Prêt à gagner <strong>10h par semaine</strong>&nbsp;?
             </h2>
             <p>
-              Rejoignez les organismes de formation qui ont choisi la sérénité. Lors de votre démo, nous
-              configurerons ensemble votre premier flux automatisé.
+              Rejoignez les organismes de formation qui ont choisi la sérénité.
             </p>
           </div>
 
@@ -64,12 +63,23 @@ export default function FinalCta() {
               <p className="form-note">On a pré-rempli votre mail pour vous faire gagner du temps.</p>
             )}
 
+            <label htmlFor="cta-fullname">Nom et prénom</label>
+            <input
+              id="cta-fullname"
+              name="fullname"
+              type="text"
+              placeholder="ex. Jean Dupont"
+              required
+              disabled={pending}
+              autoComplete="name"
+            />
+
             <label htmlFor="cta-centre">Nom du centre</label>
             <input
               id="cta-centre"
               name="centre"
               type="text"
-              placeholder="Ex : FormaPlus"
+              placeholder="ex. FormaPlus"
               required
               disabled={pending}
               autoComplete="organization"
@@ -86,6 +96,34 @@ export default function FinalCta() {
               required
               disabled={pending}
               autoComplete="tel"
+            />
+
+            <label htmlFor="cta-taille">
+              Taille de l&apos;entreprise <small>(optionnel)</small>
+            </label>
+            <select
+              id="cta-taille"
+              name="taille"
+              defaultValue=""
+              disabled={pending}
+            >
+              <option value="">Sélectionner…</option>
+              <option value="solo">Solo / freelance</option>
+              <option value="2-10">2 à 10 personnes</option>
+              <option value="11-50">11 à 50 personnes</option>
+              <option value="50+">Plus de 50 personnes</option>
+            </select>
+
+            <label htmlFor="cta-message">
+              Message <small>(optionnel)</small>
+            </label>
+            <textarea
+              id="cta-message"
+              name="message"
+              rows={3}
+              placeholder="Une question ou un besoin spécifique ?"
+              disabled={pending}
+              maxLength={500}
             />
 
             <button type="submit" disabled={pending}>
@@ -118,7 +156,9 @@ export default function FinalCta() {
               </div>
             )}
             {status === 'idle' && (
-              <div className="form-note">Réponse sous 24h ouvrées · Aucun engagement</div>
+              <div className="form-note">
+                Pas de carte bancaire. 14 jours d&apos;essai offerts.
+              </div>
             )}
           </form>
         </div>

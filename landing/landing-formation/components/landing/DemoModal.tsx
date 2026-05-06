@@ -11,7 +11,7 @@ export default function DemoModal() {
   const [pending, startTransition] = useTransition();
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const [submittedCentre, setSubmittedCentre] = useState<string>('');
+  const [submittedFirstname, setSubmittedFirstname] = useState<string>('');
   const dialogRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
 
@@ -31,9 +31,9 @@ export default function DemoModal() {
     window.addEventListener('keydown', onKey);
 
     const focusTimer = window.setTimeout(() => {
-      // Focus sur le 1er champ vide : si email pré-rempli, on saute au champ "centre"
+      // Focus sur le 1er champ vide : si email pré-rempli, on saute au champ "nom"
       const target = emailWasPrefilled
-        ? dialogRef.current?.querySelector<HTMLInputElement>('#demo-modal-centre')
+        ? dialogRef.current?.querySelector<HTMLInputElement>('#demo-modal-fullname')
         : firstFieldRef.current;
       target?.focus();
     }, 60);
@@ -56,8 +56,7 @@ export default function DemoModal() {
     startTransition(async () => {
       const result = await submitDemo(formData);
       if (result.ok) {
-        const firstName = result.centre.trim().split(/\s+/)[0] ?? '';
-        setSubmittedCentre(firstName);
+        setSubmittedFirstname(result.firstname);
         setStatus('success');
         form.reset();
       } else {
@@ -104,7 +103,7 @@ export default function DemoModal() {
               </svg>
             </div>
             <h3 id="demo-modal-title">
-              C&apos;est noté{submittedCentre ? ` ${submittedCentre}` : ''} !
+              C&apos;est noté{submittedFirstname ? ` ${submittedFirstname}` : ''} !
             </h3>
             <p>
               On vous appelle très vite. En attendant, surveillez votre boîte mail :
@@ -156,12 +155,23 @@ export default function DemoModal() {
                 </p>
               )}
 
-              <label htmlFor="demo-modal-centre">Votre nom ou celui du centre</label>
+              <label htmlFor="demo-modal-fullname">Nom et prénom</label>
+              <input
+                id="demo-modal-fullname"
+                name="fullname"
+                type="text"
+                placeholder="ex. Jean Dupont"
+                required
+                disabled={pending}
+                autoComplete="name"
+              />
+
+              <label htmlFor="demo-modal-centre">Nom du centre</label>
               <input
                 id="demo-modal-centre"
                 name="centre"
                 type="text"
-                placeholder="ex. Jean de FormaPlus"
+                placeholder="ex. FormaPlus"
                 required
                 disabled={pending}
                 autoComplete="organization"
@@ -180,20 +190,20 @@ export default function DemoModal() {
                 autoComplete="tel"
               />
 
-              <label htmlFor="demo-modal-stagiaires">
-                Nombre de stagiaires / an <small>(optionnel)</small>
+              <label htmlFor="demo-modal-taille">
+                Taille de l&apos;entreprise <small>(optionnel)</small>
               </label>
               <select
-                id="demo-modal-stagiaires"
-                name="stagiaires"
+                id="demo-modal-taille"
+                name="taille"
                 defaultValue=""
                 disabled={pending}
               >
                 <option value="">Sélectionner…</option>
-                <option value="<50">Moins de 50</option>
-                <option value="50-200">50 à 200</option>
-                <option value="200-500">200 à 500</option>
-                <option value="500+">Plus de 500</option>
+                <option value="solo">Solo / freelance</option>
+                <option value="2-10">2 à 10 personnes</option>
+                <option value="11-50">11 à 50 personnes</option>
+                <option value="50+">Plus de 50 personnes</option>
               </select>
 
               <label htmlFor="demo-modal-message">

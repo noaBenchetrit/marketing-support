@@ -30,10 +30,10 @@ export default function Testimonials() {
     <section className="testimonials" id="testimonials">
       <div className="container">
         <div className="section-head reveal">
-          <span className="eyebrow">Ils nous font confiance</span>
-          <h2>Des résultats concrets, des humains derrière.</h2>
-          <p className="lead">
-            Quelques retours de directeurs de centres de formation qui ont basculé. Survolez pour mettre en pause.
+          <span className="eyebrow">Preuve sociale stratégique</span>
+          <h2>Ce sont eux qui en parlent le mieux.</h2>
+          <p className="lead" style={{ fontSize: '0.85rem' }}>
+            Survolez pour mettre en pause le défilement.
           </p>
         </div>
       </div>

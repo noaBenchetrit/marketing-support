@@ -9,29 +9,32 @@ const CRM_GROUP_CLIENT_ID = '1287';
 const CRM_TIMEOUT_MS = 10_000;
 
 const DemoFormSchema = z.object({
-  centre: z.string().trim().min(2, 'Nom requis').max(120),
+  fullname: z.string().trim().max(120).optional().nullable(),
+  centre: z.string().trim().min(2, 'Nom du centre requis').max(120),
   email: z.string().trim().email('Email invalide').max(200),
   phone: z
     .string()
     .trim()
-    .min(6, 'Téléphone requis')
     .max(40)
-    .regex(/^[+0-9\s().-]+$/, 'Numéro invalide'),
-  stagiaires: z.string().trim().max(40).optional().nullable(),
+    .regex(/^[+0-9\s().-]*$/, 'Numéro invalide')
+    .optional()
+    .nullable(),
+  taille: z.string().trim().max(40).optional().nullable(),
   message: z.string().trim().max(500).optional().nullable(),
   source: z.string().trim().max(60).optional().nullable(),
 });
 
 export type DemoFormResult =
-  | { ok: true; centre: string }
+  | { ok: true; firstname: string; centre: string }
   | { ok: false; error: string };
 
 export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
   const parsed = DemoFormSchema.safeParse({
+    fullname: formData.get('fullname'),
     centre: formData.get('centre'),
     email: formData.get('email'),
     phone: formData.get('phone'),
-    stagiaires: formData.get('stagiaires'),
+    taille: formData.get('taille'),
     message: formData.get('message'),
     source: formData.get('source'),
   });
@@ -40,18 +43,23 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
     return { ok: false, error: parsed.error.issues[0]?.message ?? 'Données invalides' };
   }
 
-  const { centre, email, phone, stagiaires, message, source } = parsed.data;
+  const { fullname, centre, email, phone, taille, message, source } = parsed.data;
+
+  const nameParts = (fullname ?? '').split(/\s+/).filter(Boolean);
+  const firstname = nameParts[0] ?? 'Contact';
+  const lastname = nameParts.slice(1).join(' ') || centre;
 
   const commentParts: string[] = [];
   if (source) commentParts.push(`Source: ${source}`);
-  if (stagiaires) commentParts.push(`Stagiaires/an: ${stagiaires}`);
+  if (centre) commentParts.push(`Centre: ${centre}`);
+  if (taille) commentParts.push(`Taille: ${taille}`);
   if (message) commentParts.push(`Message: ${message}`);
   const comment = commentParts.join(' | ');
 
   const payload = {
-    phone,
-    firstname: 'a',
-    lastname: centre,
+    phone: phone ?? '',
+    firstname,
+    lastname,
     groupClientId: CRM_GROUP_CLIENT_ID,
     email,
     comment,
@@ -83,12 +91,12 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
 
     console.log('[submitDemo] Lead envoyé au CRM', {
       source,
-      stagiaires,
+      taille,
       payload,
       receivedAt: new Date().toISOString(),
     });
 
-    return { ok: true, centre };
+    return { ok: true, firstname, centre };
   } catch (err) {
     console.error('[submitDemo] Échec de l\'appel CRM', {
       error: err instanceof Error ? { name: err.name, message: err.message } : err,

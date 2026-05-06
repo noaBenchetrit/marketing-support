@@ -16,17 +16,15 @@ const IconCheck = () => (
 );
 
 const BEFORE = [
-  'Chasse aux signatures par téléphone',
-  'Double saisie EDOF chronophage',
-  "Stress permanent à l'audit Qualiopi",
-  'Trésorerie latente, dossiers bloqués',
+  'Données éparpillées sur Excel',
+  'Relances manuelles sans fin',
+  "Peur permanente de l'audit",
 ];
 
 const AFTER = [
-  "Relances robotisées jusqu'à la signature",
-  'Synchronisation EDOF instantanée',
-  'Pack de preuves Qualiopi prêt en un clic',
-  'Encaissement dès la fin de session',
+  "Une seule source de vérité pour toute l'équipe",
+  'Relances robotisées 24/7',
+  'Dossiers 100 % conformes',
 ];
 
 export default function Comparison() {
@@ -36,15 +34,15 @@ export default function Comparison() {
     <section className="comparison" id="comparison">
       <div className="container">
         <div className="section-head reveal">
-          <span className="eyebrow">Le contraste</span>
-          <h2>Le coût de l&apos;inaction.</h2>
-          <p className="lead">D&apos;un côté la chasse aux papiers. De l&apos;autre, votre liberté retrouvée.</p>
+          <span className="eyebrow">Le coût de l&apos;inaction</span>
+          <h2>Prêt à passer de la survie administrative à la croissance&nbsp;?</h2>
+          <p className="lead">D&apos;un côté le chaos administratif. De l&apos;autre, l&apos;effet beTool.</p>
         </div>
 
         <div className="comparison-grid">
           <div className="comp-card comp-before reveal">
-            <span className="comp-label">Méthode manuelle</span>
-            <h3>Avant beTool</h3>
+            <span className="comp-label">Le chaos</span>
+            <h3>Sans beTool</h3>
             <ul className="comp-list">
               {BEFORE.map((item) => (
                 <li key={item}>
@@ -59,7 +57,7 @@ export default function Comparison() {
 
           <div className="comp-card comp-after reveal delay-1">
             <div className="comp-after-head">
-              <span className="comp-label">Méthode zen</span>
+              <span className="comp-label">L&apos;effet beTool</span>
               <button
                 type="button"
                 className="btn btn-accent comp-cta"
@@ -80,6 +78,7 @@ export default function Comparison() {
               </button>
             </div>
             <h3>Avec beTool</h3>
+
             <ul className="comp-list">
               {AFTER.map((item) => (
                 <li key={item}>

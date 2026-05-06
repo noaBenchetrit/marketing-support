@@ -80,14 +80,16 @@ export default function Hero() {
       <div className="container">
         <div className="hero-grid">
           <div className="hero-text">
-            <span className="eyebrow reveal">Pour les organismes de formation</span>
+            <span className="eyebrow reveal">Spécial Organismes de Formation &amp; CFA</span>
             <h1 className="reveal delay-1">
-              Le CPF n&apos;a jamais été <span className="accent">aussi fluide</span>.
+              Moins d&apos;administration. Plus de <span className="accent">transmission</span>.
             </h1>
-            <p className="sub-h1 reveal delay-2">Gérez, signez et facturez en toute sérénité.</p>
+            <p className="sub-h1 reveal delay-2">
+              Centralisez toute votre activité sur une plateforme unique.
+            </p>
             <p className="intro reveal delay-3">
-              Bienvenue dans votre nouvel espace de travail. Un CRM pensé pour automatiser vos tâches ingrates,
-              sécuriser vos revenus et vous redonner le temps de former.
+              De la gestion des plannings à la signature des stagiaires, beTool automatise votre conformité
+              Qualiopi pour vous redonner le contrôle.
             </p>
             <div className="cta-row reveal delay-3">
               <button
@@ -95,7 +97,7 @@ export default function Hero() {
                 className="btn btn-accent btn-large"
                 onClick={() => open({ source: 'hero' })}
               >
-                Programmer ma démo gratuite
+                Commencer mon essai gratuit
                 <svg
                   className="arrow"
                   width="18"
@@ -109,7 +111,9 @@ export default function Hero() {
                 </svg>
               </button>
             </div>
-            <p className="cta-note reveal delay-3">15 min pour transformer votre gestion. Pas de carte bancaire.</p>
+            <p className="cta-note reveal delay-3">
+              Configuration en 15 minutes. Tout le monde au même niveau d&apos;information.
+            </p>
           </div>
 
           <div className="hero-visual reveal delay-2" ref={visualRef}>
@@ -120,8 +124,19 @@ export default function Hero() {
                 <span className="dot g"></span>
               </div>
               <div className="dashboard-body">
-                <div className="dash-title">Session — Marketing Digital</div>
-                <div className="dash-sub">15 stagiaires · démarrée il y a 2 jours</div>
+                <div className="dash-title">Score de conformité global</div>
+                <div className="dash-sub">Audit Qualiopi simulé · 12 mai 2026</div>
+
+                <div className="conformity-score" aria-hidden="true">
+                  <svg viewBox="0 0 120 120" className="conformity-ring">
+                    <circle cx="60" cy="60" r="50" className="conformity-ring-bg" />
+                    <circle cx="60" cy="60" r="50" className="conformity-ring-fill" />
+                  </svg>
+                  <div className="conformity-score-inner">
+                    <strong>100&nbsp;%</strong>
+                    <span>Audit-Ready</span>
+                  </div>
+                </div>
 
                 <div className="dash-stats">
                   <div className="stat-card">
@@ -129,33 +144,12 @@ export default function Hero() {
                     <div className="stat-lbl">Émargements</div>
                   </div>
                   <div className="stat-card">
-                    <div className="stat-num">100%</div>
-                    <div className="stat-lbl">Conformité</div>
+                    <div className="stat-num">8/8</div>
+                    <div className="stat-lbl">Pièces signées</div>
                   </div>
                   <div className="stat-card">
-                    <div className="stat-num">8 240€</div>
-                    <div className="stat-lbl">Facturé</div>
-                  </div>
-                </div>
-
-                <div className="dash-rows">
-                  <div className="dash-row">
-                    <div className="left">
-                      <div className="avatar"></div>Sophie Martin
-                    </div>
-                    <span className="pill">Signé</span>
-                  </div>
-                  <div className="dash-row">
-                    <div className="left">
-                      <div className="avatar b"></div>Karim Benabid
-                    </div>
-                    <span className="pill">Signé</span>
-                  </div>
-                  <div className="dash-row">
-                    <div className="left">
-                      <div className="avatar o"></div>Léa Dubois
-                    </div>
-                    <span className="pill">Signé</span>
+                    <div className="stat-num">0</div>
+                    <div className="stat-lbl">Alertes</div>
                   </div>
                 </div>
               </div>
@@ -163,7 +157,7 @@ export default function Hero() {
 
             <div className="compliance-badge">
               <span className="badge-dot"></span>
-              <span className="badge-text">100% Conforme</span>
+              <span className="badge-text">Zéro stress en cas d&apos;audit</span>
             </div>
           </div>
         </div>

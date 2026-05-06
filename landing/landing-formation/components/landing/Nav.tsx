@@ -18,12 +18,14 @@ export default function Nav() {
     <nav className={`topbar${scrolled ? ' scrolled' : ''}`} id="topbar">
       <div className="container">
         <a href="#" className="logo">
-          <img className="logo-mark" src="/logo.png" alt="beTool" />
+          <img className="logo-mark" src="/beTool.png" alt="beTool" />
           <span>beTool</span>
         </a>
         <div className="nav-links">
           <a href="#bento">Produit</a>
-          <a href="#safe">Conformité</a>
+          <a href="#safe">Conformité Qualiopi</a>
+          <a href="#tarifs">Tarifs</a>
+          <a href="#ecosystem">Aide à la migration</a>
           <button
             type="button"
             className="btn btn-primary"
