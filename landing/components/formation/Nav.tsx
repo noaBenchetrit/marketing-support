@@ -23,9 +23,8 @@ export default function Nav() {
         </a>
         <div className="nav-links">
           <a href="#bento">Produit</a>
-          <a href="#safe">Conformité Qualiopi</a>
-          <a href="#tarifs">Tarifs</a>
           <a href="#ecosystem">Aide à la migration</a>
+          <a href="#safe">Sécurité &amp; RGPD</a>
           <button
             type="button"
             className="btn btn-primary"

@@ -125,10 +125,6 @@ export default function DemoModal() {
                 </svg>
               </div>
               <div>
-                <span className="demo-modal-badge">
-                  <span className="demo-modal-badge-dot" aria-hidden="true" />
-                  2 créneaux restants aujourd&apos;hui
-                </span>
                 <h3 id="demo-modal-title">Dernière étape pour votre accès Performance</h3>
                 <p className="demo-modal-sub">
                   15 minutes en visio avec un expert beTool Install. Aucun engagement.
