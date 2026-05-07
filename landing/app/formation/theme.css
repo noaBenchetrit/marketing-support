@@ -2719,14 +2719,21 @@
       .demo-modal-head { padding-right: 32px; }
     }
 
+    /* Keep the LoveBar's reveal as a fade only — its 20px translateY made the
+       "+150 centres" line sweep up over the hero compliance badge during scroll. */
+    .love-bar .reveal,
+    .love-bar .reveal.in { transform: none; }
+
     /* ============== Mobile refinements (layout flips that clamp can't do) ============== */
     @media (max-width: 960px) {
       /* Disable hero rotations on touch screens */
       .hero-visual { transform: none; max-width: 460px; }
       .dashboard-card { transform: rotate(0); }
       .dashboard-card:hover { transform: rotate(0); }
-      /* Compliance badge moves inside the card on mobile (negative→positive) */
-      .compliance-badge { right: 12px; bottom: -16px; }
+      /* Compliance badge sits fully inside the hero on mobile and the parallax
+         translate (set inline by Hero.tsx) is neutralised so it can't drift into
+         the LoveBar below. */
+      .compliance-badge { right: 12px; bottom: 12px; translate: none !important; }
       /* Bento A loses min-height when grid stacks */
       .bento-a { min-height: 0; }
       .bento-card { min-height: auto; }
