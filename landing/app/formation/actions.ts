@@ -9,16 +9,19 @@ const CRM_GROUP_CLIENT_ID = '1287';
 const CRM_TIMEOUT_MS = 10_000;
 
 const DemoFormSchema = z.object({
-  fullname: z.string().trim().max(120).optional().nullable(),
+  fullname: z.string().trim().min(2, 'Nom et prénom requis').max(120),
   centre: z.string().trim().min(2, 'Nom du centre requis').max(120),
   email: z.string().trim().email('Email invalide').max(200),
   phone: z
     .string()
     .trim()
+    .min(6, 'Téléphone requis')
     .max(40)
-    .regex(/^[+0-9\s().-]*$/, 'Numéro invalide')
-    .optional()
-    .nullable(),
+    .transform((val) => val.replace(/[\s.()\-_]/g, ''))
+    .refine(
+      (val) => /^(?:0|\+33|0033)[1-9]\d{8}$/.test(val),
+      'Numéro de téléphone français invalide',
+    ),
   taille: z.string().trim().max(40).optional().nullable(),
   message: z.string().trim().max(500).optional().nullable(),
   source: z.string().trim().max(60).optional().nullable(),
@@ -45,7 +48,7 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
 
   const { fullname, centre, email, phone, taille, message, source } = parsed.data;
 
-  const nameParts = (fullname ?? '').split(/\s+/).filter(Boolean);
+  const nameParts = fullname.split(/\s+/).filter(Boolean);
   const firstname = nameParts[0] ?? 'Contact';
   const lastname = nameParts.slice(1).join(' ') || centre;
 
@@ -57,7 +60,7 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
   const comment = commentParts.join(' | ');
 
   const payload = {
-    phone: phone ?? '',
+    phone,
     firstname,
     lastname,
     groupClientId: CRM_GROUP_CLIENT_ID,

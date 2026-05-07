@@ -17,7 +17,11 @@ const DemoFormSchema = z.object({
     .trim()
     .min(6, 'Téléphone requis')
     .max(40)
-    .regex(/^[+0-9\s().-]+$/, 'Numéro invalide'),
+    .transform((val) => val.replace(/[\s.()\-_]/g, ''))
+    .refine(
+      (val) => /^(?:0|\+33|0033)[1-9]\d{8}$/.test(val),
+      'Numéro de téléphone français invalide',
+    ),
   taille: z.string().trim().max(40).optional().nullable(),
   metier: z.string().trim().max(40).optional().nullable(),
   message: z.string().trim().max(500).optional().nullable(),

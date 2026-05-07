@@ -10,7 +10,7 @@ export default function Footer() {
           <a href="/cgu">CGU / CGV</a>
           <a href="/confidentialite">Confidentialité</a>
         </div>
-        <div>© 2026 beTool · Le CRM des OF</div>
+        <div>© 2026 beTool · Le CRM des cabinets d&apos;audit</div>
       </div>
     </footer>
   );

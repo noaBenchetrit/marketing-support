@@ -1,35 +1,25 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import DemoForm from '@/components/shared/DemoForm';
 import { submitDemo } from '@/app/formation/actions';
 import { useDemoModal } from './DemoModalProvider';
 
-type Status = 'idle' | 'success' | 'error';
+const ArrowIcon = () => (
+  <svg
+    style={{ display: 'inline', verticalAlign: 'middle', marginLeft: 6 }}
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path d="M5 12h14M13 5l7 7-7 7" />
+  </svg>
+);
 
 export default function FinalCta() {
   const { prefilledEmail, emailWasPrefilled } = useDemoModal();
-  const [pending, startTransition] = useTransition();
-  const [status, setStatus] = useState<Status>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    formData.set('source', 'cta-final');
-
-    startTransition(async () => {
-      const result = await submitDemo(formData);
-      if (result.ok) {
-        setStatus('success');
-        setErrorMessage('');
-        form.reset();
-      } else {
-        setStatus('error');
-        setErrorMessage(result.error);
-      }
-    });
-  };
 
   return (
     <section className="cta-final" id="cta-final">
@@ -47,66 +37,28 @@ export default function FinalCta() {
             </p>
           </div>
 
-          <form className="cta-form reveal delay-1" onSubmit={handleSubmit}>
-            <label htmlFor="cta-email">Email professionnel</label>
-            <input
-              id="cta-email"
-              name="email"
-              type="email"
-              placeholder="vous@votre-centre.fr"
-              defaultValue={prefilledEmail}
-              required
-              disabled={pending}
-              autoComplete="email"
-            />
-            {emailWasPrefilled && (
-              <p className="form-note">On a pré-rempli votre mail pour vous faire gagner du temps.</p>
-            )}
-
-            <label htmlFor="cta-fullname">Nom et prénom</label>
-            <input
-              id="cta-fullname"
-              name="fullname"
-              type="text"
-              placeholder="ex. Jean Dupont"
-              required
-              disabled={pending}
-              autoComplete="name"
-            />
-
-            <label htmlFor="cta-centre">Nom du centre</label>
-            <input
-              id="cta-centre"
-              name="centre"
-              type="text"
-              placeholder="ex. FormaPlus"
-              required
-              disabled={pending}
-              autoComplete="organization"
-            />
-
-            <label htmlFor="cta-phone">
-              Numéro de téléphone <small>(pour fixer le créneau ensemble)</small>
-            </label>
-            <input
-              id="cta-phone"
-              name="phone"
-              type="tel"
-              placeholder="06 12 34 56 78"
-              required
-              disabled={pending}
-              autoComplete="tel"
-            />
-
+          <DemoForm
+            submitDemo={submitDemo}
+            source="cta-final"
+            variant="inline"
+            prefilledEmail={prefilledEmail}
+            showEmailHint={emailWasPrefilled}
+            centreLabel="Nom du centre"
+            centrePlaceholder="ex. FormaPlus"
+            emailPlaceholder="vous@votre-centre.fr"
+            phoneLabel={<>Numéro de téléphone <small>(pour fixer le créneau ensemble)</small></>}
+            submitLabel={
+              <>
+                Récupérer mes accès démo
+                <ArrowIcon />
+              </>
+            }
+            idleNote={<>Pas de carte bancaire. 14 jours d&apos;essai offerts.</>}
+          >
             <label htmlFor="cta-taille">
               Taille de l&apos;entreprise <small>(optionnel)</small>
             </label>
-            <select
-              id="cta-taille"
-              name="taille"
-              defaultValue=""
-              disabled={pending}
-            >
+            <select id="cta-taille" name="taille" defaultValue="">
               <option value="">Sélectionner…</option>
               <option value="solo">Solo / freelance</option>
               <option value="2-10">2 à 10 personnes</option>
@@ -122,45 +74,9 @@ export default function FinalCta() {
               name="message"
               rows={3}
               placeholder="Une question ou un besoin spécifique ?"
-              disabled={pending}
               maxLength={500}
             />
-
-            <button type="submit" disabled={pending}>
-              {pending ? 'Envoi en cours…' : (
-                <>
-                  Récupérer mes accès démo
-                  <svg
-                    style={{ display: 'inline', verticalAlign: 'middle', marginLeft: 6 }}
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M5 12h14M13 5l7 7-7 7" />
-                  </svg>
-                </>
-              )}
-            </button>
-
-            {status === 'success' && (
-              <div className="form-success">
-                ✓ Merci ! Nous vous recontactons sous 24h ouvrées.
-              </div>
-            )}
-            {status === 'error' && (
-              <div className="form-error">
-                {errorMessage}
-              </div>
-            )}
-            {status === 'idle' && (
-              <div className="form-note">
-                Pas de carte bancaire. 14 jours d&apos;essai offerts.
-              </div>
-            )}
-          </form>
+          </DemoForm>
         </div>
       </div>
     </section>

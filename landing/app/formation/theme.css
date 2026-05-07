@@ -2417,6 +2417,7 @@
       .bento-c, .bento-d { grid-column: span 1; }
       .steps { grid-template-columns: 1fr; gap: 40px; }
       .steps::before { display: none; }
+      .steps-progress { display: none; }
       .nav-links a:not(.btn) { display: none; }
       .comparison-grid { grid-template-columns: 1fr; }
       .roi-results { grid-template-columns: 1fr; }
