@@ -2378,7 +2378,6 @@
     .cta-form select:focus,
     .cta-form textarea:focus {
       box-shadow: 0 0 0 4px rgba(15,113,240,0.18);
-      transform: translateY(-1px);
     }
     .cta-form button { transition: all 0.25s; }
     .cta-form button:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(15,113,240,0.35); }
