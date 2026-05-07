@@ -92,7 +92,7 @@ export default function LmsPartners() {
 
         <div className="lms-stack reveal delay-1">
           <div className="lms-row-label">
-            <span className="lms-row-tag">↑ Côté outils métier</span>
+            <span className="lms-row-tag">Côté outils métier</span>
           </div>
           <MarqueeRow items={lmsPartners} ariaLabel="Partenaires LMS" />
 
@@ -104,7 +104,7 @@ export default function LmsPartners() {
 
           <MarqueeRow items={dailyTools} reverse ariaLabel="Outils du quotidien" />
           <div className="lms-row-label">
-            <span className="lms-row-tag">↓ Côté quotidien</span>
+            <span className="lms-row-tag">Côté quotidien</span>
           </div>
         </div>
       </div>

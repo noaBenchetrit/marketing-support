@@ -14,14 +14,15 @@ export default function DemoModal() {
       centrePlaceholder="ex. Acme SAS"
       phoneLabel={<>Numéro de téléphone <small>(pour fixer le créneau ensemble)</small></>}
     >
-      <label htmlFor="demo-modal-type">
-        Type d&apos;audit <small>(optionnel)</small>
+      <label htmlFor="demo-modal-taille">
+        Taille de l&apos;entreprise <small>(optionnel)</small>
       </label>
-      <select id="demo-modal-type" name="taille" defaultValue="">
+      <select id="demo-modal-taille" name="taille" defaultValue="">
         <option value="">Sélectionner…</option>
-        <option value="qualite">Qualité</option>
-        <option value="securite">Sécurité</option>
-        <option value="autre">Autre</option>
+        <option value="solo">Solo / freelance</option>
+        <option value="2-10">2 à 10 personnes</option>
+        <option value="11-50">11 à 50 personnes</option>
+        <option value="50+">Plus de 50 personnes</option>
       </select>
     </SharedDemoModal>
   );

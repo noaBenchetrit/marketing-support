@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import LegalToc, { type TocItem } from '@/components/legal/LegalToc';
+import LegalBack from '@/components/legal/LegalBack';
 
 export const metadata = {
   title: 'Politique de Confidentialité — beTool',
@@ -32,9 +33,7 @@ export default function ConfidentialitePage() {
     <div className="legal-page">
       <header className="legal-header">
         <div className="container">
-          <Link href="/" className="legal-back">
-            ← Retour
-          </Link>
+          <LegalBack>← Retour</LegalBack>
           <h1>Politique de Confidentialité</h1>
           <p className="legal-meta">En vigueur depuis le 01/01/2025</p>
         </div>
@@ -337,9 +336,7 @@ export default function ConfidentialitePage() {
 
       <footer className="legal-footer">
         <div className="container">
-          <Link href="/" className="legal-back">
-            ← Retour à l&apos;accueil
-          </Link>
+          <LegalBack>← Retour</LegalBack>
           <span>© 2026 beTool</span>
         </div>
       </footer>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import LegalToc, { type TocItem } from '@/components/legal/LegalToc';
+import LegalBack from '@/components/legal/LegalBack';
 
 const TOC_ITEMS: TocItem[] = [
   { id: 'intro', label: 'Préambule' },
@@ -30,9 +31,7 @@ export default function CguPage() {
     <div className="legal-page">
       <header className="legal-header">
         <div className="container">
-          <Link href="/" className="legal-back">
-            ← Retour
-          </Link>
+          <LegalBack>← Retour</LegalBack>
           <h1>Conditions générales d&apos;utilisation</h1>
           <p className="legal-meta">En vigueur au 01/01/2025</p>
         </div>
@@ -533,9 +532,7 @@ export default function CguPage() {
 
       <footer className="legal-footer">
         <div className="container">
-          <Link href="/" className="legal-back">
-            ← Retour à l&apos;accueil
-          </Link>
+          <LegalBack>← Retour</LegalBack>
           <span>© 2026 beTool</span>
         </div>
       </footer>

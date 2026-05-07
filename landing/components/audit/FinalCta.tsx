@@ -55,13 +55,15 @@ export default function FinalCta() {
             }
             idleNote="Rappel sous 24h ouvrées · Confidentialité absolue"
           >
-            <label htmlFor="cta-type">Quel est votre domaine d&apos;audit&nbsp;?</label>
-            <select id="cta-type" name="taille" defaultValue="" required>
+            <label htmlFor="cta-taille">
+              Taille de l&apos;entreprise <small>(optionnel)</small>
+            </label>
+            <select id="cta-taille" name="taille" defaultValue="">
               <option value="">Sélectionner…</option>
-              <option value="energetique">Audit Énergétique (MaPrimeRénov / CEE)</option>
-              <option value="securite">Audit Sécurité / Incendie</option>
-              <option value="qualite">Audit Qualité / ISO</option>
-              <option value="autre">Autre</option>
+              <option value="solo">Solo / freelance</option>
+              <option value="2-10">2 à 10 personnes</option>
+              <option value="11-50">11 à 50 personnes</option>
+              <option value="50+">Plus de 50 personnes</option>
             </select>
           </DemoForm>
         </div>

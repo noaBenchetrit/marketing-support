@@ -16,7 +16,6 @@ const IconCheck = () => (
 );
 
 const BEFORE = [
-  'Relances manuelles oubliées',
   'Marges calculées au jugé',
   'Photos perdues sur WhatsApp',
   'Stress des dossiers Anah',
