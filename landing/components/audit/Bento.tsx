@@ -151,7 +151,7 @@ export default function Bento() {
               </svg>
             </div>
             <h3>Rapports haute-précision.</h3>
-            <p>Génération automatique de vos rapports PDF officiels pré-remplis. Exportation prête à l&apos;envoi dès la fin de mission.</p>
+            <p>Génération au clic de vos rapports PDF officiels pré-remplis. Exportation prête à l&apos;envoi dès la fin de mission.</p>
 
             <div className="report-mock" aria-hidden="true">
               <div className="report-page">
