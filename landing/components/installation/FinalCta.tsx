@@ -55,15 +55,6 @@ export default function FinalCta() {
             }
             idleNote="Réponse sous 24h ouvrées · Aucun engagement"
           >
-            <label htmlFor="cta-metier">Votre corps d&apos;état</label>
-            <select id="cta-metier" name="metier" defaultValue="" required>
-              <option value="">Sélectionner…</option>
-              <option value="renovation">Rénovation énergétique</option>
-              <option value="maconnerie">Maçonnerie</option>
-              <option value="menuiserie">Menuiserie</option>
-              <option value="autre">Autre</option>
-            </select>
-
             <label htmlFor="cta-techniciens">Nombre de techniciens terrain</label>
             <select id="cta-techniciens" name="taille" defaultValue="" required>
               <option value="">Sélectionner…</option>

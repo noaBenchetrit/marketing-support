@@ -48,7 +48,6 @@ export default function Hero() {
     if (!visual || !card) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const badge = visual.querySelector<HTMLElement>('.compliance-badge');
     let raf = 0;
 
     const update = () => {
@@ -57,7 +56,6 @@ export default function Hero() {
       const center = rect.top + rect.height / 2 - window.innerHeight / 2;
       const t = Math.max(-1, Math.min(1, center / window.innerHeight));
       card.style.translate = `0 ${t * -18}px`;
-      if (badge) badge.style.translate = `0 ${t * -42}px`;
     };
 
     const onScroll = () => {

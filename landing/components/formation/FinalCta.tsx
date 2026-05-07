@@ -65,17 +65,6 @@ export default function FinalCta() {
               <option value="11-50">11 à 50 personnes</option>
               <option value="50+">Plus de 50 personnes</option>
             </select>
-
-            <label htmlFor="cta-message">
-              Message <small>(optionnel)</small>
-            </label>
-            <textarea
-              id="cta-message"
-              name="message"
-              rows={3}
-              placeholder="Une question ou un besoin spécifique ?"
-              maxLength={500}
-            />
           </DemoForm>
         </div>
       </div>

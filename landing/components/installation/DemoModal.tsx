@@ -23,17 +23,6 @@ export default function DemoModal() {
         <option value="5-20">5 à 20 techniciens</option>
         <option value="20+">Plus de 20 techniciens</option>
       </select>
-
-      <label htmlFor="demo-modal-message">
-        Message <small>(optionnel)</small>
-      </label>
-      <textarea
-        id="demo-modal-message"
-        name="message"
-        rows={3}
-        placeholder="Une question ou un besoin spécifique ?"
-        maxLength={500}
-      />
     </SharedDemoModal>
   );
 }

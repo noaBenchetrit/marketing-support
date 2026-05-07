@@ -273,7 +273,7 @@
     /* Floating compliance badge */
     .compliance-badge {
       position: absolute;
-      bottom: -22px;
+      bottom: -32px;
       right: -22px;
       background: #fff;
       border: 1px solid var(--border);
