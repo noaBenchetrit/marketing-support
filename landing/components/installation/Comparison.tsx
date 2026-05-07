@@ -16,17 +16,16 @@ const IconCheck = () => (
 );
 
 const BEFORE = [
-  'Relances client manuelles à coups de SMS',
-  'Dossiers papier perdus dans la camionnette',
-  'Rejets de primes en série',
-  '3 mois de délai avant le paiement',
+  'Relances manuelles oubliées',
+  'Marges calculées au jugé',
+  'Photos perdues sur WhatsApp',
+  'Stress des dossiers Anah',
 ];
 
 const AFTER = [
-  'Relances automatisées jusqu’à la pose',
-  'Dossiers 100 % digitaux, scellés Certigna',
-  'Conformité garantie par l’IA avant envoi',
-  'Trésorerie optimisée, encaissement accéléré',
+  'Marge nette visible, recalculée à chaque étape',
+  'Journal photo scellé, archivé 10 ans',
+  'Dossiers 100 % conformes',
 ];
 
 export default function Comparison() {
@@ -36,9 +35,9 @@ export default function Comparison() {
     <section className="comparison" id="comparison">
       <div className="container">
         <div className="section-head reveal">
-          <span className="eyebrow">Le contraste</span>
-          <h2>L&apos;ancien monde, ou beTool.</h2>
-          <p className="lead">D&apos;un côté la course aux primes et la trésorerie qui tousse. De l&apos;autre, le pilotage industriel.</p>
+          <span className="eyebrow">Le choix est simple</span>
+          <h2>Le chaos, ou beTool.</h2>
+          <p className="lead">D&apos;un côté l&apos;administratif qui ronge la trésorerie. De l&apos;autre, le pilotage industriel.</p>
         </div>
 
         <div className="comparison-grid">

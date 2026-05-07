@@ -99,6 +99,21 @@ export default function FinalCta() {
               autoComplete="tel"
             />
 
+            <label htmlFor="cta-metier">Votre corps d&apos;état</label>
+            <select
+              id="cta-metier"
+              name="metier"
+              defaultValue=""
+              disabled={pending}
+              required
+            >
+              <option value="">Sélectionner…</option>
+              <option value="renovation">Rénovation énergétique</option>
+              <option value="maconnerie">Maçonnerie</option>
+              <option value="menuiserie">Menuiserie</option>
+              <option value="autre">Autre</option>
+            </select>
+
             <label htmlFor="cta-techniciens">Nombre de techniciens terrain</label>
             <select
               id="cta-techniciens"
@@ -116,7 +131,7 @@ export default function FinalCta() {
             <button type="submit" disabled={pending}>
               {pending ? 'Envoi en cours…' : (
                 <>
-                  Demander mon accès Performance
+                  Passer à la vitesse supérieure
                   <svg
                     style={{ display: 'inline', verticalAlign: 'middle', marginLeft: 6 }}
                     width="16"

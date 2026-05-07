@@ -1,8 +1,9 @@
 const ITEMS = [
-  "Compatible MaPrimeRénov'",
-  'Certifié signature électronique eIDAS',
-  '+10 000 installations sécurisées',
-  'Archivage décennal inclus',
+  'Archivage décennal garanti',
+  'Signature eIDAS',
+  '10 000 chantiers pilotés',
+  'Souveraineté France',
+  "Éligible MaPrimeRénov' & CEE",
 ];
 
 export default function Credibility() {

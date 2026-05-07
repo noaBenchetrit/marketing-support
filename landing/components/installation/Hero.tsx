@@ -80,19 +80,15 @@ export default function Hero() {
       <div className="container">
         <div className="hero-grid">
           <div className="hero-text">
-            <span className="eyebrow reveal">Performance RGE &amp; Efficacité 2026</span>
+            <span className="eyebrow reveal">L&apos;allié des artisans et entreprises du bâtiment en 2026</span>
             <h1 className="reveal delay-1">
               Le chantier commence au clic.
               <br />
               Le profit se joue à la <span className="accent">signature</span>.
             </h1>
             <p className="sub-h1 reveal delay-2">
-              Pilotez vos installations de la qualification à la prime.
-            </p>
-            <p className="intro reveal delay-3">
-              Éliminez les erreurs de conformité et accélérez vos encaissements de 40 %. Un seul outil pour
-              qualifier vos prospects, signer sur place, sécuriser vos dossiers MaPrimeRénov&apos; et envoyer
-              le rapport de pose en un clic.
+              Ne laissez plus vos marges s&apos;évaporer. Centralisez vos demandes, automatisez vos relances de
+              devis et encaissez vos factures plus vite.
             </p>
             <div className="cta-row reveal delay-3">
               <button
@@ -100,7 +96,7 @@ export default function Hero() {
                 className="btn btn-accent btn-large"
                 onClick={() => open({ source: 'hero' })}
               >
-                Digitaliser mon activité maintenant
+                Sécuriser mon profit maintenant
                 <svg
                   className="arrow"
                   width="18"
@@ -131,9 +127,9 @@ export default function Hero() {
                 <div className="dash-sub">Famille Lefèvre · Toulouse · MaPrimeRénov&apos; validée</div>
 
                 <div className="dash-stats">
-                  <div className="stat-card">
-                    <div className="stat-num">12 / 12</div>
-                    <div className="stat-lbl">Pièces signées</div>
+                  <div className="stat-card stat-card--cash">
+                    <div className="stat-num">12 450 €</div>
+                    <div className="stat-lbl">Devis en attente</div>
                   </div>
                   <div className="stat-card">
                     <div className="stat-num">4 320 €</div>
@@ -160,9 +156,9 @@ export default function Hero() {
                   </div>
                   <div className="dash-row">
                     <div className="left">
-                      <div className="avatar o"></div>Dossier prime
+                      <div className="avatar o"></div>Devis relancé
                     </div>
-                    <span className="pill">Envoyé</span>
+                    <span className="pill">Auto J+3</span>
                   </div>
                 </div>
               </div>

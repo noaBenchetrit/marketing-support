@@ -19,6 +19,7 @@ const DemoFormSchema = z.object({
     .max(40)
     .regex(/^[+0-9\s().-]+$/, 'Numéro invalide'),
   taille: z.string().trim().max(40).optional().nullable(),
+  metier: z.string().trim().max(40).optional().nullable(),
   message: z.string().trim().max(500).optional().nullable(),
   source: z.string().trim().max(60).optional().nullable(),
 });
@@ -34,6 +35,7 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
     email: formData.get('email'),
     phone: formData.get('phone'),
     taille: formData.get('taille'),
+    metier: formData.get('metier'),
     message: formData.get('message'),
     source: formData.get('source'),
   });
@@ -42,7 +44,7 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
     return { ok: false, error: parsed.error.issues[0]?.message ?? 'Données invalides' };
   }
 
-  const { fullname, centre, email, phone, taille, message, source } = parsed.data;
+  const { fullname, centre, email, phone, taille, metier, message, source } = parsed.data;
 
   const nameParts = fullname.split(/\s+/);
   const firstname = nameParts[0] ?? '';
@@ -51,6 +53,7 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
   const commentParts: string[] = [];
   if (source) commentParts.push(`Source: ${source}`);
   if (centre) commentParts.push(`Centre: ${centre}`);
+  if (metier) commentParts.push(`Métier: ${metier}`);
   if (taille) commentParts.push(`Taille: ${taille}`);
   if (message) commentParts.push(`Message: ${message}`);
   const comment = commentParts.join(' | ');
@@ -91,6 +94,7 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
     console.log('[submitDemo] Lead envoyé au CRM', {
       source,
       taille,
+      metier,
       payload,
       receivedAt: new Date().toISOString(),
     });

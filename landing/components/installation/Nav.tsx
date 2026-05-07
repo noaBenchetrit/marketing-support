@@ -22,15 +22,15 @@ export default function Nav() {
           <span>beTool</span>
         </a>
         <div className="nav-links">
-          <a href="#bento">Flux Chantier</a>
-          <a href="#ai">Conformité IA</a>
-          <a href="#workflow">Reporting</a>
+          <a href="#bento">Marges &amp; Factures</a>
+          <a href="#planning">Planning Terrain</a>
+          <a href="#niche">Dossiers RGE</a>
           <button
             type="button"
             className="btn btn-primary"
-            onClick={() => open({ source: 'nav' })}
+            onClick={() => open({ source: 'nav', ctaLabel: 'Récupérer mes marges' })}
           >
-            Demander ma démo
+            Récupérer mes marges
           </button>
         </div>
       </div>

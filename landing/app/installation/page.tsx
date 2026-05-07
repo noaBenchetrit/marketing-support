@@ -1,13 +1,14 @@
 import Nav from '@/components/installation/Nav';
 import ScrollProgress from '@/components/installation/ScrollProgress';
 import Hero from '@/components/installation/Hero';
+import SocialProof from '@/components/installation/SocialProof';
 import Credibility from '@/components/installation/Credibility';
 import Bento from '@/components/installation/Bento';
-import Roi from '@/components/installation/Roi';
+import Planning from '@/components/installation/Planning';
 import AiAssistant from '@/components/installation/AiAssistant';
-import Workflow from '@/components/installation/Workflow';
+import Niche from '@/components/installation/Niche';
 import Comparison from '@/components/installation/Comparison';
-import Emotional from '@/components/installation/Emotional';
+import ControlShield from '@/components/installation/ControlShield';
 import SafePlace from '@/components/installation/SafePlace';
 import FinalCta from '@/components/installation/FinalCta';
 import Footer from '@/components/installation/Footer';
@@ -20,13 +21,14 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <SocialProof />
         <Credibility />
         <Bento />
-        <Roi />
+        <Planning />
         <AiAssistant />
-        <Workflow />
+        <Niche />
         <Comparison />
-        <Emotional />
+        <ControlShield />
         <SafePlace />
         <FinalCta />
       </main>

@@ -158,7 +158,7 @@
     }
     .hero h1 .accent { color: var(--accent); }
     .hero .sub-h1 {
-      font-size: clamp(1.3rem, 2vw, 1.65rem);
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
       color: var(--text-muted);
       font-weight: 400;
       margin-top: 20px;
@@ -226,6 +226,34 @@
     }
     .stat-num { font-size: 1.3rem; font-weight: 700; color: var(--text); }
     .stat-lbl { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+    .stat-card--cash {
+      background: linear-gradient(135deg, rgba(232, 116, 44, 0.10), rgba(232, 116, 44, 0.04));
+      border: 1px solid rgba(232, 116, 44, 0.25);
+    }
+    .stat-card--cash .stat-num { color: var(--alert, #E8742C); }
+    .stat-flag {
+      margin-top: 6px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--emerald-deep);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .stat-flag::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 0 0 rgba(10, 147, 150, 0.5);
+      animation: cashPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes cashPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(10, 147, 150, 0.5); }
+      50% { box-shadow: 0 0 0 6px rgba(10, 147, 150, 0); }
+    }
     .dash-rows { display: flex; flex-direction: column; gap: 8px; }
     .dash-row {
       display: flex;
@@ -991,8 +1019,334 @@
     /* Bento layout */
     .bento-a { grid-column: span 2; grid-row: span 2; min-height: 580px; }
     .bento-b { grid-column: span 2; }
-    .bento-c { grid-column: span 1; }
-    .bento-d { grid-column: span 1; }
+    .bento-c { grid-column: span 2; }
+
+    /* --- Suivi mock (Card A install) --- */
+    .suivi-mock {
+      margin-top: 18px;
+      padding: 16px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .suivi-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .suivi-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 2fr) auto;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid var(--border-soft);
+    }
+    .suivi-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .suivi-bar {
+      position: relative;
+      height: 6px;
+      background: var(--border-soft);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .suivi-bar-fill {
+      position: absolute;
+      inset: 0 auto 0 0;
+      background: linear-gradient(90deg, var(--emerald), var(--accent));
+      border-radius: 100px;
+      transform-origin: left center;
+      animation: suiviGrow 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    @keyframes suiviGrow {
+      0% { transform: scaleX(0); }
+      100% { transform: scaleX(1); }
+    }
+    .suivi-pct {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-deep);
+      letter-spacing: -0.01em;
+    }
+
+    /* ============== Planning ============== */
+    .planning {
+      background: var(--bg-soft);
+    }
+    .planning-cta {
+      margin-top: 48px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ============== Niche (MaPrimeRénov') ============== */
+    .niche {
+      background: var(--bg-soft);
+    }
+    .niche-update {
+      margin-top: 40px;
+      padding: 18px 26px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+    }
+    .niche-update-icon {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      display: grid;
+      place-items: center;
+      animation: niche-spin 8s linear infinite;
+    }
+    @keyframes niche-spin {
+      to { transform: rotate(360deg); }
+    }
+    .niche-update-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .niche-update-text strong {
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+    .niche-update-text span {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .niche-benefit {
+      margin-top: 18px;
+      padding: 22px 32px;
+      text-align: center;
+      background: linear-gradient(135deg, var(--accent-soft), rgba(10, 147, 150, 0.12));
+      border: 1px solid rgba(10, 147, 150, 0.25);
+      border-radius: var(--radius-lg);
+      color: var(--accent-deep);
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+    .niche-benefit strong {
+      color: var(--accent-deep);
+      font-weight: 700;
+    }
+
+    /* ============== Social Proof ============== */
+    .social-proof {
+      padding: 12px 0 56px;
+      background: #fff;
+    }
+    .social-proof-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 28px 40px;
+      padding: 24px 36px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+    }
+    .social-proof-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .social-proof-num {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--accent-deep);
+      line-height: 1;
+    }
+    .social-proof-lbl {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .social-proof-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--border);
+    }
+    .social-proof-logos {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .social-proof-logo {
+      padding: 6px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text-light);
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      transition: color 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .social-proof-logo:hover {
+      color: var(--accent-deep);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    @media (max-width: 720px) {
+      .social-proof-divider { display: none; }
+    }
+
+    /* ============== Bento — certification BTP ============== */
+    .bento-cert {
+      margin-top: 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      background: rgba(10, 147, 150, 0.06);
+      border: 1px solid rgba(10, 147, 150, 0.22);
+      border-radius: 12px;
+    }
+    .bento-cert-icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      display: grid;
+      place-items: center;
+    }
+    .bento-cert-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .bento-cert-text strong {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-deep);
+      letter-spacing: 0.005em;
+    }
+    .bento-cert-text span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* ============== Control Shield ============== */
+    .control-shield {
+      background: var(--bg-soft);
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+    .control-shield-card {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 28px;
+      padding: 28px 36px;
+      background: var(--bg-dark);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .control-shield-card::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      right: -100px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(10, 147, 150, 0.18), transparent 70%);
+      pointer-events: none;
+    }
+    .control-shield-icon {
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: rgba(10, 147, 150, 0.18);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .control-shield-text {
+      position: relative;
+      z-index: 1;
+    }
+    .control-shield-text .eyebrow {
+      background: rgba(10, 147, 150, 0.22);
+      color: #9FD7D9;
+      margin-bottom: 8px;
+    }
+    .control-shield-text h3 {
+      color: #fff;
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+    .control-shield-text p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.96rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .control-shield-stamps {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .control-shield-stamp {
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 100px;
+      text-align: center;
+    }
+    @media (max-width: 880px) {
+      .control-shield-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 28px 24px;
+      }
+      .control-shield-icon { margin: 0 auto; }
+      .control-shield-stamps {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+    }
 
     /* Bento A — Signature visual */
     .bento-a .visual-wrap {
@@ -2448,7 +2802,7 @@
       .bento-grid { grid-template-columns: repeat(2, 1fr); }
       .bento-a { grid-column: span 2; grid-row: auto; min-height: 420px; }
       .bento-b { grid-column: span 2; }
-      .bento-c, .bento-d { grid-column: span 1; }
+      .bento-c { grid-column: span 2; }
       .steps { grid-template-columns: 1fr; gap: 40px; }
       .steps::before { display: none; }
       .nav-links a:not(.btn) { display: none; }
@@ -2471,7 +2825,7 @@
     }
     @media (max-width: 560px) {
       .bento-grid { grid-template-columns: 1fr; }
-      .bento-a, .bento-b, .bento-c, .bento-d { grid-column: span 1; }
+      .bento-a, .bento-b, .bento-c { grid-column: span 1; }
       .compliance-badge { right: 10px; bottom: -16px; padding: 10px 14px; }
       .compliance-badge .badge-text { font-size: 0.78rem; }
     }

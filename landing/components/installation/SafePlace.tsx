@@ -27,27 +27,14 @@ export default function SafePlace() {
             </div>
           </div>
           <div className="safe-text reveal delay-1">
-            <span className="eyebrow">La robustesse</span>
-            <h2>Vos chantiers, vos données, votre sérénité.</h2>
+            <span className="eyebrow">La réassurance décennale</span>
+            <h2>Une preuve, pour toujours.</h2>
             <p className="lead">
-              Hébergement souverain, archivage légal de 10 ans, synchronisation cloud chiffrée pour vos
-              techniciens sur le terrain.
+              Archivage légal de 10 ans, données chiffrées AES-256, support expert dédié. Vos chantiers
+              tiennent face aux contrôles, aux contentieux et au temps.
             </p>
 
             <div className="safe-features safe-features-grid">
-              <div className="safe-feat">
-                <div className="safe-feat-icon">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="2" y1="12" x2="22" y2="12" />
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                  </svg>
-                </div>
-                <div>
-                  <strong>RGPD &amp; souveraineté</strong>
-                  <span>Données clients hébergées exclusivement en France, OVHcloud certifié.</span>
-                </div>
-              </div>
               <div className="safe-feat">
                 <div className="safe-feat-icon">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -58,7 +45,19 @@ export default function SafePlace() {
                 </div>
                 <div>
                   <strong>Archivage légal 10 ans</strong>
-                  <span>Stockage immuable de vos dossiers pour les contrôles COPRO et le SAV décennal.</span>
+                  <span>Stockage immuable de vos dossiers pour les contrôles, le SAV décennal et l&apos;Anah.</span>
+                </div>
+              </div>
+              <div className="safe-feat">
+                <div className="safe-feat-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  </svg>
+                </div>
+                <div>
+                  <strong>Chiffrement de niveau bancaire</strong>
+                  <span>AES-256, hébergement souverain France, OVHcloud certifié. Vos données ne sortent jamais.</span>
                 </div>
               </div>
               <div className="safe-feat">
@@ -69,7 +68,20 @@ export default function SafePlace() {
                 </div>
                 <div>
                   <strong>Accès terrain sécurisé</strong>
-                  <span>Synchronisation cloud chiffrée pour vos techniciens, mode hors-connexion possible.</span>
+                  <span>Vos ouvriers consultent les dossiers depuis le chantier, en mode hors-connexion possible.</span>
+                </div>
+              </div>
+              <div className="safe-feat">
+                <div className="safe-feat-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 20h9" />
+                    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z" />
+                    <polyline points="14 6 17 9" />
+                  </svg>
+                </div>
+                <div>
+                  <strong>Signatures électroniques eIDAS via Certigna</strong>
+                  <span>Vos contrats et PV de réception ont une valeur juridique incontestable.</span>
                 </div>
               </div>
             </div>
@@ -79,8 +91,8 @@ export default function SafePlace() {
         <div className="safe-support safe-support--full reveal delay-2">
           <div className="support-avatar">CS</div>
           <div className="safe-support-text">
-            <strong>Une équipe Customer Success qui parle votre métier.</strong>
-            <span>Basée à Paris · réponse sous 2h ouvrées · accompagnement RGE inclus.</span>
+            <strong>Une équipe à Paris qui répond en moins de 2h.</strong>
+            <span>Customer Success qui parle votre métier · accompagnement RGE inclus.</span>
           </div>
           <div className="support-pulse">En ligne</div>
           <button

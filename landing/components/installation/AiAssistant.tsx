@@ -8,7 +8,7 @@ const PILLARS: Pillar[] = [
   {
     title: 'Vérificateur de pièces',
     description:
-      "Analyse automatique des CNI, justificatifs de domicile et avis d'imposition. Le RFR est extrait et comparé aux barèmes en temps réel.",
+      "Analyse des CNI, attestations, justificatifs. L'IA extrait, compare et confirme. Plus aucune erreur de saisie.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -20,7 +20,7 @@ const PILLARS: Pillar[] = [
   {
     title: 'Contrôle de cohérence',
     description:
-      "L'IA vérifie que la date de pose est cohérente avec le devis et respecte le délai légal de rétractation. Plus de dossier rejeté pour incompatibilité de dates.",
+      "Devis, dates, montants, mentions légales : l'IA vérifie que toutes les pièces se répondent avant validation.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
@@ -32,14 +32,12 @@ const PILLARS: Pillar[] = [
     ),
   },
   {
-    title: 'Alerte de conformité',
+    title: 'Analyse au clic',
     description:
-      "Signale les mentions obligatoires manquantes sur les devis RGE : qualification, date de validité, label, mentions Eco-PTZ — avant l'envoi du dossier.",
+      "Une analyse en un clic confirme que le dossier est complet et conforme avant de passer à l'étape suivante.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-        <line x1="12" y1="9" x2="12" y2="13" />
-        <line x1="12" y1="17" x2="12.01" y2="17" />
+        <path d="M9.663 17h4.673M12 3v1M3.293 6.293l.707.707M20.707 6.293l-.707.707M2 12h1M21 12h1M5.5 17.5A6 6 0 1 1 17 14c-.5 1-1 1.5-1.5 2.5L15 17.5z" />
       </svg>
     ),
   },
@@ -51,11 +49,12 @@ export default function AiAssistant() {
       <div className="ai-glow" aria-hidden="true" />
       <div className="container">
         <div className="section-head reveal">
-          <span className="eyebrow">Le bouclier anti-rejet</span>
-          <h2>L&apos;IA qui valide vos dossiers.</h2>
+          <span className="eyebrow">Le filet de sécurité</span>
+          <h2>Zéro dossier rejeté. L&apos;IA vérifie, vous validez.</h2>
           <p className="lead">
-            Trois lignes de défense IA, déclenchées en un clic, pour passer chaque dossier au crible avant
-            l&apos;envoi à l&apos;Anah, à l&apos;ADEME ou à votre obligé CEE.
+            Un &laquo;&nbsp;correcteur d&apos;examen&nbsp;&raquo; pour vos documents administratifs. D&apos;un clic, l&apos;IA scanne
+            devis, CNI et attestations et vous alerte sur la moindre date périmée ou incohérence avant
+            l&apos;envoi.
           </p>
         </div>
 
