@@ -4,9 +4,11 @@ import { DemoModalProvider } from "@/components/audit/DemoModalProvider";
 import DemoModal from "@/components/audit/DemoModal";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://audit-expert.com"),
   title: "L'audit est une science. beTool est votre laboratoire. — beTool Audit",
   description:
     "Sécurisez vos missions de la collecte à la signature. Centralisez vos preuves, automatisez vos rapports et laissez l'IA booster votre vigilance.",
+  alternates: { canonical: "/" },
 };
 
 export default function AuditLayout({

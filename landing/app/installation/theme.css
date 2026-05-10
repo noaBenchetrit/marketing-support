@@ -1737,15 +1737,18 @@
     footer .footer-links a:hover { color: #fff; }
 
     /* ============== Reveal animations ============== */
-    .reveal {
+    /* Default state: visible. Animation is opt-in via <html class="reveal-anim">,
+       set by RevealEffects only on a fresh load without hash. This guarantees
+       content stays readable on back/forward nav, hash-anchor jumps, or any JS hiccup. */
+    html.reveal-anim .reveal {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .reveal.in { opacity: 1; transform: translateY(0); }
-    .reveal.delay-1 { transition-delay: 0.1s; }
-    .reveal.delay-2 { transition-delay: 0.2s; }
-    .reveal.delay-3 { transition-delay: 0.3s; }
+    html.reveal-anim .reveal.in { opacity: 1; transform: translateY(0); }
+    html.reveal-anim .reveal.delay-1 { transition-delay: 0.1s; }
+    html.reveal-anim .reveal.delay-2 { transition-delay: 0.2s; }
+    html.reveal-anim .reveal.delay-3 { transition-delay: 0.3s; }
 
     /* ============== Comparison (Avant/Après) ============== */
     .comparison-grid {
@@ -2831,8 +2834,8 @@
 
     /* Keep the LoveBar's reveal as a fade only — its 20px translateY made the
        "+150 centres" line sweep up over the hero compliance badge during scroll. */
-    .love-bar .reveal,
-    .love-bar .reveal.in { transform: none; }
+    html.reveal-anim .love-bar .reveal,
+    html.reveal-anim .love-bar .reveal.in { transform: none; }
 
     /* Disable hero rotations + sit the badge below the dashboard card on touch
        screens, neutralise the inline parallax translate so the badge can't drift
