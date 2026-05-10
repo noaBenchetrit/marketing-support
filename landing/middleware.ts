@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-
+const HOSTNAME_TO_REDIRECT: Record<string, string> = {
+  'site-betool-crm.vercel.app': 'https://betool.fr/',
+  'site-betool-crm.localhost': 'https://betool.fr/',
+};
 const HOSTNAME_TO_METIER: Record<string, string> = {
   'audit-betool-crm.vercel.app': 'audit',
   'audit.localhost': 'audit',
@@ -13,6 +16,17 @@ const HOSTNAME_TO_METIER: Record<string, string> = {
 export function middleware(request: NextRequest) {
   const host = request.headers.get('host')?.split(':')[0]?.toLowerCase() ?? '';
   const metier = HOSTNAME_TO_METIER[host];
+
+  const redirectDestination = HOSTNAME_TO_REDIRECT[host];
+  if (redirectDestination) {
+    const redirectUrl = new URL(redirectDestination);
+
+    // Garde les UTM / query params éventuels
+    redirectUrl.search = request.nextUrl.search;
+
+    return NextResponse.redirect(redirectUrl, 302);
+  }
+
   const { pathname } = request.nextUrl;
 
   // 1. Si domaine inconnu -> 404
