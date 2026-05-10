@@ -72,7 +72,7 @@ export default function SafePlace() {
                 </div>
                 <div>
                   <strong>Secret professionnel</strong>
-                  <span>Chiffrement AES-256 des documents sensibles, NDA contractuel.</span>
+                  <span>Horodatage certifié des données et intégrité des documents garantie. Accès restreint et traçabilité totale.</span>
                 </div>
               </div>
             </div>
