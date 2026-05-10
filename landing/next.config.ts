@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
     async redirects() {
         return [
             {
-                source: "/",
+                source: "betool-crm.vercel.app/",
                 destination: "https://betool.fr/",
                 permanent: false,
             },
