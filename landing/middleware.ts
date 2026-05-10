@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 const HOSTNAME_TO_REDIRECT: Record<string, string> = {
-  'site-betool-crm.vercel.app': 'https://betool.fr/',
-  'site-betool-crm.localhost': 'https://betool.fr/',
+  'betool-crm.vercel.app': 'https://betool.fr/',
+  'betool-crm.localhost': 'https://betool.fr/',
 };
 const HOSTNAME_TO_METIER: Record<string, string> = {
   'audit-betool-crm.vercel.app': 'audit',
