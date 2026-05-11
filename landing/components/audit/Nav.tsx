@@ -30,7 +30,7 @@ export default function Nav() {
             className="btn btn-primary"
             onClick={() => open({ source: 'nav' })}
           >
-            Demander une démo
+            Réserver ma démo
           </button>
         </div>
       </div>

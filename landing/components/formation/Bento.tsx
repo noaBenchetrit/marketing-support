@@ -143,7 +143,7 @@ export default function Bento() {
               className="bento-link"
               onClick={() => open({ source: 'bento' })}
             >
-              Voir la démo
+              Réserver ma démo
               <svg
                 width="14"
                 height="14"

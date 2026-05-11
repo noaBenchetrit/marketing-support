@@ -90,10 +90,10 @@ export default function SafePlace() {
             type="button"
             className="btn btn-primary safe-cta"
             onClick={() =>
-              open({ source: 'safe-place', ctaLabel: 'Discuter avec un expert audit' })
+              open({ source: 'safe-place', ctaLabel: 'Être recontacté par un expert audit' })
             }
           >
-            Discuter avec un expert
+            Être recontacté par un expert
             <svg
               className="arrow"
               width="14"

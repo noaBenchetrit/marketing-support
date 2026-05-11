@@ -95,7 +95,7 @@ export default function Hero() {
                 className="btn btn-accent btn-large"
                 onClick={() => open({ source: 'hero' })}
               >
-                Commencer mon essai gratuit
+                Réserver ma démo gratuite
                 <svg
                   className="arrow"
                   width="18"

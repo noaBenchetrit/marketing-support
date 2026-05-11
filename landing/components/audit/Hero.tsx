@@ -92,7 +92,7 @@ export default function Hero() {
                 className="btn btn-accent btn-large"
                 onClick={() => open({ source: 'hero' })}
               >
-                Démarrer mon premier audit
+                Réserver ma démo Audit
                 <svg
                   className="arrow"
                   width="18"

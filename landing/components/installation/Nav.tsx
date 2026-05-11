@@ -28,9 +28,9 @@ export default function Nav() {
           <button
             type="button"
             className="btn btn-primary"
-            onClick={() => open({ source: 'nav', ctaLabel: 'Récupérer mes marges' })}
+            onClick={() => open({ source: 'nav', ctaLabel: 'Réserver ma démo' })}
           >
-            Récupérer mes marges
+            Réserver ma démo
           </button>
         </div>
       </div>

@@ -61,9 +61,9 @@ export default function Comparison() {
               <button
                 type="button"
                 className="btn btn-accent comp-cta"
-                onClick={() => open({ source: 'comparison', ctaLabel: 'Passer à beTool Audit' })}
+                onClick={() => open({ source: 'comparison', ctaLabel: 'Réserver ma démo Audit' })}
               >
-                Passer à beTool Audit
+                Réserver ma démo Audit
                 <svg
                   className="arrow"
                   width="14"

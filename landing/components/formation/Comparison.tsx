@@ -61,9 +61,9 @@ export default function Comparison() {
               <button
                 type="button"
                 className="btn btn-accent comp-cta"
-                onClick={() => open({ source: 'comparison', ctaLabel: 'Passer à la méthode Zen' })}
+                onClick={() => open({ source: 'comparison', ctaLabel: 'Réserver ma démo Formation' })}
               >
-                Passer à la méthode Zen
+                Réserver ma démo Formation
                 <svg
                   className="arrow"
                   width="14"

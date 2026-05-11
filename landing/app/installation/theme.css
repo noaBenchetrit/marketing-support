@@ -575,28 +575,30 @@
       flex-shrink: 0;
     }
 
-    /* --- Bento link (text style CTA) --- */
+    /* --- Bento CTA (real button) --- */
     .bento-link {
       align-self: flex-start;
       margin-top: auto;
-      padding-top: clamp(12px, 2vw, 18px);
-      background: transparent;
-      color: var(--accent-deep);
+      padding: clamp(10px, 1.4vw, 13px) clamp(18px, 2.4vw, 22px);
+      background: var(--accent);
+      color: #fff;
       font-weight: 600;
       font-size: clamp(0.86rem, 1.05vw, 0.95rem);
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       cursor: pointer;
-      transition: color 0.2s, gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       border: none;
-      padding-left: 0;
-      padding-right: 0;
-      padding-bottom: 0;
+      border-radius: 100px;
+      box-shadow: 0 4px 14px rgba(0, 95, 115, 0.22);
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s, gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .bento-link:hover {
-      color: var(--accent);
+      background: var(--accent-deep);
+      color: #fff;
       gap: 12px;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0, 95, 115, 0.32);
     }
     .bento-link svg {
       transition: transform 0.3s;
@@ -652,6 +654,7 @@
     /* --- Conformity mock (Card B install) --- */
     .conformity-mock {
       margin-top: clamp(14px, 2vw, 18px);
+      margin-bottom: clamp(22px, 3.2vw, 32px);
       padding: clamp(12px, 1.8vw, 16px);
       background: var(--bg-soft);
       border: 1px solid var(--border-soft);

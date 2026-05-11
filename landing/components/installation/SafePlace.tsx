@@ -99,10 +99,10 @@ export default function SafePlace() {
             type="button"
             className="btn btn-primary safe-cta"
             onClick={() =>
-              open({ source: 'safe-place', ctaLabel: 'Discuter avec un expert beTool Install' })
+              open({ source: 'safe-place', ctaLabel: 'Être recontacté par un expert beTool Install' })
             }
           >
-            Discuter avec un expert
+            Être recontacté par un expert
             <svg
               className="arrow"
               width="14"
