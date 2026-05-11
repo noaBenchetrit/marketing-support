@@ -5,6 +5,7 @@ const HOSTNAME_TO_METIER: Record<string, string> = {
   'audit-betool-crm.vercel.app': 'audit',
   'audit.localhost': 'audit',
   'formation.betool-crm.fr': 'formation',
+  'www.formation.betool-crm.fr': 'formation',
   'formation.localhost': 'formation',
   'entreprise-btp-betool-crm.vercel.app': 'installation',
   'installation.localhost': 'installation',
