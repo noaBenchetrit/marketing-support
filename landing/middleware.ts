@@ -2,12 +2,14 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 const HOSTNAME_TO_METIER: Record<string, string> = {
-  'audit-betool-crm.vercel.app': 'audit',
+  'audit.betool-crm.fr': 'audit',
   'audit.localhost': 'audit',
+  'www.audit.betool-crm.fr': 'audit',
   'formation.betool-crm.fr': 'formation',
   'www.formation.betool-crm.fr': 'formation',
   'formation.localhost': 'formation',
-  'entreprise-btp-betool-crm.vercel.app': 'installation',
+  'entreprise-btp.betool-crm.fr': 'installation',
+  'www.entreprise-btp.betool-crm.fr': 'installation',
   'installation.localhost': 'installation',
 };
 
