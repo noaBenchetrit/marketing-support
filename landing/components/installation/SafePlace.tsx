@@ -30,8 +30,8 @@ export default function SafePlace() {
             <span className="eyebrow">La réassurance décennale</span>
             <h2>Une preuve, pour toujours.</h2>
             <p className="lead">
-              Archivage légal de 10 ans, données chiffrées AES-256, support expert dédié. Vos chantiers
-              tiennent face aux contrôles, aux contentieux et au temps.
+              Archivage légal de 10 ans, empreinte digitale de chaque document signé, support expert
+              dédié. Vos chantiers tiennent face aux contrôles, aux contentieux et au temps.
             </p>
 
             <div className="safe-features safe-features-grid">
@@ -56,8 +56,8 @@ export default function SafePlace() {
                   </svg>
                 </div>
                 <div>
-                  <strong>Chiffrement de niveau bancaire</strong>
-                  <span>AES-256, hébergement souverain France, OVHcloud certifié. Vos données ne sortent jamais.</span>
+                  <strong>Empreinte digitale d&apos;un doc signé</strong>
+                  <span>Chaque document signé est scellé par une empreinte unique. Hébergement souverain France, OVHcloud certifié. Vos données ne sortent jamais.</span>
                 </div>
               </div>
               <div className="safe-feat">
