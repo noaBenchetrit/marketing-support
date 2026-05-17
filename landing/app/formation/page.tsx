@@ -20,12 +20,6 @@ export default function FormationPage() {
 
         <Credibility />
 
-        <SafetyNet
-          text="Éliminez la paperasse dès aujourd'hui."
-          buttonLabel="Être recontacté par un expert"
-          variant="violet"
-        />
-
         <Bento />
 
         <Ecosystem />

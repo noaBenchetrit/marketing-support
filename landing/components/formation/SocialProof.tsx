@@ -1,22 +1,3 @@
-const TESTIMONIALS = [
-  {
-    quote:
-      'Avant beTool, on perdait deux jours par mois. Aujourd’hui, on absorbe 200 stagiaires sans recruter.',
-    author: 'Camille L.',
-    role: 'Directrice Académie Pro',
-    badge: '+200 stagiaires gérés',
-    badgeColor: 'green' as const,
-  },
-  {
-    quote:
-      'L’audit Qualiopi a duré 4h au lieu d’une journée. L’auditeur n’a posé aucune question sur la conformité.',
-    author: 'Julien M.',
-    role: 'Gérant FormaPlus',
-    badge: 'Zéro non-conformité',
-    badgeColor: 'blue' as const,
-  },
-];
-
 const FAQ = [
   {
     q: 'Les signatures sont-elles acceptées par les OPCO et la CDC ?',
@@ -26,43 +7,32 @@ const FAQ = [
     q: 'Est-ce que mes formateurs externes auront un accès ?',
     a: 'Oui. Vous pouvez leur créer des accès restreints et sécurisés en 2 clics pour qu’ils gèrent uniquement leurs plannings et leurs émargements, sans voir vos données financières.',
   },
+  {
+    q: 'Combien de temps prend la mise en place ?',
+    a: '15 minutes pour activer votre compte, 5 jours ouvrés pour la migration intégrale et gratuite de vos données existantes par notre équipe.',
+  },
+  {
+    q: 'L’IA peut-elle vraiment empêcher les rejets financeurs ?',
+    a: 'Oui. L’IA scanne dates, CNI, contrats et cohérence des dossiers avant envoi. Elle bloque les erreurs détectables (chiffres, pièces manquantes, incohérences) qui sont à l’origine de 90 % des rejets OPCO/CDC.',
+  },
 ];
 
 export default function SocialProof() {
   return (
     <section className="social-section" id="temoignages">
       <div className="container">
-        <div className="social-grid">
-          <div className="reveal">
-            <p className="social-col-title">Ils gagnent du temps avec beTool</p>
-            <div className="testimonial-list">
-              {TESTIMONIALS.map((t) => (
-                <article className="testimonial-card" key={t.author}>
-                  <p className="testimonial-quote">{t.quote}</p>
-                  <div className="testimonial-meta">
-                    <span className="testimonial-author">
-                      <strong>{t.author}</strong> · {t.role}
-                    </span>
-                    <span className={`testimonial-badge ${t.badgeColor}`}>{t.badge}</span>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <div className="reveal delay-1">
-            <p className="social-col-title">Questions fréquentes</p>
-            <div className="faq-list">
-              {FAQ.map((item) => (
-                <details className="faq-item" key={item.q}>
-                  <summary className="faq-summary">
-                    <span>{item.q}</span>
-                    <span className="faq-toggle" aria-hidden="true">+</span>
-                  </summary>
-                  <div className="faq-body">{item.a}</div>
-                </details>
-              ))}
-            </div>
+        <div className="faq-only">
+          <p className="social-col-title">Questions fréquentes</p>
+          <div className="faq-list">
+            {FAQ.map((item) => (
+              <details className="faq-item" key={item.q}>
+                <summary className="faq-summary">
+                  <span>{item.q}</span>
+                  <span className="faq-toggle" aria-hidden="true">+</span>
+                </summary>
+                <div className="faq-body">{item.a}</div>
+              </details>
+            ))}
           </div>
         </div>
       </div>
