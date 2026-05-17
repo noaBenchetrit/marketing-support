@@ -1,18 +1,64 @@
 'use client';
 
+import { useState } from 'react';
 import { useDemoModal } from './DemoModalProvider';
+
+type Pillar = {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+};
+
+const ASSISTANT_PILLARS: Pillar[] = [
+  {
+    title: 'Vérification de cohérence assistée',
+    description:
+      "Scan des documents (CNI, attestations, certificats) pour vérifier les dates et mentions obligatoires avant validation.",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 11l3 3L22 4" />
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Synthèse décisionnelle',
+    description:
+      "Rédaction assistée des conclusions à partir de vos notes terrain — vous gardez la main sur la signature.",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="9" y1="13" x2="15" y2="13" />
+        <line x1="9" y1="17" x2="13" y2="17" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Communication instantanée',
+    description:
+      "Génération de résumés d'emails et SMS de relance pour les pièces manquantes — prêts à envoyer en un clic.",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22 6 12 13 2 6" />
+      </svg>
+    ),
+  },
+];
 
 export default function Bento() {
   const { open } = useDemoModal();
+  const [openPillar, setOpenPillar] = useState<number | null>(null);
 
   return (
-    <section className="bento" id="bento">
+    <section className="bento" id="terrain">
       <div className="container">
         <div className="section-head reveal">
-          <span className="eyebrow">L&apos;expertise</span>
-          <h2>La maîtrise opérationnelle, du terrain au rapport.</h2>
+          <span className="eyebrow">Terrain intelligent</span>
+          <h2>Du terrain au rapport, l&apos;expertise augmentée.</h2>
           <p className="lead">
-            Trois capacités qui couvrent le quotidien de l&apos;auditeur — du terrain à la livraison.
+            Trois capacités opérationnelles et un assistant IA qui prépare le diagnostic — vous gardez la décision.
           </p>
         </div>
 
@@ -166,6 +212,43 @@ export default function Bento() {
                 <div className="report-line report-line--short"></div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div className="ai-accordions reveal">
+          <div className="ai-accordions-intro">
+            <span className="ai-accordions-tag">L&apos;assistant opérationnel</span>
+            <p>
+              L&apos;IA prépare le diagnostic. Vous gardez la décision — aucun envoi automatique sans
+              votre clic, chaque action reste tracée et signée.
+            </p>
+          </div>
+          <div className="ai-accordions-list">
+            {ASSISTANT_PILLARS.map((p, i) => {
+              const isOpen = openPillar === i;
+              return (
+                <button
+                  key={p.title}
+                  type="button"
+                  className={`ai-acc${isOpen ? ' ai-acc--open' : ''}`}
+                  onClick={() => setOpenPillar(isOpen ? null : i)}
+                  aria-expanded={isOpen}
+                >
+                  <span className="ai-acc-head">
+                    <span className="ai-acc-icon">{p.icon}</span>
+                    <span className="ai-acc-title">{p.title}</span>
+                    <span className="ai-acc-chevron" aria-hidden="true">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </span>
+                  </span>
+                  <span className="ai-acc-body">
+                    <span className="ai-acc-body-inner">{p.description}</span>
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>

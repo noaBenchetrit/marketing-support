@@ -22,9 +22,8 @@ export default function Nav() {
           <span>beTool</span>
         </a>
         <div className="nav-links">
-          <a href="#bento">Collecte Terrain</a>
-          <a href="#ai">Assistance IA</a>
-          <a href="#safe">Rapports</a>
+          <a href="#terrain">Terrain intelligent</a>
+          <a href="#safe">Souveraineté</a>
           <button
             type="button"
             className="btn btn-primary"

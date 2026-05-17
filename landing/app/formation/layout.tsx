@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import "./theme.css";
-import { DemoModalProvider } from "@/components/formation/DemoModalProvider";
-import DemoModal from "@/components/formation/DemoModal";
+import LeadEmailProvider from "@/components/formation/LeadEmailProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://formation-expert.com"),
-  title: "Le CPF n'a jamais été aussi fluide. — beTool",
+  title: "beTool — Le logiciel des Organismes de Formation et CFA",
   description:
-    "Le CRM des organismes de formation. Gérez, signez et facturez en toute sérénité.",
+    "Divisez par 3 le temps de gestion de vos dossiers et automatisez votre conformité Qualiopi. Émargements eIDAS, plannings, BPF, IA anti-rejet : tout-en-un.",
   alternates: { canonical: "/" },
 };
 
@@ -16,10 +15,5 @@ export default function FormationLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <DemoModalProvider>
-      {children}
-      <DemoModal />
-    </DemoModalProvider>
-  );
+  return <LeadEmailProvider>{children}</LeadEmailProvider>;
 }

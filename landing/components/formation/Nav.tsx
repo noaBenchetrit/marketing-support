@@ -1,38 +1,65 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useDemoModal } from './DemoModalProvider';
+import { scrollToFinalForm } from './smoothScroll';
+
+const NAV_LINKS = [
+  { href: '#produit', label: 'Produit' },
+  { href: '#migration', label: 'Migration' },
+  { href: '#temoignages', label: 'Témoignages' },
+];
+
+const ArrowIcon = () => (
+  <svg
+    className="arrow"
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.4"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M5 12h14M13 5l7 7-7 7" />
+  </svg>
+);
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const { open } = useDemoModal();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 120);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
-    <nav className={`topbar${scrolled ? ' scrolled' : ''}`} id="topbar">
+    <nav className={`topbar${scrolled ? ' scrolled' : ''}`}>
       <div className="container">
         <a href="#" className="logo">
           <img className="logo-mark" src="/beTool.png" alt="beTool" />
           <span>beTool</span>
         </a>
-        <div className="nav-links">
-          <a href="#bento">Produit</a>
-          <a href="#ecosystem">Aide à la migration</a>
-          <a href="#safe">Sécurité &amp; RGPD</a>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => open({ source: 'nav' })}
-          >
-            Réserver ma démo
-          </button>
+
+        <div className="nav-mid" aria-hidden={scrolled}>
+          {NAV_LINKS.map((l) => (
+            <a key={l.href} href={l.href} className="nav-link">
+              {l.label}
+            </a>
+          ))}
         </div>
+
+        <button
+          type="button"
+          className="btn btn-accent btn-compact nav-cta"
+          onClick={scrollToFinalForm}
+        >
+          {scrolled ? 'Planifier ma démo en 2 clics' : 'Essai Gratuit 14j'}
+          <ArrowIcon />
+        </button>
       </div>
     </nav>
   );

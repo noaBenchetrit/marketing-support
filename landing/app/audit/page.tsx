@@ -3,7 +3,6 @@ import ScrollProgress from '@/components/audit/ScrollProgress';
 import Hero from '@/components/audit/Hero';
 import Credibility from '@/components/audit/Credibility';
 import Bento from '@/components/audit/Bento';
-import AiAssistant from '@/components/audit/AiAssistant';
 import Workflow from '@/components/audit/Workflow';
 import EnergyNiche from '@/components/audit/EnergyNiche';
 import Comparison from '@/components/audit/Comparison';
@@ -21,7 +20,6 @@ export default function Home() {
         <Hero />
         <Credibility />
         <Bento />
-        <AiAssistant />
         <Workflow />
         <EnergyNiche />
         <Comparison />

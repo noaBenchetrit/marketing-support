@@ -1,36 +1,38 @@
 import Nav from '@/components/formation/Nav';
 import ScrollProgress from '@/components/formation/ScrollProgress';
 import Hero from '@/components/formation/Hero';
-import LoveBar from '@/components/formation/LoveBar';
+import SafetyNet from '@/components/formation/SafetyNet';
+import Credibility from '@/components/formation/Credibility';
 import Bento from '@/components/formation/Bento';
-import AiAssistant from '@/components/formation/AiAssistant';
-import LmsPartners from '@/components/formation/LmsPartners';
-import Testimonials from '@/components/formation/Testimonials';
-import Comparison from '@/components/formation/Comparison';
-import Emotional from '@/components/formation/Emotional';
-import SafePlace from '@/components/formation/SafePlace';
-import Faq from '@/components/formation/Faq';
-import FinalCta from '@/components/formation/FinalCta';
+import Ecosystem from '@/components/formation/Ecosystem';
+import SocialProof from '@/components/formation/SocialProof';
+import FinalForm from '@/components/formation/FinalForm';
 import Footer from '@/components/formation/Footer';
 import RevealEffects from '@/components/formation/RevealEffects';
 
-export default function Home() {
+export default function FormationPage() {
   return (
     <>
       <ScrollProgress />
       <Nav />
       <main>
         <Hero />
-        <LoveBar />
+
+        <Credibility />
+
+        <SafetyNet
+          text="Éliminez la paperasse dès aujourd'hui."
+          buttonLabel="Être recontacté par un expert"
+          variant="violet"
+        />
+
         <Bento />
-        <Testimonials />
-        <AiAssistant />
-        <LmsPartners />
-        <Comparison />
-        <Emotional />
-        <SafePlace />
-        <Faq />
-        <FinalCta />
+
+        <Ecosystem />
+
+        <SocialProof />
+
+        <FinalForm />
       </main>
       <Footer />
       <RevealEffects />
