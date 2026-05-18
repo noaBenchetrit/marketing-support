@@ -2287,9 +2287,15 @@ nav.topbar.scrolled .nav-pitch {
   border-radius: clamp(8px, 0.8vw, 12px);
   background: var(--brand-soft);
   color: var(--brand);
-  margin-bottom: clamp(4px, 0.5vw, 8px);
+  flex-shrink: 0;
 }
 .bento-box-icon svg { width: 55%; height: 55%; }
+.bento-box-head {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1vw, 16px);
+}
+.bento-box-head h3 { margin: 0; }
 
 .bento-large { grid-column: span 2; }
 .bento-small { grid-column: span 1; }

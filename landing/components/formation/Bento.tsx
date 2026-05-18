@@ -24,21 +24,85 @@ const SparkleIcon = () => (
   </svg>
 );
 
+type Tone = 'green' | 'blue' | 'amber' | 'violet';
+type Testimonial = {
+  quote: string;
+  author: string;
+  role: string;
+  badge: string;
+  tone: Tone;
+};
+
+const TESTIMONIALS: Testimonial[] = [
+  {
+    quote:
+      'Avant beTool, on perdait deux jours par mois. Aujourd’hui, on absorbe 200 stagiaires sans recruter.',
+    author: 'Camille L.',
+    role: 'Directrice · Académie Pro',
+    badge: '+200 stagiaires gérés',
+    tone: 'green',
+  },
+  {
+    quote:
+      'L’audit Qualiopi a duré 4h au lieu d’une journée. L’auditeur n’a posé aucune question sur la conformité.',
+    author: 'Julien M.',
+    role: 'Gérant · FormaPlus',
+    badge: 'Zéro non-conformité',
+    tone: 'blue',
+  },
+  {
+    quote:
+      'Les émargements eIDAS, c’est la fin du papier perdu. Le pack de preuves se génère tout seul.',
+    author: 'Sophie B.',
+    role: 'Responsable pédagogique',
+    badge: 'Zéro papier',
+    tone: 'green',
+  },
+  {
+    quote:
+      'On a divisé par 3 le temps passé sur les dossiers EDOF. Notre trésorerie respire enfin.',
+    author: 'Karim H.',
+    role: 'Directeur · CFA Métiers',
+    badge: '−66 % de gestion',
+    tone: 'violet',
+  },
+  {
+    quote:
+      'Les rejets OPCO étaient notre cauchemar. Avec l’automatisation beTool, plus une erreur de saisie en 6 mois.',
+    author: 'Léa F.',
+    role: 'DAF de centre',
+    badge: '0 rejet financeur',
+    tone: 'amber',
+  },
+  {
+    quote:
+      'On est passés de 50 à 350 stagiaires par an. beTool a scalé avec nous sans recruter une personne.',
+    author: 'Antoine M.',
+    role: 'Fondateur OF',
+    badge: '×7 stagiaires',
+    tone: 'blue',
+  },
+];
+
 export default function Bento() {
+  const marquee = [...TESTIMONIALS, ...TESTIMONIALS];
+
   return (
     <section className="bento-section" id="produit">
       <div className="container">
         <div className="bento-header reveal">
           <h2>
-            Tout ce dont un OF a besoin.{' '}
-            <span style={{ color: 'var(--brand)' }}>En plus intelligent.</span>
+            De la survie administrative à la croissance&nbsp;:{' '}
+            <span style={{ color: 'var(--brand)' }}>tout ce dont votre OF a besoin.</span>
           </h2>
         </div>
 
         <div className="bento-grid">
           <div className="bento-box bento-large reveal">
-            <span className="bento-box-icon"><SignIcon /></span>
-            <h3>Émargement numérique certifié.</h3>
+            <div className="bento-box-head">
+              <span className="bento-box-icon"><SignIcon /></span>
+              <h3>Émargement numérique certifié.</h3>
+            </div>
             <p>
               Signature eIDAS via Certigna avec horodatage légal. Vos sessions sont closes
               et prêtes pour les OPCO en un clic.
@@ -46,8 +110,10 @@ export default function Bento() {
           </div>
 
           <div className="bento-box bento-small reveal delay-1">
-            <span className="bento-box-icon"><CatalogIcon /></span>
-            <h3>Du catalogue au suivi du RAC.</h3>
+            <div className="bento-box-head">
+              <span className="bento-box-icon"><CatalogIcon /></span>
+              <h3>Du catalogue au suivi du RAC.</h3>
+            </div>
             <p>
               Importez votre catalogue de formations et suivez le Reste à Charge (RAC) en
               temps réel pour une facturation sans erreur.
@@ -55,8 +121,10 @@ export default function Bento() {
           </div>
 
           <div className="bento-box bento-small reveal delay-2">
-            <span className="bento-box-icon"><CalendarIcon /></span>
-            <h3>Plannings et BPF automatisés.</h3>
+            <div className="bento-box-head">
+              <span className="bento-box-icon"><CalendarIcon /></span>
+              <h3>Plannings et BPF automatisés.</h3>
+            </div>
             <p>
               Zéro doublon de formateur. Générez votre Bilan Pédagogique et Financier (BPF)
               en un clic à la fin de l&apos;année.
@@ -64,12 +132,34 @@ export default function Bento() {
           </div>
 
           <div className="bento-box bento-ai reveal delay-3">
-            <span className="bento-box-icon"><SparkleIcon /></span>
-            <h3>L&apos;assistant IA qui sécurise vos fonds.</h3>
+            <div className="bento-box-head">
+              <span className="bento-box-icon"><SparkleIcon /></span>
+              <h3>L&apos;assistant IA qui sécurise vos fonds.</h3>
+            </div>
             <p>
               Notre IA scanne la cohérence des dossiers (dates, CNI, contrats) et bloque les
               erreurs de saisie avant l&apos;envoi aux financeurs. Moins de rejets, plus de trésorerie.
             </p>
+          </div>
+        </div>
+
+        <div className="testimonial-marquee reveal delay-4" aria-label="Avis clients">
+          <div className="testimonial-track">
+            {marquee.map((t, i) => (
+              <article
+                className="testimonial-pill"
+                key={`${t.author}-${i}`}
+                aria-hidden={i >= TESTIMONIALS.length}
+              >
+                <p className="testimonial-pill-quote">{t.quote}</p>
+                <div className="testimonial-pill-meta">
+                  <span className="testimonial-pill-author">
+                    <strong>{t.author}</strong> · {t.role}
+                  </span>
+                  <span className={`testimonial-pill-badge tone-${t.tone}`}>{t.badge}</span>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>

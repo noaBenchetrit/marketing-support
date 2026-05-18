@@ -2,7 +2,6 @@ import Nav from '@/components/formation/Nav';
 import ScrollProgress from '@/components/formation/ScrollProgress';
 import Hero from '@/components/formation/Hero';
 import SafetyNet from '@/components/formation/SafetyNet';
-import Credibility from '@/components/formation/Credibility';
 import Bento from '@/components/formation/Bento';
 import Ecosystem from '@/components/formation/Ecosystem';
 import SocialProof from '@/components/formation/SocialProof';
@@ -17,8 +16,6 @@ export default function FormationPage() {
       <Nav />
       <main>
         <Hero />
-
-        <Credibility />
 
         <Bento />
 
