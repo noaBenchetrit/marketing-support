@@ -81,7 +81,7 @@ export default function Hero() {
                     className="btn btn-accent btn-large"
                     onClick={scrollToFinalForm}
                   >
-                    Commencer mon essai de 14 jours (Gratuit)
+                    Commencer mon essai gratuit
                     <ArrowIcon />
                   </button>
                 </div>
@@ -156,14 +156,16 @@ export default function Hero() {
 
           <div className="hero-sim-cta reveal delay-1">
             <p>
-              Marre de copier-coller vos listes Excel&nbsp;? Laissez faire notre IA.
+              Marre de copier-coller vos listes Excel&nbsp;? Oubliez les usines à gaz et les
+              abonnements Zapier. Notre moteur d&apos;automatisation natif synchronise tout, sans
+              effort.
             </p>
             <button
               type="button"
-              className="btn btn-brand btn-large"
+              className="btn btn-accent btn-large"
               onClick={scrollToFinalForm}
             >
-              Réserver ma démo
+              Commencer mon essai gratuit
               <ArrowIcon />
             </button>
           </div>

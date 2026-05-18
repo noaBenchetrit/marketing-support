@@ -54,7 +54,7 @@ const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      'Les rejets OPCO étaient notre cauchemar. Avec l’IA beTool, plus une erreur de saisie en 6 mois.',
+      'Les rejets OPCO étaient notre cauchemar. Avec l’automatisation beTool, plus une erreur de saisie en 6 mois.',
     author: 'Léa F.',
     role: 'DAF de centre',
     badge: '0 rejet financeur',

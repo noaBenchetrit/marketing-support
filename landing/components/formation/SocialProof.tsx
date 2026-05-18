@@ -11,19 +11,15 @@ const FAQ = [
     q: 'Combien de temps prend la mise en place ?',
     a: '15 minutes pour activer votre compte, 5 jours ouvrés pour la migration intégrale et gratuite de vos données existantes par notre équipe.',
   },
-  {
-    q: 'L’IA peut-elle vraiment empêcher les rejets financeurs ?',
-    a: 'Oui. L’IA scanne dates, CNI, contrats et cohérence des dossiers avant envoi. Elle bloque les erreurs détectables (chiffres, pièces manquantes, incohérences) qui sont à l’origine de 90 % des rejets OPCO/CDC.',
-  },
 ];
 
 export default function SocialProof() {
   return (
     <section className="social-section" id="temoignages">
       <div className="container">
-        <div className="faq-only">
+        <div className="faq-block">
           <p className="social-col-title">Questions fréquentes</p>
-          <div className="faq-list">
+          <div className="faq-list faq-list-grid">
             {FAQ.map((item) => (
               <details className="faq-item" key={item.q}>
                 <summary className="faq-summary">

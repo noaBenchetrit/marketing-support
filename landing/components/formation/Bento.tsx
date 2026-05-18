@@ -30,7 +30,8 @@ export default function Bento() {
       <div className="container">
         <div className="bento-header reveal">
           <h2>
-            Tout ce dont un OF a besoin. <span style={{ color: 'var(--brand)' }}>En plus intelligent.</span>
+            Tout ce dont un OF a besoin.{' '}
+            <span style={{ color: 'var(--brand)' }}>En plus intelligent.</span>
           </h2>
         </div>
 

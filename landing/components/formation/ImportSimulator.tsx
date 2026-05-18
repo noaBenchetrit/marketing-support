@@ -506,10 +506,32 @@ export default function ImportSimulator() {
           <span className="sim-dot r" />
           <span className="sim-dot y" />
           <span className="sim-dot g" />
-          <span className="sim-titlebar-label">beTool — Import IA</span>
+          <span className="sim-titlebar-label">beTool — Import automatique</span>
         </div>
 
         <div className="sim-body sim-stage" ref={stageRef}>
+          {phase === 'idle' && (
+            <div className="sim-coach" aria-hidden="true">
+              <div className="sim-coach-cursor">
+                <svg viewBox="0 0 24 24" className="sim-coach-cursor-svg">
+                  <path
+                    d="M5 3l13 8.5-6.2 1.3L8.5 20 5 3z"
+                    fill="#fff"
+                    stroke="#0F172A"
+                    strokeWidth="1.4"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                <span className="sim-coach-ghost" aria-hidden="true">
+                  <span className="sim-coach-ghost-mini">XLSX</span>
+                </span>
+                <span className="sim-coach-ripple" aria-hidden="true" />
+                <span className="sim-coach-label">
+                  {isHoverDevice ? 'Cliquez et glissez' : 'Touchez le fichier'}
+                </span>
+              </div>
+            </div>
+          )}
           {showIdleStage && (
             <>
               <div className="sim-left-pane">

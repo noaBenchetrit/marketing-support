@@ -57,7 +57,7 @@ export default function Nav() {
           className="btn btn-accent btn-compact nav-cta"
           onClick={scrollToFinalForm}
         >
-          {scrolled ? 'Planifier ma démo en 2 clics' : 'Essai Gratuit 14j'}
+          {scrolled ? 'Planifier ma démo en 2 clics' : 'Réserver ma démo'}
           <ArrowIcon />
         </button>
       </div>
