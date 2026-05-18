@@ -381,7 +381,7 @@ export default function ProductShowcase() {
                   <span className="bt-pill-icon">⌕</span> Rechercher
                 </span>
                 <span className="bt-pill bt-pill-add">＋ Ajouter</span>
-                <span className="bt-pill bt-pill-filter">⌃ Filtres</span>
+                <span className="bt-pill bt-pill-filter">Filtres</span>
               </div>
               <span className="bt-pill bt-pill-presel">＋ Mes Pré-Sélections</span>
             </div>

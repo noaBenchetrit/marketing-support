@@ -568,7 +568,7 @@ nav.topbar.scrolled .nav-pitch {
 .hero-trust-orbit-stage {
   position: relative;
   width: 100%;
-  max-width: clamp(200px, 22vw, 380px);
+  max-width: clamp(260px, 22vw, 380px);
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   z-index: 1;
@@ -619,12 +619,12 @@ nav.topbar.scrolled .nav-pitch {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(3px, 0.4vw, 8px);
-  width: clamp(48px, 5.4vw, 92px);
-  padding: clamp(5px, 0.55vw, 10px) clamp(5px, 0.55vw, 10px);
+  gap: clamp(4px, 0.4vw, 8px);
+  width: clamp(64px, 5.5vw, 92px);
+  padding: clamp(6px, 0.6vw, 10px) clamp(6px, 0.6vw, 10px);
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: clamp(8px, 0.85vw, 14px);
+  border-radius: clamp(10px, 0.9vw, 14px);
   box-shadow: var(--shadow-sm);
   text-align: center;
   animation: hero-orbit-counter 34s linear infinite;
@@ -634,14 +634,14 @@ nav.topbar.scrolled .nav-pitch {
   to { transform: rotate(-360deg); }
 }
 .hero-trust-orbit-counter img {
-  width: clamp(22px, 2.4vw, 40px);
-  height: clamp(18px, 1.9vw, 32px);
+  width: clamp(28px, 2.5vw, 40px);
+  height: clamp(22px, 2vw, 32px);
   object-fit: contain;
   opacity: 0.88;
   filter: grayscale(0.3);
 }
 .hero-trust-orbit-name {
-  font-size: clamp(0.5rem, 0.46rem + 0.18vw, 0.74rem);
+  font-size: clamp(0.58rem, 0.55rem + 0.15vw, 0.74rem);
   color: var(--text-muted);
   font-weight: 700;
   letter-spacing: 0.005em;
@@ -1509,8 +1509,30 @@ nav.topbar.scrolled .nav-pitch {
   background: #fff;
   border: 1px solid #F1F5F9;
   border-radius: 8px;
-  overflow: hidden;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
   font-size: clamp(0.68rem, 0.64rem + 0.16vw, 0.82rem);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(3, 105, 161, 0.45) rgba(15, 23, 42, 0.05);
+}
+/* Le simulateur (parent du tableau) ne doit pas grossir à cause des
+   colonnes minmax du grid de la table : on contraint la chaîne flex. */
+.sim-dashboard-bt { min-width: 0; }
+.bt-table-wrap::-webkit-scrollbar { height: 8px; }
+.bt-table-wrap::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.04);
+  border-radius: 8px;
+}
+.bt-table-wrap::-webkit-scrollbar-thumb {
+  background: rgba(3, 105, 161, 0.45);
+  border-radius: 8px;
+}
+.bt-table-wrap::-webkit-scrollbar-thumb:hover {
+  background: rgba(3, 105, 161, 0.7);
 }
 .bt-table-row {
   display: grid;
@@ -1519,6 +1541,14 @@ nav.topbar.scrolled .nav-pitch {
   padding: clamp(8px, 0.8vw, 14px) clamp(12px, 1.2vw, 20px);
   border-bottom: 1px solid #F1F5F9;
 }
+/* Min-width par board = somme des column minimums + gaps + padding.
+   Force la row à toujours faire au moins cette largeur → l'overflow-x
+   du wrap parent (.bt-table-wrap) déclenche la scrollbar horizontale
+   sur écran narrow. */
+.bt-table-stagiaires .bt-table-row { min-width: 860px; }
+.bt-table-coaching .bt-table-row { min-width: 860px; }
+.bt-table-sessions .bt-table-row { min-width: 720px; }
+.bt-table-certification .bt-table-row { min-width: 620px; }
 /* Layouts par board */
 .bt-table-stagiaires .bt-table-row {
   grid-template-columns:
@@ -1785,7 +1815,7 @@ nav.topbar.scrolled .nav-pitch {
 }
 
 @media (max-width: 760px) {
-  .sim-stage { grid-template-columns: 1fr; min-height: auto; }
+  .sim-stage { grid-template-columns: minmax(0, 1fr); min-height: auto; }
   .sim-left-pane {
     padding: 22px;
     border-right: none;
@@ -1793,12 +1823,6 @@ nav.topbar.scrolled .nav-pitch {
   }
   .sim-arrow { transform: rotate(90deg); height: 60px; width: 24px; }
   .sim-counters { grid-template-columns: 1fr; }
-  .sim-table-header, .sim-table-row {
-    grid-template-columns: 1fr 0.6fr auto;
-    font-size: 0.74rem;
-  }
-  .sim-table-header .cell-formation,
-  .sim-table-row .cell-formation { display: none; }
 }
 
 /* =========================================================================

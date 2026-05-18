@@ -33,7 +33,7 @@ const TRUST_LOGOS = [
 ];
 
 // Position des logos sur un cercle (en % du conteneur) — démarrage en haut
-const ORBIT_RADIUS = 32;
+const ORBIT_RADIUS = 38;
 const TRUST_POSITIONS = TRUST_LOGOS.map((logo, i) => {
   const angle = (i * 360) / TRUST_LOGOS.length - 90;
   const rad = (angle * Math.PI) / 180;
