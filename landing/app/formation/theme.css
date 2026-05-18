@@ -1857,6 +1857,13 @@ nav.topbar.scrolled .nav-pitch {
 .pain-card-good:hover .pain-list li:nth-child(2) { transform: translateX(2px); transition-delay: 0.04s; }
 .pain-card-good:hover .pain-list li:nth-child(3) { transform: translateX(2px); transition-delay: 0.08s; }
 
+/* Section dédiée témoignages (au-dessus du Bento) */
+.testimonials-section {
+  padding-top: clamp(40px, 5vw, 80px);
+  padding-bottom: clamp(20px, 2.6vw, 48px);
+}
+.testimonials-section .testimonial-marquee { margin-top: 0; }
+
 /* Avis clients — marquee horizontale infinie sous Pain/Solution */
 .testimonial-marquee {
   margin-top: clamp(28px, 3.4vw, 60px);
@@ -2296,6 +2303,64 @@ nav.topbar.scrolled .nav-pitch {
   gap: clamp(10px, 1vw, 16px);
 }
 .bento-box-head h3 { margin: 0; }
+
+/* Grille 2x2 (refonte thématique : Ventes / Admin / Financements / Qualiopi) */
+.bento-grid-2x2 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+.bento-pillar { grid-column: span 1 !important; }
+.bento-pillar p strong {
+  color: var(--brand-deep);
+  font-weight: 700;
+}
+.bento-ai.bento-pillar p strong {
+  color: #BAE6FD;
+}
+.bento-focal {
+  background:
+    radial-gradient(closest-side at 100% 0%, rgba(245, 158, 11, 0.1), transparent 70%),
+    linear-gradient(180deg, #FFFFFF 0%, var(--brand-soft) 100%) !important;
+  border-color: rgba(245, 158, 11, 0.55) !important;
+  box-shadow:
+    0 20px 44px rgba(245, 158, 11, 0.18),
+    0 6px 16px rgba(3, 105, 161, 0.08),
+    0 0 0 1px rgba(245, 158, 11, 0.15) !important;
+  position: relative;
+}
+.bento-focal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #F59E0B 0%, var(--brand) 100%);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  width: auto !important;
+  opacity: 1 !important;
+}
+.bento-focal-badge {
+  position: absolute;
+  top: clamp(12px, 1.2vw, 18px);
+  right: clamp(14px, 1.4vw, 22px);
+  font-size: clamp(0.6rem, 0.56rem + 0.12vw, 0.7rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #92400E;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.bento-focal p strong {
+  color: #92400E;
+}
+.bento-focal .bento-box-icon {
+  background: rgba(245, 158, 11, 0.18);
+  color: #B45309;
+}
 
 .bento-large { grid-column: span 2; }
 .bento-small { grid-column: span 1; }
