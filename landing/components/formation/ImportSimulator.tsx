@@ -413,6 +413,7 @@ export default function ImportSimulator() {
   const stageRef = useRef<HTMLDivElement>(null);
   const iconRef = useRef<HTMLDivElement>(null);
   const dropRef = useRef<HTMLDivElement>(null);
+  const coachCursorRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -424,6 +425,77 @@ export default function ImportSimulator() {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
+
+  // Curseur tutoriel : anime dynamiquement de l'icône Excel vers la dropzone,
+  // en lisant leurs positions réelles. Ainsi mobile (colonnes) et desktop
+  // (lignes) sont tous deux gérés sans keyframes statiques.
+  useEffect(() => {
+    if (phase !== 'idle') return;
+    if (typeof window === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let anim: Animation | null = null;
+    let cancelled = false;
+
+    function compute() {
+      const cursor = coachCursorRef.current;
+      const stage = stageRef.current;
+      const icon = iconRef.current;
+      const drop = dropRef.current;
+      if (!cursor || !stage || !icon || !drop) return null;
+      const sr = stage.getBoundingClientRect();
+      const ir = icon.getBoundingClientRect();
+      const dr = drop.getBoundingClientRect();
+      const sx = ((ir.left + ir.width / 2 - sr.left) / sr.width) * 100;
+      const sy = ((ir.top + ir.height / 2 - sr.top) / sr.height) * 100;
+      const ex = ((dr.left + dr.width / 2 - sr.left) / sr.width) * 100;
+      const ey = ((dr.top + dr.height / 2 - sr.top) / sr.height) * 100;
+      return { sx, sy, ex, ey };
+    }
+
+    function run() {
+      if (cancelled) return;
+      const cursor = coachCursorRef.current;
+      if (!cursor) return;
+      const pts = compute();
+      if (!pts) return;
+      const { sx, sy, ex, ey } = pts;
+      if (anim) anim.cancel();
+      anim = cursor.animate(
+        [
+          { left: `${sx}%`, top: `${sy + 22}%`, opacity: 0, transform: 'scale(1)' },
+          { left: `${sx}%`, top: `${sy + 12}%`, opacity: 1, transform: 'scale(1)', offset: 0.06 },
+          { left: `${sx}%`, top: `${sy}%`, opacity: 1, transform: 'scale(1)', offset: 0.16 },
+          { left: `${sx}%`, top: `${sy}%`, opacity: 1, transform: 'scale(0.85)', offset: 0.22 },
+          { left: `${ex}%`, top: `${ey}%`, opacity: 1, transform: 'scale(0.85)', offset: 0.56 },
+          { left: `${ex}%`, top: `${ey}%`, opacity: 1, transform: 'scale(1)', offset: 0.62 },
+          { left: `${ex}%`, top: `${ey}%`, opacity: 1, transform: 'scale(1)', offset: 0.82 },
+          { left: `${ex}%`, top: `${ey}%`, opacity: 0, transform: 'scale(1)' },
+        ],
+        {
+          duration: 5400,
+          iterations: Infinity,
+          easing: 'cubic-bezier(0.55, 0, 0.45, 1)',
+        },
+      );
+    }
+
+    // Premier run après que les éléments sont mesurables
+    const raf = requestAnimationFrame(run);
+
+    // Recompute quand la stage change de taille (resize, breakpoint mobile/desktop, etc.)
+    const ro = new ResizeObserver(() => {
+      run();
+    });
+    if (stageRef.current) ro.observe(stageRef.current);
+
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(raf);
+      if (anim) anim.cancel();
+      ro.disconnect();
+    };
+  }, [phase]);
 
   function triggerAutoMove() {
     setPhase('auto-move');
@@ -512,7 +584,7 @@ export default function ImportSimulator() {
         <div className="sim-body sim-stage" ref={stageRef}>
           {phase === 'idle' && (
             <div className="sim-coach" aria-hidden="true">
-              <div className="sim-coach-cursor">
+              <div className="sim-coach-cursor" ref={coachCursorRef}>
                 <svg viewBox="0 0 24 24" className="sim-coach-cursor-svg">
                   <path
                     d="M5 3l13 8.5-6.2 1.3L8.5 20 5 3z"

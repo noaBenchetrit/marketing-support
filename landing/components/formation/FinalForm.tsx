@@ -147,7 +147,7 @@ export default function FinalForm() {
                         Connexion CRM…
                       </>
                     ) : (
-                      'Créer mon compte et tester (14 jours offerts)'
+                      'Rappelez-moi pour en parler'
                     )}
                   </button>
                 </div>

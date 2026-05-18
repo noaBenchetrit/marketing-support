@@ -104,7 +104,7 @@ h1, h2, h3, h4 {
   font-weight: 600;
 }
 h1 {
-  font-size: clamp(1.85rem, 1rem + 4vw, 4.5rem);
+  font-size: clamp(1.76rem, 0.95rem + 3.8vw, 4.28rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.05;
@@ -237,9 +237,9 @@ nav.topbar.scrolled {
   background: rgba(255, 255, 255, 0.92);
 }
 nav.topbar .container {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: clamp(14px, 1.6vw, 28px);
   padding-top: clamp(10px, 1vw, 18px);
   padding-bottom: clamp(10px, 1vw, 18px);
@@ -435,7 +435,7 @@ nav.topbar.scrolled .nav-pitch {
   justify-content: flex-start;
   align-items: stretch;
   padding-top: 11vh;
-  padding-bottom: clamp(72px, 10vh, 120px);
+  padding-bottom: clamp(120px, 14vh, 180px);
   position: relative;
 }
 .hero-fold .hero-head { flex: 0 1 auto; }
@@ -444,7 +444,7 @@ nav.topbar.scrolled .nav-pitch {
 .hero-scroll-cue {
   position: absolute;
   left: 50%;
-  bottom: clamp(20px, 3.5vh, 48px);
+  bottom: clamp(8px, 1.6vh, 24px);
   transform: translateX(-50%);
   display: inline-flex;
   flex-direction: column;
@@ -568,7 +568,7 @@ nav.topbar.scrolled .nav-pitch {
 .hero-trust-orbit-stage {
   position: relative;
   width: 100%;
-  max-width: clamp(260px, 22vw, 380px);
+  max-width: clamp(200px, 22vw, 380px);
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   z-index: 1;
@@ -619,12 +619,12 @@ nav.topbar.scrolled .nav-pitch {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(4px, 0.4vw, 8px);
-  width: clamp(64px, 5.5vw, 92px);
-  padding: clamp(6px, 0.6vw, 10px) clamp(6px, 0.6vw, 10px);
+  gap: clamp(3px, 0.4vw, 8px);
+  width: clamp(48px, 5.4vw, 92px);
+  padding: clamp(5px, 0.55vw, 10px) clamp(5px, 0.55vw, 10px);
   background: #fff;
   border: 1px solid var(--border);
-  border-radius: clamp(10px, 0.9vw, 14px);
+  border-radius: clamp(8px, 0.85vw, 14px);
   box-shadow: var(--shadow-sm);
   text-align: center;
   animation: hero-orbit-counter 34s linear infinite;
@@ -634,14 +634,14 @@ nav.topbar.scrolled .nav-pitch {
   to { transform: rotate(-360deg); }
 }
 .hero-trust-orbit-counter img {
-  width: clamp(28px, 2.5vw, 40px);
-  height: clamp(22px, 2vw, 32px);
+  width: clamp(22px, 2.4vw, 40px);
+  height: clamp(18px, 1.9vw, 32px);
   object-fit: contain;
   opacity: 0.88;
   filter: grayscale(0.3);
 }
 .hero-trust-orbit-name {
-  font-size: clamp(0.58rem, 0.55rem + 0.15vw, 0.74rem);
+  font-size: clamp(0.5rem, 0.46rem + 0.18vw, 0.74rem);
   color: var(--text-muted);
   font-weight: 700;
   letter-spacing: 0.005em;
@@ -688,15 +688,51 @@ nav.topbar.scrolled .nav-pitch {
   50% { opacity: 0.95; transform: scale(1.1); }
 }
 
-@media (max-width: 920px) {
-  .hero-head { grid-template-columns: 1fr; gap: 32px; }
-  .hero-trust { order: 2; max-width: 360px; margin: 0 auto; }
+@media (max-width: 1100px) {
+  .hero-head { grid-template-columns: 1fr; gap: clamp(24px, 3vw, 40px); }
+  .hero-trust { order: 2; max-width: 360px; margin: 0 auto; width: 100%; }
+}
+/* Sous 1100px : la colonne trust est en colonne sous le titre.
+   On passe en mode "badges ronds" : labels masqués, pill central
+   et spokes deviennent des cercles avec leur logo (taille généreuse).
+   Le stage est élargi pour laisser respirer les cercles plus gros. */
+@media (max-width: 1100px) {
+  .hero-trust-orbit-stage {
+    max-width: clamp(280px, 60vw, 340px);
+  }
+  .hero-trust-orbit-center {
+    padding: 0;
+    width: clamp(60px, 6.4vw, 76px);
+    height: clamp(60px, 6.4vw, 76px);
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    justify-content: center;
+    gap: 0;
+  }
+  .hero-trust-orbit-center span { display: none; }
+  .hero-trust-orbit-center img {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+  }
+  .hero-trust-orbit-name { display: none; }
+  .hero-trust-orbit-counter {
+    width: clamp(50px, 5.4vw, 64px);
+    height: clamp(50px, 5.4vw, 64px);
+    padding: 0;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+  }
+  .hero-trust-orbit-counter img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+  }
 }
 @media (max-width: 520px) {
-  .hero-trust-orbit-stage { max-width: 280px; }
-  .hero-trust-orbit-counter { width: 64px; }
-  .hero-trust-orbit-counter img { width: 28px; height: 22px; }
-  .hero-trust-orbit-name { font-size: 0.6rem; }
+  .hero-trust-orbit-stage { max-width: 240px; }
+  .hero-trust-orbit-center { width: 52px; height: 52px; }
+  .hero-trust-orbit-counter { width: 44px; height: 44px; }
 }
 .hero h1 .accent-brand,
 .hero h1 .accent-success {
@@ -720,7 +756,7 @@ nav.topbar.scrolled .nav-pitch {
 .hero-sub {
   margin-top: clamp(16px, 1.5vw, 28px);
   color: var(--text);
-  font-size: clamp(1rem, 0.9rem + 0.45vw, 1.32rem);
+  font-size: clamp(0.95rem, 0.86rem + 0.43vw, 1.25rem);
   line-height: 1.55;
   max-width: 56ch;
 }
@@ -734,7 +770,10 @@ nav.topbar.scrolled .nav-pitch {
 .hero-reassurance {
   margin-top: clamp(10px, 1vw, 18px);
   color: var(--text-muted);
-  font-size: clamp(0.84rem, 0.78rem + 0.18vw, 0.98rem);
+  font-size: clamp(0.8rem, 0.74rem + 0.17vw, 0.93rem);
+}
+.hero-cta-row .btn-large {
+  font-size: clamp(0.9rem, 0.81rem + 0.29vw, 1.06rem);
 }
 .hero-reassurance::before {
   content: '';
@@ -1182,8 +1221,12 @@ nav.topbar.scrolled .nav-pitch {
   position: absolute;
   left: 18%;
   top: 60%;
+  opacity: 0;
   filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.45));
-  animation: sim-coach-move 5.4s cubic-bezier(0.55, 0, 0.45, 1) infinite;
+  /* L'animation est pilotée par JS (Web Animations API) :
+     les positions start/end sont calculées depuis les vraies bounding
+     rects de l'icône Excel et de la dropzone, pour fonctionner aussi
+     bien en layout colonnes (mobile) qu'en layout lignes (desktop). */
 }
 .sim-coach-cursor-svg {
   width: 24px;
@@ -2431,7 +2474,10 @@ nav.topbar.scrolled .nav-pitch {
 /* =========================================================================
    SECTION 4 — Ecosystem + Migration
    ========================================================================= */
-.eco-section { background: var(--bg); }
+.eco-section {
+  background: var(--bg);
+  padding-bottom: clamp(43px, 5.3vw + 0.67rem, 107px);
+}
 .eco-header {
   text-align: center;
   max-width: 640px;
@@ -2723,7 +2769,11 @@ nav.topbar.scrolled .nav-pitch {
 /* =========================================================================
    SECTION 5 — Social proof + FAQ
    ========================================================================= */
-.social-section { background: var(--bg-soft); }
+.social-section {
+  background: var(--bg-soft);
+  padding-top: clamp(43px, 5.3vw + 0.67rem, 107px);
+  padding-bottom: clamp(43px, 5.3vw + 0.67rem, 107px);
+}
 .social-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2937,7 +2987,7 @@ nav.topbar.scrolled .nav-pitch {
    ========================================================================= */
 .final-section {
   background: var(--bg);
-  padding-top: var(--section-y);
+  padding-top: clamp(43px, 5.3vw + 0.67rem, 107px);
   padding-bottom: var(--section-y);
 }
 .final-card {

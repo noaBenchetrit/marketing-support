@@ -3,12 +3,6 @@
 import { useEffect, useState } from 'react';
 import { scrollToFinalForm } from './smoothScroll';
 
-const NAV_LINKS = [
-  { href: '#produit', label: 'Produit' },
-  { href: '#migration', label: 'Migration' },
-  { href: '#temoignages', label: 'Témoignages' },
-];
-
 const ArrowIcon = () => (
   <svg
     className="arrow"
@@ -43,14 +37,6 @@ export default function Nav() {
           <img className="logo-mark" src="/beTool.png" alt="beTool" />
           <span>beTool</span>
         </a>
-
-        <div className="nav-mid" aria-hidden={scrolled}>
-          {NAV_LINKS.map((l) => (
-            <a key={l.href} href={l.href} className="nav-link">
-              {l.label}
-            </a>
-          ))}
-        </div>
 
         <button
           type="button"
