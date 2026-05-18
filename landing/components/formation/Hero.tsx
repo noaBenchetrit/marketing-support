@@ -81,7 +81,7 @@ export default function Hero() {
                     className="btn btn-accent btn-large"
                     onClick={scrollToFinalForm}
                   >
-                    Commencer mon essai gratuit
+                    Planifier ma démo
                     <ArrowIcon />
                   </button>
                 </div>

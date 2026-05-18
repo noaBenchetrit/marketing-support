@@ -144,7 +144,7 @@ export default function FinalForm() {
                     {pending ? (
                       <>
                         <span className="button-spinner" aria-hidden="true" />
-                        Connexion CRM…
+                        Envoi de la demande…
                       </>
                     ) : (
                       'Rappelez-moi pour en parler'
