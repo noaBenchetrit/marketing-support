@@ -98,14 +98,6 @@ export default function Hero() {
                   <span className="audit-status-pulse" aria-hidden="true"></span>
                   Tableau de bord conformité
                 </span>
-                <button
-                  type="button"
-                  className="audit-scan-btn"
-                  onClick={() => open({ source: 'hero-scan-ia' })}
-                >
-                  <span className="audit-scan-icon" aria-hidden="true">🤖</span>
-                  Lancer le scan de conformité global
-                </button>
               </div>
 
               <ul className="audit-dossiers">
