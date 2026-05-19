@@ -305,8 +305,8 @@
 
     .planning-phone {
       position: absolute;
-      right: -28px;
-      bottom: -36px;
+      right: -12px;
+      bottom: -90px;
       width: clamp(140px, 16vw, 188px);
       background: #0F172A;
       padding: 8px;
