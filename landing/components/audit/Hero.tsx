@@ -1,20 +1,11 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDemoModal } from './DemoModalProvider';
 
 type ScanPhase = 'before' | 'scanning' | 'error';
 
-const PHASE_DURATIONS: Record<ScanPhase, number> = {
-  before: 3000,
-  scanning: 1800,
-  error: 4500,
-};
-const NEXT_PHASE: Record<ScanPhase, ScanPhase> = {
-  before: 'scanning',
-  scanning: 'error',
-  error: 'before',
-};
+const SCANNING_DURATION = 1800;
 
 export default function Hero() {
   const visualRef = useRef<HTMLDivElement>(null);
@@ -23,26 +14,17 @@ export default function Hero() {
   const [phase, setPhase] = useState<ScanPhase>('before');
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const scheduleNext = useCallback((current: ScanPhase) => {
-    if (timerRef.current) clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(() => {
-      const next = NEXT_PHASE[current];
-      setPhase(next);
-      scheduleNext(next);
-    }, PHASE_DURATIONS[current]);
-  }, []);
-
   useEffect(() => {
-    scheduleNext('before');
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [scheduleNext]);
+  }, []);
 
   const triggerScan = () => {
     if (phase !== 'before') return;
     setPhase('scanning');
-    scheduleNext('scanning');
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setPhase('error'), SCANNING_DURATION);
   };
 
   useEffect(() => {
