@@ -17,21 +17,17 @@ export default function Nav() {
   return (
     <nav className={`topbar${scrolled ? ' scrolled' : ''}`} id="topbar">
       <div className="container">
-        <a href="#" className="logo">
+        <span className="logo" aria-label="beTool">
           <img className="logo-mark" src="/beTool.png" alt="beTool" />
           <span>beTool</span>
-        </a>
-        <div className="nav-links">
-          <a href="#terrain">Terrain intelligent</a>
-          <a href="#safe">Souveraineté</a>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => open({ source: 'nav' })}
-          >
-            Réserver ma démo
-          </button>
-        </div>
+        </span>
+        <button
+          type="button"
+          className="btn btn-accent"
+          onClick={() => open({ source: 'nav' })}
+        >
+          Réserver ma démo
+        </button>
       </div>
     </nav>
   );

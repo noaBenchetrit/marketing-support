@@ -1,21 +1,16 @@
-const ITEMS = [
-  'Signature eIDAS',
-  'Horodatage Certigna',
-  'Multi-référentiels ISO',
-  'RGPD Compliant',
-  'Coffre-fort numérique',
-];
+const BADGES = ['RGE', 'OPQIBI', 'QUALIBAT', 'CABINET ÉCO-AUDIT', 'MAR'];
 
 export default function Credibility() {
-  const loop = [...ITEMS, ...ITEMS, ...ITEMS];
   return (
-    <section className="credibility">
-      <div className="trust-marquee reveal" aria-label="Garanties">
-        <div className="trust-track">
-          {loop.map((item, i) => (
-            <span key={i} className="trust-item" aria-hidden={i >= ITEMS.length}>
-              <span className="trust-dot" aria-hidden="true"></span>
-              {item}
+    <section className="certifications" aria-label="Certifications partenaires">
+      <div className="container">
+        <p className="certif-intro reveal">
+          Ils sécurisent leurs processus et la conformité de leurs rapports avec beTool :
+        </p>
+        <div className="certif-row reveal delay-1">
+          {BADGES.map((label) => (
+            <span key={label} className="certif-badge">
+              {label}
             </span>
           ))}
         </div>

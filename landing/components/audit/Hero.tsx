@@ -78,21 +78,26 @@ export default function Hero() {
       <div className="container">
         <div className="hero-grid">
           <div className="hero-text">
-            <span className="eyebrow reveal">Pour les auditeurs et bureaux de contrôle</span>
+            <span className="kicker-badge reveal">
+              <span className="kicker-icon" aria-hidden="true">🏷️</span>
+              Pour les auditeurs, MAR et bureaux de contrôle
+            </span>
             <h1 className="reveal delay-1">
               L&apos;audit est une science. <span className="accent">beTool</span> est votre laboratoire.
             </h1>
             <p className="sub-h1 reveal delay-2">
-              Centralisez vos dossiers, mandats et historique des échanges au même endroit. Votre source de
-              vérité unique pour une conformité sans faille.
+              Centralisez vos dossiers, mandats et historique au même endroit. Suivez vos statuts
+              MaPrimeRénov&apos; et sécurisez vos rapports avant dépôt grâce à notre vérification IA
+              au clic.
             </p>
+
             <div className="cta-row reveal delay-3">
               <button
                 type="button"
                 className="btn btn-accent btn-large"
                 onClick={() => open({ source: 'hero' })}
               >
-                Réserver ma démo Audit
+                Réserver ma démo personnalisée
                 <svg
                   className="arrow"
                   width="18"
@@ -106,8 +111,13 @@ export default function Hero() {
                 </svg>
               </button>
             </div>
+
             <p className="cta-note reveal delay-3">
-              Mise en route en 15 min. Sans carte bancaire.
+              <span>Mise en route en 15&nbsp;min</span>
+              <span aria-hidden="true">•</span>
+              <span>Sans carte bancaire</span>
+              <span aria-hidden="true">•</span>
+              <span>Spécifique RGE &amp; MAR</span>
             </p>
           </div>
 
@@ -133,7 +143,6 @@ export default function Hero() {
                   <div className="report-gen-lines">
                     <div className="report-gen-line"></div>
                     <div className="report-gen-line report-gen-line--med"></div>
-                    <div className="report-gen-line"></div>
                     <div className="report-gen-line report-gen-line--short"></div>
                     <div className="report-gen-line report-gen-line--typing">
                       <span className="report-gen-typing-bar"></span>
@@ -148,26 +157,39 @@ export default function Hero() {
                   </div>
                 </div>
 
-                <div className="dash-stats">
-                  <div className="stat-card">
-                    <div className="stat-num">14</div>
-                    <div className="stat-lbl">Points contrôlés</div>
+                <div className="dash-rows dash-deals">
+                  <div className="dash-row">
+                    <div className="left">
+                      <span className="avatar b"></span>
+                      <span className="deal-name">Boulangerie Marin</span>
+                      <span className="deal-tag">RGE</span>
+                    </div>
+                    <span className="pill pill-review">En revue</span>
                   </div>
-                  <div className="stat-card">
-                    <div className="stat-num">2</div>
-                    <div className="stat-lbl">Vigilances IA</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="stat-num">42s</div>
-                    <div className="stat-lbl">Temps restant</div>
+                  <div className="dash-row">
+                    <div className="left">
+                      <span className="avatar o"></span>
+                      <span className="deal-name">SCI Trois-Pins</span>
+                      <span className="deal-tag">MaPrimeRénov&apos;</span>
+                    </div>
+                    <span className="pill pill-todo">Pièces à fournir</span>
                   </div>
                 </div>
+
+                <button
+                  type="button"
+                  className="ai-action-btn"
+                  onClick={() => open({ source: 'hero-ai-check' })}
+                >
+                  <span className="ai-icon" aria-hidden="true">🤖</span>
+                  Lancer la vérification IA
+                </button>
               </div>
             </div>
 
             <div className="compliance-badge">
               <span className="badge-dot"></span>
-              <span className="badge-text">Horodatage Certifié</span>
+              <span className="badge-text">🔒 Horodatage Certifié Terrain</span>
             </div>
           </div>
         </div>

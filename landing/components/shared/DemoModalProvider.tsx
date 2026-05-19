@@ -7,6 +7,8 @@ export type DemoModalOpenOptions = {
   source?: string;
   /** Texte personnalisé pour le bouton de soumission (ex: "Récupérer mes 30h"). */
   ctaLabel?: string;
+  /** Email pré-rempli (typiquement saisi via un mini-form en amont, ex. champ email du Hero). */
+  email?: string;
 };
 
 type Ctx = {
@@ -63,6 +65,18 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
   const open = useCallback((options?: DemoModalOpenOptions) => {
     setSource(options?.source ?? null);
     setCtaLabel(options?.ctaLabel ?? null);
+    if (options?.email) {
+      const trimmed = options.email.trim();
+      if (trimmed) {
+        setPrefilledEmail(trimmed);
+        setEmailWasPrefilled(true);
+        try {
+          window.sessionStorage.setItem(SESSION_EMAIL_KEY, trimmed);
+        } catch {
+          /* sessionStorage indisponible — ignoré */
+        }
+      }
+    }
     setIsOpen(true);
   }, []);
 
