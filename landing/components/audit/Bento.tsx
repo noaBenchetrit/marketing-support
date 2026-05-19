@@ -41,7 +41,10 @@ export default function Bento() {
     <section className="piliers-perf">
       <div className="container">
         <header className="piliers-perf-head reveal">
-          <h2>Divisez par 2 le temps de traitement. Éliminez 100 % des rejets.</h2>
+          <h2>
+            <span className="h2-warm">Divisez par 2</span> le temps de traitement.{' '}
+            <span className="h2-warm">Éliminez 100 %</span> des rejets.
+          </h2>
         </header>
         <div className="piliers-perf-grid">
           {PILIERS.map(({ icon, title, impact, body }, i) => (

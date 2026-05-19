@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDemoModal } from './DemoModalProvider';
 
-type ScanPhase = 'before' | 'scanning' | 'error';
+type ScanPhase = 'before' | 'scanning' | 'success';
 
 const SCANNING_DURATION = 1800;
 
@@ -24,7 +24,7 @@ export default function Hero() {
     if (phase !== 'before') return;
     setPhase('scanning');
     if (timerRef.current) clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(() => setPhase('error'), SCANNING_DURATION);
+    timerRef.current = setTimeout(() => setPhase('success'), SCANNING_DURATION);
   };
 
   useEffect(() => {
@@ -133,8 +133,8 @@ export default function Hero() {
                     {phase === 'scanning' && (
                       <span className="audit-pill audit-pill--scanning">Analyse IA…</span>
                     )}
-                    {phase === 'error' && (
-                      <span className="audit-pill audit-pill--error">Erreur</span>
+                    {phase === 'success' && (
+                      <span className="audit-pill audit-pill--success">Conforme</span>
                     )}
                   </div>
 
@@ -159,11 +159,21 @@ export default function Hero() {
                     </div>
                   )}
 
-                  {phase === 'error' && (
-                    <div className="audit-dossier-meta audit-dossier-meta--error">
-                      <span className="audit-icon-warn" aria-hidden="true">⚠️</span>
-                      <strong>Erreur dossier :</strong>&nbsp;devis non signé
-                    </div>
+                  {phase === 'success' && (
+                    <ul className="audit-check-list" aria-label="Constat IA">
+                      <li>
+                        <span className="audit-check-icon" aria-hidden="true">✓</span>
+                        Infos clients conformes
+                      </li>
+                      <li>
+                        <span className="audit-check-icon" aria-hidden="true">✓</span>
+                        Facture et devis cohérents
+                      </li>
+                      <li>
+                        <span className="audit-check-icon" aria-hidden="true">✓</span>
+                        Devis bien signé
+                      </li>
+                    </ul>
                   )}
                 </li>
 
@@ -187,8 +197,7 @@ export default function Hero() {
                   </div>
                   <div className="audit-dossier-meta audit-dossier-meta--warn">
                     <span className="audit-icon-warn" aria-hidden="true">⚠️</span>
-                    <strong>Alerte IA :</strong>&nbsp;Incohérence η<sub>s</sub> vs note de
-                    dimensionnement
+                    <strong>Alerte IA :</strong>&nbsp;devis non signé
                   </div>
                 </li>
 

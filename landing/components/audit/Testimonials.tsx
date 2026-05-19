@@ -31,9 +31,9 @@ export default function Testimonials() {
       <div className="container">
         <div className="section-head reveal">
           <span className="eyebrow">Ils nous font confiance</span>
-          <h2>Des résultats concrets, des humains derrière.</h2>
+          <h2>Des résultats concrets, des cabinets d&apos;audit derrière.</h2>
           <p className="lead">
-            Quelques retours de directeurs de centres de formation qui ont basculé. Survolez pour mettre en pause.
+            Retours d&apos;auditeurs, MAR et bureaux de contrôle qui ont basculé sur beTool. Survolez pour mettre en pause.
           </p>
         </div>
       </div>

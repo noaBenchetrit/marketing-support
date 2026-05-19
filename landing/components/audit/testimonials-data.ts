@@ -10,123 +10,123 @@ export type Testimonial = {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    name: 'Camille Lambert',
-    role: 'Directrice',
-    organism: 'Académie Pro',
-    avatar: 'CL',
-    color: 'green',
-    quote:
-      "Avant beTool, on perdait deux jours par mois à courir après les signatures. Aujourd'hui, on absorbe 200 stagiaires sans recruter.",
-    metric: { num: '+200', label: 'stagiaires absorbés' },
-  },
-  {
-    name: 'Julien Marchand',
-    role: 'Gérant',
-    organism: 'FormaPlus',
-    avatar: 'JM',
+    name: 'Sylvain T.',
+    role: 'Directeur Technique',
+    organism: 'Cabinet Éco-Audit',
+    avatar: 'ST',
     color: 'blue',
     quote:
-      "L'audit Qualiopi a duré 4h au lieu d'une journée. L'auditeur n'a posé aucune question sur la conformité — uniquement sur la pédagogie.",
-    metric: { num: '4h', label: "d'audit, zéro non-conformité" },
+      "BeTool a apporté à notre structure le niveau de rigueur que l'instruction des dossiers d'éco-rénovation exige. On a divisé par deux le temps de traitement administratif.",
+    metric: { num: '÷2', label: 'temps administratif' },
   },
   {
-    name: 'Sophie Renaud',
-    role: 'Directrice pédagogique',
-    organism: 'CFC Paris',
-    avatar: 'SR',
-    color: 'orange',
-    quote:
-      'On a divisé par trois le temps administratif. Mes formateurs forment, ils ne remplissent plus de tableaux Excel.',
-    metric: { num: '÷3', label: 'temps admin' },
-  },
-  {
-    name: 'Karim Belkacem',
-    role: 'Fondateur',
-    organism: 'Tech Académie',
-    avatar: 'KB',
-    color: 'purple',
-    quote:
-      "La synchro EDOF nous fait gagner 6 heures par semaine. Plus jamais de double saisie. C'est une renaissance pour mon équipe.",
-    metric: { num: '6h/sem', label: 'économisées' },
-  },
-  {
-    name: 'Élodie Guérin',
-    role: 'Responsable qualité',
-    organism: 'Formation Plus',
-    avatar: 'EG',
-    color: 'pink',
-    quote:
-      "L'équipe support répond en moins d'une heure. C'est un changement de culture par rapport à nos anciens outils.",
-    metric: { num: '<1h', label: 'réponse support' },
-  },
-  {
-    name: 'Marc Dubois',
-    role: 'Gérant',
-    organism: 'Centre Excellence',
-    avatar: 'MD',
-    color: 'teal',
-    quote:
-      "Renouvellement Qualiopi sans la moindre non-conformité. Tout était traçable, archivé, prêt — l'audit est devenu une formalité.",
-    metric: { num: '0', label: 'non-conformité' },
-  },
-  {
-    name: 'Léa Boucher',
-    role: 'Coordinatrice',
-    organism: 'École des Pros',
-    avatar: 'LB',
-    color: 'orange',
-    quote:
-      'Les stagiaires signent en 30 secondes depuis leur téléphone. Plus de papier, plus de scans, plus de stress en fin de session.',
-    metric: { num: '30s', label: 'pour signer' },
-  },
-  {
-    name: 'Antoine Mercier',
-    role: 'Directeur',
-    organism: 'Institut Numérique',
-    avatar: 'AM',
-    color: 'blue',
-    quote:
-      "On encaisse les financements deux semaines plus tôt qu'avant. La trésorerie respire enfin et on peut investir dans le contenu.",
-    metric: { num: '+2 sem', label: 'encaissement' },
-  },
-  {
-    name: 'Nadia Hassan',
-    role: 'Directrice',
-    organism: 'ProForm',
-    avatar: 'NH',
+    name: 'Marina B.',
+    role: 'Auditrice MAR',
+    organism: 'Energetik Conseil',
+    avatar: 'MB',
     color: 'green',
     quote:
-      "Le pack de preuves Qualiopi se génère en un clic. C'est devenu un non-sujet pour nous, on n'y pense même plus.",
-    metric: { num: '1 clic', label: 'preuves prêtes' },
+      "L'application mobile sur le terrain change tout. Mes photos sont horodatées au clic et le rapport est prêt avant même de rentrer au bureau.",
+    metric: { num: '0 min', label: "d'admin retour bureau" },
   },
   {
-    name: 'Thomas Leroy',
-    role: 'Fondateur',
-    organism: 'DigitalEdu',
+    name: 'Thomas L.',
+    role: 'Responsable Qualité',
+    organism: "Diag'Pro Énergie",
     avatar: 'TL',
-    color: 'purple',
-    quote:
-      "Migration depuis Digiforma faite en cinq jours. Pas une donnée perdue, pas une session manquante. L'équipe beTool a tout pris en charge.",
-    metric: { num: '5 jours', label: 'de migration' },
-  },
-  {
-    name: 'Inès Vidal',
-    role: 'Directrice administrative',
-    organism: 'Akadémia',
-    avatar: 'IV',
-    color: 'pink',
-    quote:
-      "On gérait 80 dossiers par mois à la main. Aujourd'hui on en pilote 250 sans avoir embauché. Le ROI est arrivé en 6 semaines.",
-    metric: { num: '×3', label: 'volume géré' },
-  },
-  {
-    name: 'Pierre Costa',
-    role: 'Directeur',
-    organism: 'FormaCloud',
-    avatar: 'PC',
     color: 'teal',
     quote:
-      'Les relances automatiques nous ont fait passer de 70% à 98% de signatures complètes. On ne perd plus aucun financement.',
-    metric: { num: '98%', label: 'taux de signature' },
+      "Le contrôle IA nous a évité trois redressements COFRAC depuis le début de l'année. Sans le système d'alertes, on déposait à l'aveugle.",
+    metric: { num: '0', label: 'redressement COFRAC' },
+  },
+  {
+    name: 'Florence M.',
+    role: 'Gérante',
+    organism: 'AuditEco Solutions',
+    avatar: 'FM',
+    color: 'purple',
+    quote:
+      "Migration depuis Excel faite en deux jours par l'équipe beTool. Mes auditeurs étaient autonomes en moins d'une heure, sans formation complémentaire.",
+    metric: { num: '2 jours', label: 'de migration' },
+  },
+  {
+    name: 'Karim H.',
+    role: 'Directeur',
+    organism: 'Conformitec',
+    avatar: 'KH',
+    color: 'orange',
+    quote:
+      "La centralisation des mandats et des pièces réglementaires nous a permis de doubler notre volume sans recruter. Le ROI a été immédiat.",
+    metric: { num: '×2', label: 'volume géré' },
+  },
+  {
+    name: 'Anne-Sophie P.',
+    role: 'Auditrice senior',
+    organism: 'CertifAudit',
+    avatar: 'AP',
+    color: 'pink',
+    quote:
+      "Le suivi MaPrimeRénov' intégré nous fait gagner un temps fou. Les pièces manquantes remontent avant que le dossier parte à l'Anah.",
+    metric: { num: '100%', label: 'dossiers complets' },
+  },
+  {
+    name: 'Mehdi R.',
+    role: 'Auditeur RGE',
+    organism: "Conform'Audit",
+    avatar: 'MR',
+    color: 'green',
+    quote:
+      "Avant on perdait des heures à courir après les photos terrain. Maintenant tout est sur la fiche dossier, horodaté et géolocalisé au clic.",
+    metric: { num: '+6h/sem', label: 'gagnées par auditeur' },
+  },
+  {
+    name: 'Caroline V.',
+    role: 'Directrice',
+    organism: 'Diag-Énergie 21',
+    avatar: 'CV',
+    color: 'blue',
+    quote:
+      "Renouvellement de notre qualification RGE sans la moindre remarque. Le dossier était traçable de A à Z. L'audit est devenu une formalité.",
+    metric: { num: '0', label: 'remarque audit' },
+  },
+  {
+    name: 'Olivier D.',
+    role: 'Co-fondateur',
+    organism: 'AuditClair',
+    avatar: 'OD',
+    color: 'teal',
+    quote:
+      "L'historique des échanges client est centralisé. Quand un technicien quitte la boîte, le dossier reste reprenable en cinq minutes.",
+    metric: { num: '5 min', label: 'pour reprendre un dossier' },
+  },
+  {
+    name: 'Sarah B.',
+    role: 'Auditrice CEE',
+    organism: 'EnerControl',
+    avatar: 'SB',
+    color: 'orange',
+    quote:
+      "Les fiches CEE Tertiaire se génèrent toutes seules à partir de mes relevés terrain. Plus jamais de double saisie, plus jamais d'oubli de pièce.",
+    metric: { num: '0', label: 'double saisie' },
+  },
+  {
+    name: 'Jean-Marc P.',
+    role: 'Gérant',
+    organism: 'Bureau de Contrôle Loiret',
+    avatar: 'JP',
+    color: 'purple',
+    quote:
+      "Le ROI a été immédiat. En six semaines, on avait remboursé l'outil rien qu'avec les dossiers qu'on ne perdait plus.",
+    metric: { num: '6 sem', label: 'pour le ROI' },
+  },
+  {
+    name: 'Élise T.',
+    role: 'Coordinatrice',
+    organism: 'AccompagnementRénov',
+    avatar: 'ET',
+    color: 'pink',
+    quote:
+      "Les alertes proactives nous signalent les mandats qui expirent avant qu'on les oublie. Plus aucun client laissé sans suivi.",
+    metric: { num: '0', label: 'mandat expiré' },
   },
 ];
