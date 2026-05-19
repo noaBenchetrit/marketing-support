@@ -1,15 +1,15 @@
-const BADGES = ['RGE', 'OPQIBI', 'QUALIBAT', 'CABINET ÉCO-AUDIT', 'MAR'];
+const BADGES = ['RGE', 'OPQIBI', 'QUALIBAT', 'COFRAC', 'MAR'];
 
 export default function Credibility() {
   return (
-    <section className="certifications" aria-label="Certifications partenaires">
-      <div className="container">
-        <p className="certif-intro reveal">
-          Ils sécurisent leurs processus et la conformité de leurs rapports avec beTool :
-        </p>
-        <div className="certif-row reveal delay-1">
+    <section className="authority-band" aria-label="Bandeau d'autorité">
+      <div className="container authority-band-inner">
+        <span className="authority-band-intro">
+          Déjà plus de 50 000 audits terrain sécurisés en France par nos utilisateurs :
+        </span>
+        <div className="authority-band-logos" role="list">
           {BADGES.map((label) => (
-            <span key={label} className="certif-badge">
+            <span key={label} className="authority-logo" role="listitem">
               {label}
             </span>
           ))}

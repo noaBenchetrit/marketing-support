@@ -23,8 +23,8 @@ export default function Hero() {
       const y = e.clientY - rect.top;
       const cx = rect.width / 2;
       const cy = rect.height / 2;
-      const rotY = ((x - cx) / cx) * 4;
-      const rotX = -((y - cy) / cy) * 3;
+      const rotY = ((x - cx) / cx) * 3;
+      const rotX = -((y - cy) / cy) * 2;
       card.style.transform = `perspective(1200px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
     };
     const onLeave = () => {
@@ -42,62 +42,32 @@ export default function Hero() {
     };
   }, []);
 
-  useEffect(() => {
-    const visual = visualRef.current;
-    const card = cardRef.current;
-    if (!visual || !card) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    let raf = 0;
-
-    const update = () => {
-      raf = 0;
-      const rect = visual.getBoundingClientRect();
-      const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-      const t = Math.max(-1, Math.min(1, center / window.innerHeight));
-      card.style.translate = `0 ${t * -14}px`;
-    };
-
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
-
   return (
     <section className="hero">
       <div className="container">
         <div className="hero-grid">
           <div className="hero-text">
-            <span className="kicker-badge reveal">
-              <span className="kicker-icon" aria-hidden="true">🏷️</span>
-              Pour les auditeurs, MAR et bureaux de contrôle
+            <span className="hero-positioning reveal" aria-label="Positionnement">
+              <span className="hero-positioning-icon" aria-hidden="true">🏷️</span>
+              Le CRM des professionnels de l&apos;audit énergétique et du contrôle
             </span>
             <h1 className="reveal delay-1">
-              L&apos;audit est une science. <span className="accent">beTool</span> est votre laboratoire.
+              L&apos;audit énergétique est une science. <span className="accent">beTool</span> est
+              votre coffre-fort à dossiers conformes.
             </h1>
             <p className="sub-h1 reveal delay-2">
-              Centralisez vos dossiers, mandats et historique au même endroit. Suivez vos statuts
-              MaPrimeRénov&apos; et sécurisez vos rapports avant dépôt grâce à notre vérification IA
-              au clic.
+              Du planning terrain au dépôt, automatisez la logistique de vos inspecteurs, générez
+              vos rapports en un clic et blindez votre conformité (CEE, Audits Réglementaires,
+              MAR). Reprenez le contrôle de vos marges.
             </p>
 
-            <div className="cta-row reveal delay-3">
+            <div className="hero-cta-row reveal delay-3">
               <button
                 type="button"
                 className="btn btn-accent btn-large"
                 onClick={() => open({ source: 'hero' })}
               >
-                Réserver ma démo personnalisée
+                Demander une démo
                 <svg
                   className="arrow"
                   width="18"
@@ -112,84 +82,70 @@ export default function Hero() {
               </button>
             </div>
 
-            <p className="cta-note reveal delay-3">
-              <span>Mise en route en 15&nbsp;min</span>
-              <span aria-hidden="true">•</span>
-              <span>Sans carte bancaire</span>
-              <span aria-hidden="true">•</span>
-              <span>Spécifique RGE &amp; MAR</span>
+            <p className="hero-reassurance reveal delay-3">
+              <span>Déploiement en 15&nbsp;min</span>
+              <span aria-hidden="true">·</span>
+              <span>Hébergement souverain UE</span>
+              <span aria-hidden="true">·</span>
+              <span>Sans engagement</span>
             </p>
           </div>
 
-          <div className="hero-visual reveal delay-2" ref={visualRef}>
-            <div className="dashboard-card" ref={cardRef}>
-              <div className="dashboard-header">
-                <span className="dot r"></span>
-                <span className="dot y"></span>
-                <span className="dot g"></span>
-              </div>
-              <div className="dashboard-body">
-                <div className="dash-title">Rapport d&apos;audit en cours</div>
-                <div className="dash-sub">Mission #2026-014 · Atelier Lefèvre SAS</div>
-
-                <div className="report-gen" aria-hidden="true">
-                  <div className="report-gen-header">
-                    <span className="report-gen-stamp">RAPPORT D&apos;AUDIT · 2026</span>
-                    <span className="report-gen-status">
-                      <span className="report-gen-pulse"></span>
-                      Génération en cours
-                    </span>
-                  </div>
-                  <div className="report-gen-lines">
-                    <div className="report-gen-line"></div>
-                    <div className="report-gen-line report-gen-line--med"></div>
-                    <div className="report-gen-line report-gen-line--short"></div>
-                    <div className="report-gen-line report-gen-line--typing">
-                      <span className="report-gen-typing-bar"></span>
-                      <span className="report-gen-cursor"></span>
-                    </div>
-                  </div>
-                  <div className="report-gen-progress">
-                    <div className="report-gen-progress-bar">
-                      <div className="report-gen-progress-fill"></div>
-                    </div>
-                    <span className="report-gen-progress-pct">67 %</span>
-                  </div>
-                </div>
-
-                <div className="dash-rows dash-deals">
-                  <div className="dash-row">
-                    <div className="left">
-                      <span className="avatar b"></span>
-                      <span className="deal-name">Boulangerie Marin</span>
-                      <span className="deal-tag">RGE</span>
-                    </div>
-                    <span className="pill pill-review">En revue</span>
-                  </div>
-                  <div className="dash-row">
-                    <div className="left">
-                      <span className="avatar o"></span>
-                      <span className="deal-name">SCI Trois-Pins</span>
-                      <span className="deal-tag">MaPrimeRénov&apos;</span>
-                    </div>
-                    <span className="pill pill-todo">Pièces à fournir</span>
-                  </div>
-                </div>
-
+          <div className="hero-visual reveal delay-1" ref={visualRef}>
+            <div className="audit-dashboard" ref={cardRef}>
+              <div className="audit-dashboard-head">
+                <span className="audit-dashboard-tag">
+                  <span className="audit-status-pulse" aria-hidden="true"></span>
+                  Tableau de bord conformité
+                </span>
                 <button
                   type="button"
-                  className="ai-action-btn"
-                  onClick={() => open({ source: 'hero-ai-check' })}
+                  className="audit-scan-btn"
+                  onClick={() => open({ source: 'hero-scan-ia' })}
                 >
-                  <span className="ai-icon" aria-hidden="true">🤖</span>
-                  Lancer la vérification IA
+                  <span className="audit-scan-icon" aria-hidden="true">🤖</span>
+                  Lancer le scan de conformité global
                 </button>
               </div>
-            </div>
 
-            <div className="compliance-badge">
-              <span className="badge-dot"></span>
-              <span className="badge-text">🔒 Horodatage Certifié Terrain</span>
+              <ul className="audit-dossiers">
+                <li className="audit-dossier audit-dossier--ok">
+                  <div className="audit-dossier-row">
+                    <span className="audit-dossier-id">📋 Dossier #8291</span>
+                    <span className="audit-dossier-type">Audit Réglementaire</span>
+                    <span className="audit-pill audit-pill--ok">Rapport Généré</span>
+                  </div>
+                  <div className="audit-dossier-meta">
+                    <span className="audit-icon-ok" aria-hidden="true">🔒</span>
+                    GPS Validé · Photos horodatées sur site
+                  </div>
+                </li>
+
+                <li className="audit-dossier audit-dossier--warn">
+                  <div className="audit-dossier-row">
+                    <span className="audit-dossier-id">📋 Dossier #8292</span>
+                    <span className="audit-dossier-type">Parcours MAR</span>
+                    <span className="audit-pill audit-pill--review">En Revue</span>
+                  </div>
+                  <div className="audit-dossier-meta audit-dossier-meta--warn">
+                    <span className="audit-icon-warn" aria-hidden="true">⚠️</span>
+                    <strong>Alerte IA :</strong>&nbsp;Incohérence η<sub>s</sub> vs note de
+                    dimensionnement
+                  </div>
+                </li>
+
+                <li className="audit-dossier audit-dossier--ready">
+                  <div className="audit-dossier-row">
+                    <span className="audit-dossier-id">📋 Dossier #8293</span>
+                    <span className="audit-dossier-type">CEE Tertiaire (BAT)</span>
+                    <span className="audit-pill audit-pill--ready">Prêt pour Dépôt</span>
+                  </div>
+                  <div className="audit-dossier-meta">
+                    <span className="audit-icon-success" aria-hidden="true">✅</span>
+                    COFRAC OK · 12 pièces vérifiées
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

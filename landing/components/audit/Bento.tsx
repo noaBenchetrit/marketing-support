@@ -1,255 +1,66 @@
-'use client';
-
-import { useState } from 'react';
-import { useDemoModal } from './DemoModalProvider';
-
-type Pillar = {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-};
-
-const ASSISTANT_PILLARS: Pillar[] = [
+const PILIERS = [
   {
-    title: 'Vérification de cohérence assistée',
-    description:
-      "Scan des documents (CNI, attestations, certificats) pour vérifier les dates et mentions obligatoires avant validation.",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 11l3 3L22 4" />
-        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z" />
+        <circle cx="12" cy="10" r="3" />
       </svg>
     ),
+    title: 'Logistique & Application Terrain',
+    impact: 'Finies les tournées chaotiques et les photos perdues.',
+    body: "Planning intelligent sectorisé par zone. Application mobile 100 % hors-ligne qui guide l'auditeur pas à pas. Preuves médias (plaques signalétiques, isolants) horodatées au clic.",
   },
   {
-    title: 'Synthèse décisionnelle',
-    description:
-      "Rédaction assistée des conclusions à partir de vos notes terrain — vous gardez la main sur la signature.",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
         <polyline points="14 2 14 8 20 8" />
         <line x1="9" y1="13" x2="15" y2="13" />
-        <line x1="9" y1="17" x2="13" y2="17" />
+        <line x1="9" y1="17" x2="15" y2="17" />
       </svg>
     ),
+    title: 'Usine Documentaire & Signature',
+    impact: 'Saisissez sur le terrain, vos rapports sont déjà prêts.',
+    body: "Zéro double saisie. Les données terrain génèrent au clic vos Audits Réglementaires, fiches CEE (Résidentiel / Tertiaire / Industrie) et Attestations sur l'Honneur. Signature électronique sécurisée directement sur tablette.",
   },
   {
-    title: 'Communication instantanée',
-    description:
-      "Génération de résumés d'emails et SMS de relance pour les pièces manquantes — prêts à envoyer en un clic.",
     icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-        <polyline points="22 6 12 13 2 6" />
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+        <path d="M9 12l2 2 4-4" />
       </svg>
+    ),
+    title: 'Le Bouclier Anti-Redressement IA',
+    impact: 'Sécurisez vos marges avant le contrôle COFRAC.',
+    body: (
+      <>
+        Notre IA scanne et croise en temps réel vos devis, factures, fiches EPREL et notes de
+        dimensionnement. Le système détecte les incohérences de surfaces ou d&apos;efficience
+        énergétique (η<sub>s</sub>) et bloque le dossier avant le dépôt en cas d&apos;anomalie.
+      </>
     ),
   },
 ];
 
 export default function Bento() {
-  const { open } = useDemoModal();
-  const [openPillar, setOpenPillar] = useState<number | null>(null);
-
   return (
-    <section className="bento" id="terrain">
+    <section className="piliers-perf">
       <div className="container">
-        <div className="section-head reveal">
-          <span className="eyebrow">Terrain intelligent</span>
-          <h2>Du terrain au rapport, l&apos;expertise augmentée.</h2>
-          <p className="lead">
-            Trois capacités opérationnelles et un assistant IA qui prépare le diagnostic — vous gardez la décision.
-          </p>
-        </div>
-
-        <div className="bento-grid">
-          {/* A : Large — Scénarios de Contrôle Intelligents */}
-          <div className="bento-card bento-a reveal">
-            <div className="bento-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 11l3 3L22 4" />
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-              </svg>
-            </div>
-            <h3>Checklists dynamiques.</h3>
-            <p>Créez vos scénarios de contrôle sans code. Interfaces pensées pour le mobile et la tablette, gros boutons compatibles gants de chantier.</p>
-
-            <div className="checklist-mock" aria-hidden="true">
-              <div className="checklist-item checklist-item--done">
-                <span className="checklist-tick">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                <span className="checklist-label">Identification du site</span>
-              </div>
-              <div className="checklist-item checklist-item--done">
-                <span className="checklist-tick">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                <span className="checklist-label">Vérification équipements</span>
-              </div>
-              <div className="checklist-item checklist-item--current">
-                <span className="checklist-tick">
-                  <span className="checklist-dot"></span>
-                </span>
-                <span className="checklist-label">Conformité documentaire</span>
-                <span className="checklist-sub">5 sous-points · contextuels</span>
-              </div>
-              <div className="checklist-item checklist-item--pending">
-                <span className="checklist-tick"></span>
-                <span className="checklist-label">Sécurité incendie</span>
-              </div>
-              <div className="checklist-item checklist-item--pending">
-                <span className="checklist-tick"></span>
-                <span className="checklist-label">Synthèse et signature</span>
-              </div>
-            </div>
-
-            <div className="bento-trust" aria-label="Garanties">
-              <span className="bento-trust-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                  <line x1="8" y1="21" x2="16" y2="21" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
-                </svg>
-                Saisie mobile / tablette
-              </span>
-              <span className="bento-trust-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12" />
-                </svg>
-                Adaptatif en temps réel
-              </span>
-            </div>
-          </div>
-
-          {/* B : Medium — Analyse OCR à la demande */}
-          <div className="bento-card bento-b reveal delay-1">
-            <div className="bento-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 7V5a2 2 0 0 1 2-2h2" />
-                <path d="M17 3h2a2 2 0 0 1 2 2v2" />
-                <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
-                <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
-                <line x1="7" y1="12" x2="17" y2="12" />
-              </svg>
-            </div>
-            <h3>Analyse IA au clic.</h3>
-            <p>Ne lisez plus vos PDF : scannez dates et certifications. Détection d&apos;anomalies en temps réel.</p>
-
-            <div className="ocr-scan" aria-hidden="true">
-              <div className="ocr-doc">
-                <span className="ocr-doc-icon">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                  </svg>
-                </span>
-                <span className="ocr-doc-name">Extincteur_PV.pdf</span>
-                <span className="ocr-scan-btn">
-                  <span className="ocr-scan-icon">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M3 7V5a2 2 0 0 1 2-2h2" />
-                      <path d="M17 3h2a2 2 0 0 1 2 2v2" />
-                      <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
-                      <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
-                      <line x1="7" y1="12" x2="17" y2="12" />
-                    </svg>
-                  </span>
-                  Scanner avec l&apos;IA
-                </span>
-              </div>
-              <div className="ocr-result">
-                <span className="ocr-result-label">Date de validité extraite</span>
-                <span className="ocr-result-date">12 / 03 / 2027</span>
-                <span className="ocr-result-check">
-                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  Conforme
-                </span>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              className="bento-link"
-              onClick={() => open({ source: 'bento' })}
+        <header className="piliers-perf-head reveal">
+          <h2>Divisez par 2 le temps de traitement. Éliminez 100 % des rejets.</h2>
+        </header>
+        <div className="piliers-perf-grid">
+          {PILIERS.map(({ icon, title, impact, body }, i) => (
+            <article
+              key={title}
+              className={`pilier-perf-card reveal delay-${i + 1}`}
             >
-              Réserver ma démo
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-
-          {/* C : Rapports Haute-Précision */}
-          <div className="bento-card bento-c reveal delay-2">
-            <div className="bento-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <polyline points="14 2 14 8 20 8" />
-                <line x1="16" y1="13" x2="8" y2="13" />
-                <line x1="16" y1="17" x2="8" y2="17" />
-              </svg>
-            </div>
-            <h3>Rapports haute-précision.</h3>
-            <p>Génération au clic de vos rapports PDF officiels pré-remplis. Exportation prête à l&apos;envoi dès la fin de mission.</p>
-
-            <div className="report-mock" aria-hidden="true">
-              <div className="report-page">
-                <div className="report-page-head">
-                  <span className="report-page-stamp">Rapport · #2026-014</span>
-                  <span className="report-page-cert">✓ Signé</span>
-                </div>
-                <div className="report-line"></div>
-                <div className="report-line report-line--short"></div>
-                <div className="report-line"></div>
-                <div className="report-line report-line--med"></div>
-                <div className="report-line report-line--short"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="ai-accordions reveal">
-          <div className="ai-accordions-intro">
-            <span className="ai-accordions-tag">L&apos;assistant opérationnel</span>
-            <p>
-              L&apos;IA prépare le diagnostic. Vous gardez la décision — aucun envoi automatique sans
-              votre clic, chaque action reste tracée et signée.
-            </p>
-          </div>
-          <div className="ai-accordions-list">
-            {ASSISTANT_PILLARS.map((p, i) => {
-              const isOpen = openPillar === i;
-              return (
-                <button
-                  key={p.title}
-                  type="button"
-                  className={`ai-acc${isOpen ? ' ai-acc--open' : ''}`}
-                  onClick={() => setOpenPillar(isOpen ? null : i)}
-                  aria-expanded={isOpen}
-                >
-                  <span className="ai-acc-head">
-                    <span className="ai-acc-icon">{p.icon}</span>
-                    <span className="ai-acc-title">{p.title}</span>
-                    <span className="ai-acc-chevron" aria-hidden="true">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="6 9 12 15 18 9" />
-                      </svg>
-                    </span>
-                  </span>
-                  <span className="ai-acc-body">
-                    <span className="ai-acc-body-inner">{p.description}</span>
-                  </span>
-                </button>
-              );
-            })}
-          </div>
+              <span className="pilier-perf-icon" aria-hidden="true">{icon}</span>
+              <h3>{title}</h3>
+              <p className="pilier-perf-impact">{impact}</p>
+              <p className="pilier-perf-body">{body}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>

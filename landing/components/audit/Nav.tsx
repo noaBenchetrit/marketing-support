@@ -23,7 +23,7 @@ export default function Nav() {
         </span>
         <button
           type="button"
-          className="btn btn-accent"
+          className="btn btn-accent btn-nav-cta"
           onClick={() => open({ source: 'nav' })}
         >
           Réserver ma démo
