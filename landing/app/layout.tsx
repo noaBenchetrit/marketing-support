@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -31,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="fr" data-scroll-behavior="smooth" className={`${inter.variable} ${playfair.variable}`}>
       <body suppressHydrationWarning>{children}</body>
+      <GoogleAnalytics gaId="G-078QZ3TEZL" />
     </html>
   );
 }
