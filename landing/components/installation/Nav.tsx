@@ -22,15 +22,12 @@ export default function Nav() {
           <span>beTool</span>
         </a>
         <div className="nav-links">
-          <a href="#bento">Marges &amp; Factures</a>
-          <a href="#planning">Planning Terrain</a>
-          <a href="#niche">Dossiers RGE</a>
           <button
             type="button"
-            className="btn btn-primary"
-            onClick={() => open({ source: 'nav', ctaLabel: 'Réserver ma démo' })}
+            className="btn btn-accent"
+            onClick={() => open({ source: 'nav', ctaLabel: 'Programmer ma démo' })}
           >
-            Réserver ma démo
+            Programmer ma démo
           </button>
         </div>
       </div>

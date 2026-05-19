@@ -23,8 +23,8 @@ export default function Hero() {
       const y = e.clientY - rect.top;
       const cx = rect.width / 2;
       const cy = rect.height / 2;
-      const rotY = ((x - cx) / cx) * 7;
-      const rotX = -((y - cy) / cy) * 5;
+      const rotY = ((x - cx) / cx) * 6;
+      const rotX = -((y - cy) / cy) * 4;
       card.style.transform = `perspective(1200px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
     };
     const onLeave = () => {
@@ -42,59 +42,29 @@ export default function Hero() {
     };
   }, []);
 
-  useEffect(() => {
-    const visual = visualRef.current;
-    const card = cardRef.current;
-    if (!visual || !card) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    let raf = 0;
-
-    const update = () => {
-      raf = 0;
-      const rect = visual.getBoundingClientRect();
-      const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-      const t = Math.max(-1, Math.min(1, center / window.innerHeight));
-      card.style.translate = `0 ${t * -18}px`;
-    };
-
-    const onScroll = () => {
-      if (raf) return;
-      raf = requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-      if (raf) cancelAnimationFrame(raf);
-    };
-  }, []);
-
   return (
     <section className="hero">
       <div className="container">
         <div className="hero-grid">
           <div className="hero-text">
-            <span className="eyebrow reveal">L&apos;allié des artisans et entreprises du bâtiment en 2026</span>
+            <span className="eyebrow reveal">L&apos;outil tout-en-un des entreprises du bâtiment</span>
             <h1 className="reveal delay-1">
-              Le chantier commence au clic.
+              Arrêtez de perdre vos marges.
               <br />
-              Le profit se joue à la <span className="accent">signature</span>.
+              Centralisez toute votre activité sur une <span className="accent">seule plateforme</span>.
             </h1>
             <p className="sub-h1 reveal delay-2">
-              Ne laissez plus vos marges s&apos;évaporer. Centralisez vos demandes, automatisez vos relances de
-              devis et encaissez vos factures plus vite.
+              Fini l&apos;éparpillement entre Excel, les papiers et les SMS. Betool devient votre unique
+              source de vérité pour automatiser vos relances de devis, piloter vos plannings et
+              verrouiller votre rentabilité.
             </p>
             <div className="cta-row reveal delay-3">
               <button
                 type="button"
                 className="btn btn-accent btn-large"
-                onClick={() => open({ source: 'hero' })}
+                onClick={() => open({ source: 'hero', ctaLabel: 'Réserver ma démo' })}
               >
-                Réserver ma démo Install
+                Réserver ma démo
                 <svg
                   className="arrow"
                   width="18"
@@ -109,62 +79,78 @@ export default function Hero() {
               </button>
             </div>
             <p className="cta-note reveal delay-3">
-              Mise en route en 15 min. Sans carte bancaire.
+              <span aria-hidden="true">⚡️</span> Test gratuit — Sans carte bancaire — Configuration en 5 minutes
             </p>
           </div>
 
           <div className="hero-visual reveal delay-2" ref={visualRef}>
-            <div className="dashboard-card" ref={cardRef}>
-              <div className="dashboard-header">
+            <div className="planning-card" ref={cardRef}>
+              <div className="planning-card-header">
                 <span className="dot r"></span>
                 <span className="dot y"></span>
                 <span className="dot g"></span>
+                <span className="planning-card-title">Planning équipes · Semaine 21</span>
               </div>
-              <div className="dashboard-body">
-                <div className="dash-title">Chantier #2026-014 · Pompe à chaleur</div>
-                <div className="dash-sub">Famille Lefèvre · Toulouse · MaPrimeRénov&apos; validée</div>
+              <div className="planning-card-body">
+                <div className="planning-days">
+                  <span>Lun 18</span>
+                  <span>Mar 19</span>
+                  <span>Mer 20</span>
+                  <span>Jeu 21</span>
+                  <span>Ven 22</span>
+                </div>
 
-                <div className="dash-stats">
-                  <div className="stat-card stat-card--cash">
-                    <div className="stat-num">12 450 €</div>
-                    <div className="stat-lbl">Devis en attente</div>
+                <div className="planning-row">
+                  <div className="planning-team">
+                    <span className="planning-avatar a">JM</span>
+                    <span className="planning-name">Jean-Marc</span>
                   </div>
-                  <div className="stat-card">
-                    <div className="stat-num">4 320 €</div>
-                    <div className="stat-lbl">Prime validée</div>
-                  </div>
-                  <div className="stat-card">
-                    <div className="stat-num">J + 0</div>
-                    <div className="stat-lbl">Encaissement</div>
+                  <div className="planning-track">
+                    <span className="planning-block blue" style={{ gridColumn: '1 / span 2' }}>PAC · Lefèvre</span>
+                    <span className="planning-block green" style={{ gridColumn: '3 / span 1' }}>Visite</span>
+                    <span className="planning-block orange" style={{ gridColumn: '4 / span 2' }}>Isolation · Bertrand</span>
                   </div>
                 </div>
 
-                <div className="dash-rows">
-                  <div className="dash-row">
-                    <div className="left">
-                      <div className="avatar"></div>Devis signé
-                    </div>
-                    <span className="pill">eIDAS</span>
+                <div className="planning-row">
+                  <div className="planning-team">
+                    <span className="planning-avatar b">SA</span>
+                    <span className="planning-name">Sami</span>
                   </div>
-                  <div className="dash-row">
-                    <div className="left">
-                      <div className="avatar b"></div>AFT validée
-                    </div>
-                    <span className="pill">Conforme</span>
+                  <div className="planning-track">
+                    <span className="planning-block teal" style={{ gridColumn: '1 / span 1' }}>SAV</span>
+                    <span className="planning-block blue" style={{ gridColumn: '2 / span 3' }}>Photovoltaïque · Marais</span>
+                    <span className="planning-block green" style={{ gridColumn: '5 / span 1' }}>Devis</span>
                   </div>
-                  <div className="dash-row">
-                    <div className="left">
-                      <div className="avatar o"></div>Devis relancé
-                    </div>
-                    <span className="pill">Auto J+3</span>
+                </div>
+
+                <div className="planning-row">
+                  <div className="planning-team">
+                    <span className="planning-avatar c">RO</span>
+                    <span className="planning-name">Romain</span>
+                  </div>
+                  <div className="planning-track">
+                    <span className="planning-block green" style={{ gridColumn: '1 / span 1' }}>Visite</span>
+                    <span className="planning-block orange" style={{ gridColumn: '2 / span 2' }}>Pose VMC</span>
+                    <span className="planning-block blue" style={{ gridColumn: '4 / span 2' }}>PAC · Dupuis</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="compliance-badge">
-              <span className="badge-dot"></span>
-              <span className="badge-text">Signature eIDAS Certifiée</span>
+            <div className="planning-phone" aria-hidden="true">
+              <div className="planning-phone-screen">
+                <div className="planning-phone-head">Aujourd&apos;hui · Jean-Marc</div>
+                <div className="planning-phone-row">
+                  <span className="phone-dot blue" /> 09:00 · PAC Lefèvre
+                </div>
+                <div className="planning-phone-row">
+                  <span className="phone-dot green" /> 11:30 · Visite SCI
+                </div>
+                <div className="planning-phone-row">
+                  <span className="phone-dot orange" /> 14:00 · Isolation
+                </div>
+              </div>
             </div>
           </div>
         </div>

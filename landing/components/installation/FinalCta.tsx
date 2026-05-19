@@ -26,15 +26,13 @@ export default function FinalCta() {
       <div className="container">
         <div className="cta-final-grid">
           <div className="reveal">
-            <span className="eyebrow" style={{ background: 'rgba(10, 147, 150, 0.18)', color: '#9FD7D9' }}>
-              Démo gratuite
-            </span>
+            <span className="eyebrow cta-final-eyebrow">Essai gratuit · 14 jours</span>
             <h2>
-              Passez à la <strong>vitesse supérieure</strong>.
+              Passez à la vitesse supérieure. <strong>Centralisez votre entreprise.</strong>
             </h2>
             <p>
-              Rejoignez les installateurs qui sécurisent leurs primes et accélèrent leurs encaissements. Lors
-              de votre démo, on configure ensemble votre premier chantier de bout en bout.
+              Gagnez du temps, optimisez vos plannings et vendez plus grâce aux aides intégrées.
+              Essai 14 jours complet et gratuit, sans engagement.
             </p>
           </div>
 
@@ -49,11 +47,11 @@ export default function FinalCta() {
             phoneLabel={<>Téléphone <small>(pour fixer le créneau)</small></>}
             submitLabel={
               <>
-                Passer à la vitesse supérieure
+                Rappelez-moi
                 <ArrowIcon />
               </>
             }
-            idleNote="Réponse sous 24h ouvrées · Aucun engagement"
+            idleNote="Test gratuit · Sans carte bancaire · Configuration en 5 minutes"
           >
             <label htmlFor="cta-techniciens">Nombre de techniciens terrain</label>
             <select id="cta-techniciens" name="taille" defaultValue="" required>
