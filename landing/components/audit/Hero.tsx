@@ -49,7 +49,7 @@ export default function Hero() {
           <div className="hero-text">
             <span className="hero-positioning reveal" aria-label="Positionnement">
               <span className="hero-positioning-icon" aria-hidden="true">🏷️</span>
-              Le CRM des professionnels de l&apos;audit énergétique et du contrôle
+              Le CRM des professionnels de l&apos;audit et du contrôle
             </span>
             <h1 className="reveal delay-1">
               L&apos;audit énergétique est une science. <span className="accent">beTool</span> est
@@ -57,8 +57,8 @@ export default function Hero() {
             </h1>
             <p className="sub-h1 reveal delay-2">
               Du planning terrain au dépôt, automatisez la logistique de vos inspecteurs, générez
-              vos rapports en un clic et blindez votre conformité (CEE, Audits Réglementaires,
-              MAR). Reprenez le contrôle de vos marges.
+              vos rapports en un clic et blindez votre conformité. Reprenez le contrôle de vos
+              marges.
             </p>
 
             <div className="hero-cta-row reveal delay-3">

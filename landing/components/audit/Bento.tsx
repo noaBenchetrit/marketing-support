@@ -8,7 +8,7 @@ const PILIERS = [
     ),
     title: 'Logistique & Application Terrain',
     impact: 'Finies les tournées chaotiques et les photos perdues.',
-    body: "Planning intelligent sectorisé par zone. Application mobile 100 % hors-ligne qui guide l'auditeur pas à pas. Preuves médias (plaques signalétiques, isolants) horodatées au clic.",
+    body: "Planning intelligent sectorisé par zone. Application mobile 100 % hors-ligne qui guide l'auditeur pas à pas. Preuves médias horodatées au clic.",
   },
   {
     icon: (
@@ -21,7 +21,7 @@ const PILIERS = [
     ),
     title: 'Usine Documentaire & Signature',
     impact: 'Saisissez sur le terrain, vos rapports sont déjà prêts.',
-    body: "Zéro double saisie. Les données terrain génèrent au clic vos Audits Réglementaires, fiches CEE (Résidentiel / Tertiaire / Industrie) et Attestations sur l'Honneur. Signature électronique sécurisée directement sur tablette.",
+    body: "Génération au clic de vos audits réglementaires, fiches CEE et attestations sur l'honneur à partir de vos données terrain. Signature électronique sécurisée directement sur tablette.",
   },
   {
     icon: (
@@ -32,13 +32,7 @@ const PILIERS = [
     ),
     title: 'Le Bouclier Anti-Redressement IA',
     impact: 'Sécurisez vos marges avant le contrôle COFRAC.',
-    body: (
-      <>
-        Notre IA scanne et croise en temps réel vos devis, factures, fiches EPREL et notes de
-        dimensionnement. Le système détecte les incohérences de surfaces ou d&apos;efficience
-        énergétique (η<sub>s</sub>) et bloque le dossier avant le dépôt en cas d&apos;anomalie.
-      </>
-    ),
+    body: "Analyses de conformité au clic par notre IA expérimentée et entraînée pour détecter les incohérences au sein de vos dossiers.",
   },
 ];
 
