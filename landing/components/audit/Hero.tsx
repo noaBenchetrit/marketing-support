@@ -1,12 +1,49 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDemoModal } from './DemoModalProvider';
+
+type ScanPhase = 'before' | 'scanning' | 'error';
+
+const PHASE_DURATIONS: Record<ScanPhase, number> = {
+  before: 3000,
+  scanning: 1800,
+  error: 4500,
+};
+const NEXT_PHASE: Record<ScanPhase, ScanPhase> = {
+  before: 'scanning',
+  scanning: 'error',
+  error: 'before',
+};
 
 export default function Hero() {
   const visualRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const { open } = useDemoModal();
+  const [phase, setPhase] = useState<ScanPhase>('before');
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const scheduleNext = useCallback((current: ScanPhase) => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      const next = NEXT_PHASE[current];
+      setPhase(next);
+      scheduleNext(next);
+    }, PHASE_DURATIONS[current]);
+  }, []);
+
+  useEffect(() => {
+    scheduleNext('before');
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [scheduleNext]);
+
+  const triggerScan = () => {
+    if (phase !== 'before') return;
+    setPhase('scanning');
+    scheduleNext('scanning');
+  };
 
   useEffect(() => {
     const visual = visualRef.current;
@@ -101,6 +138,53 @@ export default function Hero() {
               </div>
 
               <ul className="audit-dossiers">
+                <li
+                  className={`audit-dossier audit-dossier--demo audit-dossier--${phase}`}
+                  aria-live="polite"
+                >
+                  <div className="audit-dossier-row">
+                    <span className="audit-dossier-id">📋 Dossier #8294</span>
+                    <span className="audit-dossier-type">Audit Réglementaire</span>
+                    {phase === 'before' && (
+                      <span className="audit-pill audit-pill--before">Avant contrôle</span>
+                    )}
+                    {phase === 'scanning' && (
+                      <span className="audit-pill audit-pill--scanning">Analyse IA…</span>
+                    )}
+                    {phase === 'error' && (
+                      <span className="audit-pill audit-pill--error">Erreur</span>
+                    )}
+                  </div>
+
+                  {phase === 'before' && (
+                    <button
+                      type="button"
+                      className="audit-scan-inline"
+                      onClick={triggerScan}
+                    >
+                      <span className="audit-scan-inline-icon" aria-hidden="true">🔍</span>
+                      Contrôler le dossier
+                    </button>
+                  )}
+
+                  {phase === 'scanning' && (
+                    <div className="audit-scan-progress">
+                      <span className="audit-scan-progress-icon" aria-hidden="true">🤖</span>
+                      <span>Analyse IA en cours…</span>
+                      <span className="audit-scan-progress-bar">
+                        <span className="audit-scan-progress-fill"></span>
+                      </span>
+                    </div>
+                  )}
+
+                  {phase === 'error' && (
+                    <div className="audit-dossier-meta audit-dossier-meta--error">
+                      <span className="audit-icon-warn" aria-hidden="true">⚠️</span>
+                      <strong>Erreur dossier :</strong>&nbsp;devis non signé
+                    </div>
+                  )}
+                </li>
+
                 <li className="audit-dossier audit-dossier--ok">
                   <div className="audit-dossier-row">
                     <span className="audit-dossier-id">📋 Dossier #8291</span>

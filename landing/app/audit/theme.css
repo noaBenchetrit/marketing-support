@@ -3692,6 +3692,114 @@
     }
     .audit-dossier--warn { background: #FFFBEB; border-color: #FDE68A; }
     .audit-dossier--ready { background: #ECFDF5; border-color: #A7F3D0; }
+
+    /* Demo cycle dossier */
+    .audit-dossier--demo {
+      transition: background 0.4s ease, border-color 0.4s ease;
+    }
+    .audit-dossier--before { background: #F9FAFB; border-color: var(--border); }
+    .audit-dossier--scanning {
+      background: #EFF6FF;
+      border-color: #BFDBFE;
+      box-shadow: 0 0 0 4px rgba(0, 82, 255, 0.06);
+    }
+    .audit-dossier--error {
+      background: #FEF2F2;
+      border-color: #FECACA;
+      animation: audit-error-shake 0.5s ease-out;
+    }
+    @keyframes audit-error-shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-4px); }
+      40% { transform: translateX(4px); }
+      60% { transform: translateX(-2px); }
+      80% { transform: translateX(2px); }
+    }
+
+    .audit-pill--before { background: #E5E7EB; color: #4B5563; }
+    .audit-pill--scanning {
+      background: #DBEAFE;
+      color: #1D4ED8;
+      animation: audit-pill-pulse 1.4s ease-in-out infinite;
+    }
+    .audit-pill--error { background: #FEE2E2; color: #B91C1C; }
+    @keyframes audit-pill-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.55; }
+    }
+
+    .audit-scan-inline {
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      box-shadow: 0 4px 12px rgba(21, 55, 94, 0.22);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .audit-scan-inline:hover {
+      background: var(--accent-deep);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(21, 55, 94, 0.32);
+    }
+    .audit-scan-inline-icon { font-size: 0.9rem; line-height: 1; }
+
+    .audit-scan-progress {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #1D4ED8;
+    }
+    .audit-scan-progress-icon {
+      font-size: 0.95rem;
+      line-height: 1;
+      animation: audit-scan-bob 1.2s ease-in-out infinite;
+    }
+    @keyframes audit-scan-bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    .audit-scan-progress-bar {
+      flex: 1;
+      height: 4px;
+      background: rgba(59, 130, 246, 0.18);
+      border-radius: 100px;
+      overflow: hidden;
+      position: relative;
+      min-width: 60px;
+    }
+    .audit-scan-progress-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 40%;
+      background: linear-gradient(90deg, #3B82F6, #60A5FA);
+      border-radius: 100px;
+      animation: audit-scan-slide 1.6s ease-in-out infinite;
+    }
+    @keyframes audit-scan-slide {
+      0% { left: -40%; }
+      100% { left: 100%; }
+    }
+
+    .audit-dossier-meta--error { color: #B91C1C; }
+    .audit-dossier-meta--error strong { color: #991B1B; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .audit-dossier--error { animation: none; }
+      .audit-pill--scanning { animation: none; }
+      .audit-scan-progress-icon { animation: none; }
+      .audit-scan-progress-fill { animation: none; width: 60%; }
+    }
     .audit-dossier-row {
       display: flex;
       align-items: center;
