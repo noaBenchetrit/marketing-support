@@ -427,7 +427,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: clamp(20px, 3vw, 32px);
-      align-items: start;
+      align-items: stretch;
     }
     .pillar-stack {
       display: flex;
@@ -435,6 +435,7 @@
       gap: clamp(20px, 3vw, 32px);
       position: relative;
     }
+    .pillar-stack > .pillar-card { flex: 1 1 0; }
     .pillar-card {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.10);
