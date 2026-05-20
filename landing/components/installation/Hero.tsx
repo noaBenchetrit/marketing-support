@@ -166,6 +166,10 @@ export default function Hero() {
                   </span>
                 </div>
                 <div className="cal-toolbar-right">
+                  <span className="cal-live" aria-label="Synchronisation en direct">
+                    <span className="cal-live-dot" />
+                    Live
+                  </span>
                   <span className="cal-pill">Semaine</span>
                   <span className="cal-add" aria-hidden="true">+</span>
                 </div>
@@ -179,7 +183,7 @@ export default function Hero() {
                 </div>
 
                 <div className="cal-week">
-                  {DAYS.map((day) => (
+                  {DAYS.map((day, dayIdx) => (
                     <div key={day.label} className={`cal-day${day.today ? ' is-today' : ''}`}>
                       <div className="cal-day-head">
                         <span className="cal-day-label">{day.label}</span>
@@ -189,14 +193,20 @@ export default function Hero() {
                         {HOURS.slice(0, -1).map((h) => (
                           <span key={h} className="cal-day-row" />
                         ))}
-                        {day.events.map((ev) => {
+                        {day.today && (
+                          <span className="cal-now" style={{ top: `${pct(11.25)}%` }} aria-hidden="true">
+                            <span className="cal-now-dot" />
+                          </span>
+                        )}
+                        {day.events.map((ev, evIdx) => {
                           const top = pct(ev.start);
                           const height = pct(ev.end) - pct(ev.start);
+                          const delay = `${dayIdx * 0.06 + evIdx * 0.05}s`;
                           return (
                             <span
                               key={`${day.label}-${ev.label}`}
                               className={`cal-event ${ev.color}`}
-                              style={{ top: `${top}%`, height: `${height}%` }}
+                              style={{ top: `${top}%`, height: `${height}%`, animationDelay: delay }}
                             >
                               {ev.label}
                             </span>
