@@ -306,7 +306,7 @@
     .planning-phone {
       position: absolute;
       right: -12px;
-      bottom: -90px;
+      bottom: -150px;
       width: clamp(140px, 16vw, 188px);
       background: #0F172A;
       padding: 8px;
@@ -356,6 +356,13 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: clamp(20px, 3vw, 32px);
+      align-items: start;
+    }
+    .pillar-stack {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(20px, 3vw, 32px);
+      position: relative;
     }
     .pillar-card {
       background: rgba(255, 255, 255, 0.04);
@@ -448,6 +455,122 @@
       font-size: clamp(0.88rem, 1vw, 0.96rem);
       line-height: 1.55;
     }
+
+    /* AI Compliance card — nested under right pillar */
+    .ai-compliance {
+      position: relative;
+      margin-left: clamp(12px, 2.4vw, 28px);
+      margin-top: clamp(-24px, -3vw, -16px);
+      background: linear-gradient(135deg, rgba(255, 107, 0, 0.10), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 107, 0, 0.30);
+      border-radius: var(--radius);
+      padding: clamp(18px, 2.4vw, 24px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .ai-compliance::before {
+      content: '';
+      position: absolute;
+      top: clamp(-10px, -1.2vw, -8px);
+      left: clamp(20px, 3vw, 32px);
+      width: 14px;
+      height: 14px;
+      background: var(--bg-dark);
+      border-left: 1px solid rgba(255, 107, 0, 0.30);
+      border-top: 1px solid rgba(255, 107, 0, 0.30);
+      transform: rotate(45deg);
+    }
+    .ai-compliance:hover { transform: translateY(-2px); border-color: rgba(255, 107, 0, 0.50); }
+    .ai-compliance-head {
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 1.4vw, 14px);
+      flex-wrap: wrap;
+    }
+    .ai-compliance-icon {
+      width: clamp(36px, 4vw, 42px);
+      height: clamp(36px, 4vw, 42px);
+      border-radius: 12px;
+      background: rgba(255, 107, 0, 0.18);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .ai-compliance-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+      min-width: 0;
+    }
+    .ai-compliance-eyebrow {
+      font-size: clamp(0.6rem, 0.74vw, 0.66rem);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .ai-compliance-title strong {
+      color: #fff;
+      font-weight: 700;
+      font-size: clamp(0.94rem, 1.08vw, 1.02rem);
+    }
+    .ai-compliance-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: clamp(8px, 1.2vw, 10px) clamp(14px, 1.8vw, 18px);
+      background: var(--accent);
+      color: #fff;
+      border-radius: 100px;
+      font-size: clamp(0.78rem, 0.92vw, 0.86rem);
+      font-weight: 700;
+      transition: background 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    .ai-compliance-trigger:hover { background: var(--accent-deep); transform: translateY(-1px); }
+    .ai-compliance-body {
+      margin-top: clamp(14px, 2vw, 18px);
+      padding-top: clamp(14px, 2vw, 18px);
+      border-top: 1px solid rgba(255, 107, 0, 0.22);
+      animation: fadeSlideIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .ai-compliance-body p {
+      color: #E2E8F0;
+      font-size: clamp(0.9rem, 1vw, 0.96rem);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .ai-compliance-scan {
+      position: relative;
+      height: 28px;
+      margin-bottom: clamp(10px, 1.4vw, 14px);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      overflow: hidden;
+    }
+    .ai-scan-line {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 60px;
+      background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.55), transparent);
+      animation: aiScanSweep 1.6s ease-in-out infinite;
+    }
+    @keyframes aiScanSweep {
+      0% { left: -60px; }
+      100% { left: 100%; }
+    }
+    .ai-scan-dot {
+      position: absolute;
+      top: 50%;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+    .ai-scan-dot.blue { left: 18%; background: #0F71F0; }
+    .ai-scan-dot.orange { left: 50%; background: var(--accent); }
+    .ai-scan-dot.green { left: 78%; background: #0A9396; }
 
     /* ============== Section 3 — Proof + FAQ ============== */
     .proof-faq {
@@ -1035,6 +1158,8 @@
       .planning-card { transform: rotate(0); }
       .planning-card:hover { transform: rotate(0); }
       .nav-links a:not(.btn) { display: none; }
+      .ai-compliance { margin-left: 0; margin-top: 0; }
+      .ai-compliance::before { display: none; }
     }
     @media (max-width: 720px) {
       .planning-phone { display: none; }
