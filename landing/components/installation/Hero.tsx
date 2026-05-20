@@ -3,6 +3,71 @@
 import { useEffect, useRef } from 'react';
 import { useDemoModal } from './DemoModalProvider';
 
+type EventColor = 'blue' | 'orange' | 'green' | 'teal' | 'purple';
+
+type Event = {
+  label: string;
+  color: EventColor;
+  start: number;
+  end: number;
+};
+
+const DAY_RANGE_START = 8;
+const DAY_RANGE_END = 18;
+const DAY_RANGE = DAY_RANGE_END - DAY_RANGE_START;
+
+const DAYS: { label: string; date: number; today?: boolean; events: Event[] }[] = [
+  {
+    label: 'LUN',
+    date: 24,
+    events: [
+      { label: 'Lefèvre · PAC', color: 'blue', start: 9, end: 10.5 },
+      { label: 'Pose VMC', color: 'orange', start: 14, end: 16 },
+    ],
+  },
+  {
+    label: 'MAR',
+    date: 25,
+    events: [
+      { label: 'Isolation · Bertrand', color: 'orange', start: 8.5, end: 12 },
+      { label: 'Audit RGE', color: 'purple', start: 14, end: 15 },
+      { label: 'Devis client', color: 'green', start: 16, end: 17 },
+    ],
+  },
+  {
+    label: 'MER',
+    date: 26,
+    today: true,
+    events: [
+      { label: 'SAV chauffage', color: 'teal', start: 9, end: 11 },
+      { label: 'PAC · Marais', color: 'blue', start: 13, end: 16 },
+    ],
+  },
+  {
+    label: 'JEU',
+    date: 27,
+    events: [
+      { label: 'Visite chantier', color: 'green', start: 10, end: 11.5 },
+      { label: 'Photovoltaïque · Dupuis', color: 'blue', start: 14, end: 17 },
+    ],
+  },
+  {
+    label: 'VEN',
+    date: 28,
+    events: [
+      { label: 'Isolation · Roche', color: 'orange', start: 9, end: 12 },
+      { label: 'Signature devis', color: 'green', start: 14, end: 15.5 },
+      { label: 'RDV Anah', color: 'purple', start: 16, end: 17 },
+    ],
+  },
+];
+
+const HOURS = Array.from({ length: DAY_RANGE + 1 }, (_, i) => DAY_RANGE_START + i);
+
+function pct(hour: number) {
+  return ((hour - DAY_RANGE_START) / DAY_RANGE) * 100;
+}
+
 export default function Hero() {
   const visualRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -84,71 +149,77 @@ export default function Hero() {
           </div>
 
           <div className="hero-visual reveal delay-2" ref={visualRef}>
-            <div className="planning-card" ref={cardRef}>
-              <div className="planning-card-header">
-                <span className="dot r"></span>
-                <span className="dot y"></span>
-                <span className="dot g"></span>
-                <span className="planning-card-title">Planning équipes · Semaine 21</span>
+            <div className="cal-card" ref={cardRef}>
+              <div className="cal-toolbar">
+                <div className="cal-toolbar-left">
+                  <span className="dot r"></span>
+                  <span className="dot y"></span>
+                  <span className="dot g"></span>
+                  <span className="cal-month">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="15 18 9 12 15 6" />
+                    </svg>
+                    août 2026
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </span>
+                </div>
+                <div className="cal-toolbar-right">
+                  <span className="cal-pill">Semaine</span>
+                  <span className="cal-add" aria-hidden="true">+</span>
+                </div>
               </div>
-              <div className="planning-card-body">
-                <div className="planning-days">
-                  <span>Lun 18</span>
-                  <span>Mar 19</span>
-                  <span>Mer 20</span>
-                  <span>Jeu 21</span>
-                  <span>Ven 22</span>
+
+              <div className="cal-body">
+                <div className="cal-time-col" aria-hidden="true">
+                  {HOURS.map((h) => (
+                    <span key={h}>{String(h).padStart(2, '0')}h</span>
+                  ))}
                 </div>
 
-                <div className="planning-row">
-                  <div className="planning-team">
-                    <span className="planning-avatar a">JM</span>
-                    <span className="planning-name">Jean-Marc</span>
-                  </div>
-                  <div className="planning-track">
-                    <span className="planning-block blue" style={{ gridColumn: '1 / span 2' }}>PAC · Lefèvre</span>
-                    <span className="planning-block green" style={{ gridColumn: '3 / span 1' }}>Visite</span>
-                    <span className="planning-block orange" style={{ gridColumn: '4 / span 2' }}>Isolation · Bertrand</span>
-                  </div>
-                </div>
-
-                <div className="planning-row">
-                  <div className="planning-team">
-                    <span className="planning-avatar b">SA</span>
-                    <span className="planning-name">Sami</span>
-                  </div>
-                  <div className="planning-track">
-                    <span className="planning-block teal" style={{ gridColumn: '1 / span 1' }}>SAV</span>
-                    <span className="planning-block blue" style={{ gridColumn: '2 / span 3' }}>Photovoltaïque · Marais</span>
-                    <span className="planning-block green" style={{ gridColumn: '5 / span 1' }}>Devis</span>
-                  </div>
-                </div>
-
-                <div className="planning-row">
-                  <div className="planning-team">
-                    <span className="planning-avatar c">RO</span>
-                    <span className="planning-name">Romain</span>
-                  </div>
-                  <div className="planning-track">
-                    <span className="planning-block green" style={{ gridColumn: '1 / span 1' }}>Visite</span>
-                    <span className="planning-block orange" style={{ gridColumn: '2 / span 2' }}>Pose VMC</span>
-                    <span className="planning-block blue" style={{ gridColumn: '4 / span 2' }}>PAC · Dupuis</span>
-                  </div>
+                <div className="cal-week">
+                  {DAYS.map((day) => (
+                    <div key={day.label} className={`cal-day${day.today ? ' is-today' : ''}`}>
+                      <div className="cal-day-head">
+                        <span className="cal-day-label">{day.label}</span>
+                        <span className="cal-day-date">{day.date}</span>
+                      </div>
+                      <div className="cal-day-grid">
+                        {HOURS.slice(0, -1).map((h) => (
+                          <span key={h} className="cal-day-row" />
+                        ))}
+                        {day.events.map((ev) => {
+                          const top = pct(ev.start);
+                          const height = pct(ev.end) - pct(ev.start);
+                          return (
+                            <span
+                              key={`${day.label}-${ev.label}`}
+                              className={`cal-event ${ev.color}`}
+                              style={{ top: `${top}%`, height: `${height}%` }}
+                            >
+                              {ev.label}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
 
             <div className="planning-phone" aria-hidden="true">
               <div className="planning-phone-screen">
-                <div className="planning-phone-head">Aujourd&apos;hui · Jean-Marc</div>
+                <div className="planning-phone-head">Mercredi 26 · Jean-Marc</div>
                 <div className="planning-phone-row">
-                  <span className="phone-dot blue" /> 09:00 · PAC Lefèvre
+                  <span className="phone-dot teal" /> 09:00 · SAV chauffage
                 </div>
                 <div className="planning-phone-row">
-                  <span className="phone-dot green" /> 11:30 · Visite SCI
+                  <span className="phone-dot blue" /> 13:00 · PAC Marais
                 </div>
                 <div className="planning-phone-row">
-                  <span className="phone-dot orange" /> 14:00 · Isolation
+                  <span className="phone-dot green" /> 17:00 · Visite chantier
                 </div>
               </div>
             </div>
