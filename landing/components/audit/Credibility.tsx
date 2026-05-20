@@ -1,4 +1,4 @@
-const BADGES = ['RGE', 'OPQIBI', 'QUALIBAT', 'COFRAC', 'MAR'];
+const BADGES = ['RGE', 'COFRAC', 'MAR'];
 
 export default function Credibility() {
   return (
