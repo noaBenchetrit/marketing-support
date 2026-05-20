@@ -120,8 +120,8 @@ export default function Hero() {
             </h1>
             <p className="sub-h1 reveal delay-2">
               Fini l&apos;éparpillement entre Excel, les papiers et les SMS. Betool devient votre unique
-              source de vérité pour automatiser vos relances de devis, piloter vos plannings et
-              verrouiller votre rentabilité.
+              source de vérité pour générer en un clic vos devis et factures, automatiser vos
+              relances, piloter vos plannings et verrouiller votre rentabilité.
             </p>
             <div className="cta-row reveal delay-3">
               <button
