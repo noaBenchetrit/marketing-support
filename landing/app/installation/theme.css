@@ -19,8 +19,8 @@
       --radius-sm: 10px;
       --radius: 18px;
       --radius-lg: 24px;
-      --max: 1180px;
-      --pad-x: clamp(16px, 5vw, 48px);
+      --max: 1440px;
+      --pad-x: clamp(18px, 4vw, 72px);
       --section-y: clamp(48px, 11vw, 160px);
     }
 
