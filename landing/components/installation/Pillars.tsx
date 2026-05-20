@@ -50,15 +50,15 @@ const PILLAR_RIGHT: Pillar = {
   ),
 };
 
-function PillarCard({ p }: { p: Pillar }) {
+function PillarCard({ p, revealClass }: { p: Pillar; revealClass: string }) {
   return (
-    <article className="pillar-card reveal">
+    <article className={`pillar-card reveal ${revealClass}`}>
       <div className="pillar-icon">{p.icon}</div>
       <h3>{p.title}</h3>
       {p.features ? (
         <ul className="pillar-features">
-          {p.features.map((f) => (
-            <li key={f.title}>
+          {p.features.map((f, i) => (
+            <li key={f.title} className={`reveal delay-${i + 2}`}>
               <strong>{f.title}</strong>
               <span>{f.description}</span>
             </li>
@@ -79,9 +79,9 @@ export default function Pillars() {
     <section className="pillars" id="pillars">
       <div className="container">
         <div className="pillars-grid">
-          <PillarCard p={PILLAR_LEFT} />
+          <PillarCard p={PILLAR_LEFT} revealClass="reveal-left" />
           <div className="pillar-stack">
-            <PillarCard p={PILLAR_RIGHT} />
+            <PillarCard p={PILLAR_RIGHT} revealClass="reveal-right delay-1" />
             <AiComplianceCard />
           </div>
         </div>

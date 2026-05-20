@@ -166,7 +166,7 @@
     /* ============== Section 1 — Hero ============== */
     .hero {
       padding-top: clamp(28px, 5vw, 60px);
-      padding-bottom: clamp(48px, 6vw, 80px);
+      padding-bottom: clamp(140px, 14vw, 220px);
       position: relative;
       overflow: hidden;
     }
@@ -997,16 +997,24 @@
 
     /* ============== Reveal animations ============== */
     /* Default state: visible. Animation is opt-in via <html class="reveal-anim">,
-       set by RevealEffects only on a fresh load without hash. */
+       set by RevealEffects when there is no URL hash. */
     html.reveal-anim .reveal {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+                  transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+      will-change: opacity, transform;
     }
-    html.reveal-anim .reveal.in { opacity: 1; transform: translateY(0); }
-    html.reveal-anim .reveal.delay-1 { transition-delay: 0.1s; }
-    html.reveal-anim .reveal.delay-2 { transition-delay: 0.2s; }
-    html.reveal-anim .reveal.delay-3 { transition-delay: 0.3s; }
+    html.reveal-anim .reveal-left { transform: translateX(-36px); }
+    html.reveal-anim .reveal-right { transform: translateX(36px); }
+    html.reveal-anim .reveal-scale { transform: scale(0.94); }
+    html.reveal-anim .reveal-up-strong { transform: translateY(44px); }
+    html.reveal-anim .reveal.in { opacity: 1; transform: translate(0, 0) scale(1); }
+    html.reveal-anim .reveal.delay-1 { transition-delay: 0.08s; }
+    html.reveal-anim .reveal.delay-2 { transition-delay: 0.16s; }
+    html.reveal-anim .reveal.delay-3 { transition-delay: 0.24s; }
+    html.reveal-anim .reveal.delay-4 { transition-delay: 0.32s; }
+    html.reveal-anim .reveal.delay-5 { transition-delay: 0.40s; }
 
     /* Pulse used by demo modal submit button */
     @keyframes accent-pulse {

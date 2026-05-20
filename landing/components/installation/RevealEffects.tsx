@@ -4,11 +4,7 @@ import { useEffect } from 'react';
 
 export default function RevealEffects() {
   useEffect(() => {
-    const nav = performance.getEntriesByType('navigation')[0] as
-      | PerformanceNavigationTiming
-      | undefined;
-    const isFresh = nav?.type === 'navigate' && !window.location.hash;
-    if (!isFresh) return;
+    if (window.location.hash) return;
 
     const html = document.documentElement;
     html.classList.add('reveal-anim');

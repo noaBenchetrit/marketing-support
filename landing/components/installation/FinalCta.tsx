@@ -25,7 +25,7 @@ export default function FinalCta() {
     <section className="cta-final" id="cta-final">
       <div className="container">
         <div className="cta-final-grid">
-          <div className="reveal">
+          <div className="reveal reveal-left">
             <span className="eyebrow cta-final-eyebrow">Essai gratuit · 14 jours</span>
             <h2>
               Passez à la vitesse supérieure. <strong>Centralisez votre entreprise.</strong>
@@ -36,6 +36,7 @@ export default function FinalCta() {
             </p>
           </div>
 
+          <div className="reveal reveal-right delay-1">
           <DemoForm
             submitDemo={submitDemo}
             source="cta-final"
@@ -61,6 +62,7 @@ export default function FinalCta() {
               <option value="20+">Plus de 20 techniciens</option>
             </select>
           </DemoForm>
+          </div>
         </div>
       </div>
     </section>

@@ -34,7 +34,7 @@ export default function ProofFaq() {
     <section className="proof-faq" id="proof">
       <div className="container">
         <div className="proof-faq-grid">
-          <figure className="proof-quote reveal">
+          <figure className="proof-quote reveal reveal-left">
             <span className="proof-quote-mark" aria-hidden="true">“</span>
             <blockquote>
               Avant Betool, mes infos étaient partout : sur des carnets, dans mes mails, sur Excel.
@@ -51,10 +51,10 @@ export default function ProofFaq() {
             </figcaption>
           </figure>
 
-          <div className="proof-faq-list reveal delay-1">
+          <div className="proof-faq-list reveal reveal-right delay-1">
             <span className="eyebrow">Vos questions, nos réponses</span>
-            {FAQ_ITEMS.map((item) => (
-              <details key={item.q} className="proof-faq-item">
+            {FAQ_ITEMS.map((item, i) => (
+              <details key={item.q} className={`proof-faq-item reveal delay-${i + 2}`}>
                 <summary>
                   <span>{item.q}</span>
                   <span className="proof-faq-chevron" aria-hidden="true">
