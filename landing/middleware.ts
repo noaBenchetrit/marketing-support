@@ -14,7 +14,7 @@ const HOSTNAME_TO_METIER: Record<string, string> = {
   'ia.betool-crm.fr': 'ia',
   'www.ia.betool-crm.fr': 'ia',
   'ia.localhost': 'ia',
-  'betoolia.vercel.app': 'ia',
+  'ia.betoolia.fr': 'ia',
 };
 
 export function middleware(request: NextRequest) {
