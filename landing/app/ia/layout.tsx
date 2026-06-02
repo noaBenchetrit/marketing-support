@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./theme.css";
 
 export const metadata: Metadata = {
@@ -9,10 +10,30 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+const GOOGLE_ADS_ID = "AW-18202785429";
+
 export default function IaLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <>
+      {/* Google tag (gtag.js) — Google Ads, landing IA uniquement */}
+      <Script
+        id="gtag-ads-src"
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+      />
+      <Script id="gtag-ads-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GOOGLE_ADS_ID}');
+        `}
+      </Script>
+      {children}
+    </>
+  );
 }
