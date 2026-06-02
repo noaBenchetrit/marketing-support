@@ -9,7 +9,7 @@ export default function DemoModal() {
       submitDemo={submitDemo}
       headTitle="Dernière étape pour votre accès Performance"
       headSub="15 minutes en visio avec un expert beTool Install. Aucun engagement."
-      defaultCtaLabel="Je valide ma demande de rappel"
+      defaultCtaLabel="Programmer ma démo"
       centreLabel="Entreprise"
       centrePlaceholder="ex. Énergie Pro SARL"
       phoneLabel={<>Numéro de téléphone <small>(pour fixer le créneau ensemble)</small></>}
