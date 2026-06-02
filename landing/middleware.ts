@@ -11,6 +11,10 @@ const HOSTNAME_TO_METIER: Record<string, string> = {
   'entreprise-btp.betool-crm.fr': 'installation',
   'www.entreprise-btp.betool-crm.fr': 'installation',
   'installation.localhost': 'installation',
+  'ia.betool-crm.fr': 'ia',
+  'www.ia.betool-crm.fr': 'ia',
+  'ia.localhost': 'ia',
+  'betoolia.vercel.app': 'ia',
 };
 
 export function middleware(request: NextRequest) {
@@ -30,7 +34,7 @@ export function middleware(request: NextRequest) {
   }
 
   // 3. Sécurité : Empêcher d'accéder aux autres métiers (ex: audit.com/formation -> 404)
-  const otherMetiers = ['audit', 'formation', 'installation'].filter(m => m !== metier);
+  const otherMetiers = ['audit', 'formation', 'installation', 'ia'].filter(m => m !== metier);
   if (otherMetiers.some(m => pathname.startsWith(`/${m}`))) {
     return new NextResponse(null, { status: 404 });
   }
