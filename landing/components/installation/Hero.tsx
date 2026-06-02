@@ -43,13 +43,6 @@ export default function Hero() {
             Programmer ma démo
             <ArrowIcon />
           </button>
-          <button
-            type="button"
-            className="btn btn-outline"
-            onClick={() => open({ source: 'hero-secondary', ctaLabel: 'Planifier ma démo' })}
-          >
-            Planifier ma démo
-          </button>
         </div>
 
         <p className="cta-note reveal delay-3">
