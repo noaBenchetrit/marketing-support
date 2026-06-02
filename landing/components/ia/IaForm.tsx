@@ -5,6 +5,15 @@ import { submitAudit } from '@/app/ia/actions';
 
 type Status = 'idle' | 'success' | 'error';
 
+/** Libellé de conversion Google Ads (Envoi de formulaire de lead). */
+const CONVERSION_SEND_TO = 'AW-18202785429/rfxYCJLSx7ccEJXt4edD';
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 const ArrowIcon = () => (
   <svg
     width="18"
@@ -38,6 +47,12 @@ export default function IaForm() {
         setErrorMessage('');
         setFirstname(result.firstname);
         form.reset();
+        // Conversion Google Ads : déclenchée uniquement sur un lead réellement accepté.
+        window.gtag?.('event', 'conversion', {
+          send_to: CONVERSION_SEND_TO,
+          value: 1.0,
+          currency: 'ILS',
+        });
       } else {
         setStatus('error');
         setErrorMessage(result.error);
