@@ -675,3 +675,76 @@ html.reveal-anim .reveal.delay-4 { transition-delay: 0.4s; }
   .ia-agent { opacity: 1; transform: none; }
   html.reveal-anim .reveal { transition-duration: 0.4s; }
 }
+
+/* ============== Modale d'audit (ouverture au chargement) ============== */
+.ia-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(4, 6, 16, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: ia-modal-fade 0.25s ease-out;
+}
+@keyframes ia-modal-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.ia-modal {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  background: var(--surface-solid);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: clamp(26px, 3vw, 34px) clamp(20px, 2.6vw, 30px) clamp(20px, 2.4vw, 26px);
+  box-shadow: var(--shadow-lg), var(--glow);
+  animation: ia-modal-rise 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes ia-modal-rise {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.ia-modal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--grad);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.ia-modal-close {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  transition: background 0.2s, color 0.2s;
+}
+.ia-modal-close:hover { background: rgba(255, 255, 255, 0.08); color: var(--text); }
+.ia-modal .ia-form-offer { margin-bottom: 14px; }
+.ia-modal-title {
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  line-height: 1.2;
+  margin-bottom: 8px;
+  padding-right: 32px;
+}
+.ia-modal-sub {
+  color: var(--text-muted);
+  font-size: clamp(0.9rem, 1.1vw, 0.98rem);
+  line-height: 1.55;
+  margin-bottom: 22px;
+}
+@media (max-width: 560px) {
+  .ia-modal { padding: 26px 20px 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ia-modal-backdrop, .ia-modal { animation: none !important; }
+}

@@ -5,6 +5,7 @@ import Reassurance from '@/components/ia/Reassurance';
 import AuditForm from '@/components/ia/AuditForm';
 import Footer from '@/components/ia/Footer';
 import RevealEffects from '@/components/ia/RevealEffects';
+import IaModal from '@/components/ia/IaModal';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       </main>
       <Footer />
       <RevealEffects />
+      <IaModal />
     </>
   );
 }
