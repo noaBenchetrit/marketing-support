@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./theme.css";
 import { DemoModalProvider } from "@/components/audit/DemoModalProvider";
 import DemoModal from "@/components/audit/DemoModal";
@@ -11,6 +12,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+const GOOGLE_ADS_ID = "AW-18202785429";
+
 export default function AuditLayout({
   children,
 }: Readonly<{
@@ -18,6 +21,20 @@ export default function AuditLayout({
 }>) {
   return (
     <DemoModalProvider>
+      {/* Google tag (gtag.js) — Google Ads, landing audit */}
+      <Script
+        id="gtag-ads-src"
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+      />
+      <Script id="gtag-ads-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GOOGLE_ADS_ID}');
+        `}
+      </Script>
       {children}
       <DemoModal />
     </DemoModalProvider>
