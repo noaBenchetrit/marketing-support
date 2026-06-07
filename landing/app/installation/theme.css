@@ -1563,6 +1563,11 @@
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
       object-fit: contain;
     }
+    /* Mobile : les 3 logos restent sur une seule ligne quoi qu'il arrive */
+    @media (max-width: 720px) {
+      .trust-badges { flex-wrap: nowrap; gap: 10px; }
+      .trust-badges img { flex: 1 1 0; width: auto; min-width: 0; height: 66px; padding: 9px 10px; }
+    }
 
     /* Témoignages */
     .testimonial-grid {
