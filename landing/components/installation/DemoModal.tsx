@@ -8,7 +8,7 @@ export default function DemoModal() {
     <SharedDemoModal
       submitDemo={submitDemo}
       headTitle="Dernière étape pour votre accès Performance"
-      headSub="15 minutes en visio avec un expert beTool Install. Aucun engagement."
+      headSub="30 minutes en visio avec un expert beTool Install. Aucun engagement."
       defaultCtaLabel="Programmer ma démo"
       centreLabel="Entreprise"
       centrePlaceholder="ex. Énergie Pro SARL"
