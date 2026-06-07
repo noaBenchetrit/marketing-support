@@ -1261,7 +1261,7 @@
 
     .deck-section {
       position: relative;
-      min-height: 82svh;
+      min-height: 100svh;
       display: flex;
       align-items: center;
       overflow: hidden;

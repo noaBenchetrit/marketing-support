@@ -31,7 +31,7 @@ export default function FinalCta() {
           <div className="sec-head">
             <span className="eyebrow reveal reveal-left">Parlons de votre entreprise</span>
             <h2 className="reveal reveal-left delay-1">
-              Échangez avec un expert et voyez ce que <span className="accent">Betool</span> change
+              Échangez avec un expert et voyez ce que <span className="accent">beTool</span> change
               pour vous.
             </h2>
             <p className="sec-lead reveal reveal-left delay-2">
@@ -44,13 +44,13 @@ export default function FinalCta() {
                 <span className="cta-point-ico" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
                 </span>
-                <span><strong>+30% de chiffre d&apos;affaires</strong> en moyenne pour les entreprises équipées d&apos;un CRM.</span>
+                <span><strong>1 jour de gestion gagné par semaine</strong> grâce à l&apos;automatisation de vos tâches.</span>
               </li>
               <li>
                 <span className="cta-point-ico" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
                 </span>
-                <span>Une entreprise <strong>organisée et automatisée</strong>, c&apos;est un dirigeant serein.</span>
+                <span><strong>Déjà +300 professionnels du bâtiment</strong> nous font confiance.</span>
               </li>
               <li>
                 <span className="cta-point-ico" aria-hidden="true">
@@ -76,7 +76,7 @@ export default function FinalCta() {
                   Échanger avec un expert<ArrowIcon />
                 </>
               }
-              idleNote="🛡️ Données sécurisées et conformes RGPD · Configuration rapide en moins de 5 minutes"
+              idleNote="🛡️ Données sécurisées et conformes RGPD · Démo sans engagement"
             >
               <label htmlFor="cta-techniciens">Nombre de techniciens terrain</label>
               <select id="cta-techniciens" name="taille" defaultValue="" required>

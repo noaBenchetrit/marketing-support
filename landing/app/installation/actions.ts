@@ -5,7 +5,7 @@ import { z } from 'zod';
 const CRM_LEAD_ENDPOINT = 'https://login.crm-energie.fr/crm/leadManagement/v2';
 const CRM_BUID = '310';
 const CRM_KEY = '7B553E123432A6993D3431271EFD3';
-const CRM_GROUP_CLIENT_ID = '45';
+const CRM_GROUP_CLIENT_ID = '715';
 const CRM_TIMEOUT_MS = 10_000;
 
 const DemoFormSchema = z.object({

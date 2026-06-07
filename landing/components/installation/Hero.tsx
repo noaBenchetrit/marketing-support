@@ -46,7 +46,7 @@ export default function Hero() {
         </div>
 
         <p className="cta-note reveal delay-3">
-          <span aria-hidden="true">⚡️</span> Test gratuit · Sans carte bancaire · Configuration en 5 minutes
+          <span aria-hidden="true">⚡️</span> Démo offerte de 30 min · Sans engagement · Déjà +300 professionnels du bâtiment
         </p>
       </div>
 
