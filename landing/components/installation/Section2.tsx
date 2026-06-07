@@ -40,7 +40,10 @@ export default function Section2() {
       <div className="container">
         <div className="sec-split">
           <div className="sec-head">
-            <span className="eyebrow reveal reveal-left">02 — Planning intelligent</span>
+            <span className="sec-eyebrow reveal reveal-left">
+              <span className="sec-num">02</span>
+              <span className="eyebrow">Planning intelligent</span>
+            </span>
             <h2 className="reveal reveal-left delay-1">
               Maximisez le temps de vos équipes avec la planification prédictive.
             </h2>

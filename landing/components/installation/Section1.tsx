@@ -63,7 +63,10 @@ export default function Section1() {
       <div className="container">
         <div className="sec-split">
           <div className="sec-head">
-            <span className="eyebrow reveal reveal-left">01 — Performance commerciale</span>
+            <span className="sec-eyebrow reveal reveal-left">
+              <span className="sec-num">01</span>
+              <span className="eyebrow">Performance commerciale</span>
+            </span>
             <h2 className="reveal reveal-left delay-1">
               Centralisez vos leads et pilotez vos performances commerciales.
             </h2>

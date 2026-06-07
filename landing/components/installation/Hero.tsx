@@ -19,20 +19,20 @@ export default function Hero() {
       <div className="container">
         <span className="eyebrow reveal">CRM nouvelle génération · Rénovation énergétique</span>
         <h1 className="reveal delay-1">
-          Le CRM intelligent qui automatise vos dossiers, de la capture du lead jusqu&apos;à la{' '}
-          <span className="accent">conformité CEE &amp; MPR</span>.
+          Captez vos leads.<br />
+          Planifiez vos poses.<br />
+          <span className="accent">Sécurisez vos primes.</span>
         </h1>
         <p className="sec-lead reveal delay-2">
-          Pilotez vos commerciaux, optimisez vos plannings par IA et sécurisez 100% de vos primes
-          sans effort administratif.
+          Le CRM intelligent qui pilote vos commerciaux, vos plannings et vos primes CEE &amp;
+          MaPrimeRénov&apos;.
         </p>
 
-        <div className="hero-chips reveal delay-2" aria-hidden="true">
-          <span className="hero-chip">Leads &amp; commerciaux</span>
-          <span className="hero-chip">Planning IA</span>
-          <span className="hero-chip">Primes CEE &amp; MaPrimeRénov&apos;</span>
-          <span className="hero-chip">Conformité 0 rejet</span>
-        </div>
+        <nav className="hero-nav reveal delay-2" aria-label="Aller à une section">
+          <a href="#sec-1"><span className="hero-nav-num">01</span> Performance commerciale</a>
+          <a href="#sec-2"><span className="hero-nav-num">02</span> Planning intelligent</a>
+          <a href="#sec-3"><span className="hero-nav-num">03</span> Conformité &amp; primes</a>
+        </nav>
 
         <div className="sec-cta reveal delay-3">
           <button

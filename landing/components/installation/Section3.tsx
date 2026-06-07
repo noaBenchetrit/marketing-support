@@ -41,14 +41,30 @@ export default function Section3() {
       <div className="container">
         <div className="sec-split">
           <div className="sec-head">
-            <span className="eyebrow reveal reveal-left">03 — Gestion administrative</span>
+            <span className="sec-eyebrow reveal reveal-left">
+              <span className="sec-num">03</span>
+              <span className="eyebrow">Conformité &amp; dossiers</span>
+            </span>
             <h2 className="reveal reveal-left delay-1">
-              Zéro papier, zéro stress : la gestion de dossiers nouvelle génération.
+              Vos dossiers CEE &amp; MaPrimeRénov&apos; validés par l&apos;IA.{' '}
+              <span className="accent">Zéro rejet.</span>
             </h2>
             <p className="sec-lead reveal reveal-left delay-2">
-              Profitez d&apos;une gestion collaborative optimale pour une administration fluide,
-              transparente et 100% sûre de tous vos dossiers.
+              Notre IA scanne chaque pièce justificative et détecte les anomalies avant l&apos;envoi,
+              chez tous les obligés, délégataires et mandataires CEE.
             </p>
+
+            <div className="stat-row reveal reveal-left delay-2">
+              <div className="stat reveal stat-pop delay-2">
+                <span className="stat-num">0%</span>
+                <span className="stat-label">de rejet de vos dossiers</span>
+              </div>
+              <div className="stat reveal stat-pop delay-3">
+                <span className="stat-num">100%</span>
+                <span className="stat-label">de vos primes sécurisées</span>
+              </div>
+            </div>
+
             <div className="sec-cta reveal reveal-left delay-3">
               <button
                 type="button"

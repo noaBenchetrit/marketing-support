@@ -19,7 +19,7 @@ const ArrowIcon = () => (
 );
 
 export default function FinalCta() {
-  const { open, prefilledEmail, emailWasPrefilled } = useDemoModal();
+  const { prefilledEmail, emailWasPrefilled } = useDemoModal();
 
   return (
     <section id="sec-form" className="deck-section is-dark form-deck">
@@ -29,23 +29,36 @@ export default function FinalCta() {
       <div className="container">
         <div className="sec-split">
           <div className="sec-head">
-            <span className="eyebrow reveal reveal-left">Accès personnalisé</span>
+            <span className="eyebrow reveal reveal-left">Parlons de votre entreprise</span>
             <h2 className="reveal reveal-left delay-1">
-              Demandez votre accès personnalisé à <span className="accent">Betool CRM</span>
+              Échangez avec un expert et voyez ce que <span className="accent">Betool</span> change
+              pour vous.
             </h2>
             <p className="sec-lead reveal reveal-left delay-2">
-              Configurez vos dossiers CEE &amp; MaPrimeRénov&apos;, vos plannings et vos équipes en
-              quelques minutes. Un expert vous accompagne pour démarrer.
+              30 minutes pour comprendre vos enjeux et vous montrer concrètement comment on peut vous
+              aider. Sans engagement.
             </p>
-            <div className="sec-cta reveal reveal-left delay-3">
-              <button
-                type="button"
-                className="btn btn-outline-light"
-                onClick={() => open({ source: 'sec-form-secondary', ctaLabel: 'Planifier ma démo' })}
-              >
-                Planifier ma démo
-              </button>
-            </div>
+
+            <ul className="cta-points reveal reveal-left delay-3">
+              <li>
+                <span className="cta-point-ico" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                </span>
+                <span><strong>+30% de chiffre d&apos;affaires</strong> en moyenne pour les entreprises équipées d&apos;un CRM.</span>
+              </li>
+              <li>
+                <span className="cta-point-ico" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                </span>
+                <span>Une entreprise <strong>organisée et automatisée</strong>, c&apos;est un dirigeant serein.</span>
+              </li>
+              <li>
+                <span className="cta-point-ico" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                </span>
+                <span><strong>Plus de 10 ans d&apos;expertise</strong> au service de votre métier.</span>
+              </li>
+            </ul>
           </div>
 
           <div className="reveal reveal-right delay-1">
@@ -60,7 +73,7 @@ export default function FinalCta() {
               phoneLabel={<>Téléphone <small>(pour fixer le créneau)</small></>}
               submitLabel={
                 <>
-                  Programmer ma démo<ArrowIcon />
+                  Échanger avec un expert<ArrowIcon />
                 </>
               }
               idleNote="🛡️ Données sécurisées et conformes RGPD · Configuration rapide en moins de 5 minutes"

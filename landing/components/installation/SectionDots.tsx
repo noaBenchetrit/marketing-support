@@ -6,9 +6,8 @@ const SECTIONS = [
   { id: 'sec-hero', label: 'Accueil' },
   { id: 'sec-1', label: 'Performance commerciale' },
   { id: 'sec-2', label: 'Planning intelligent' },
-  { id: 'sec-3', label: 'Gestion administrative' },
-  { id: 'sec-4', label: 'Conformité absolue' },
-  { id: 'sec-form', label: 'Demander un accès' },
+  { id: 'sec-3', label: 'Conformité & dossiers' },
+  { id: 'sec-form', label: 'Parler à un expert' },
 ];
 
 export default function SectionDots() {
