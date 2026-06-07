@@ -70,6 +70,7 @@ export default function FinalCta() {
               showEmailHint={emailWasPrefilled}
               centreLabel="Entreprise"
               centrePlaceholder="ex. Énergie Pro SARL"
+              centreRequired={false}
               phoneLabel={<>Téléphone <small>(pour fixer le créneau)</small></>}
               submitLabel={
                 <>
@@ -78,8 +79,8 @@ export default function FinalCta() {
               }
               idleNote="🛡️ Données sécurisées et conformes RGPD · Démo sans engagement"
             >
-              <label htmlFor="cta-techniciens">Nombre de techniciens terrain</label>
-              <select id="cta-techniciens" name="taille" defaultValue="" required>
+              <label htmlFor="cta-techniciens">Nombre de techniciens terrain <small>(optionnel)</small></label>
+              <select id="cta-techniciens" name="taille" defaultValue="">
                 <option value="">Sélectionner…</option>
                 <option value="1-5">1 à 5 techniciens</option>
                 <option value="5-20">5 à 20 techniciens</option>

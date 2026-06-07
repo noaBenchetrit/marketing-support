@@ -25,9 +25,9 @@ export default function Nav() {
           <button
             type="button"
             className="btn btn-accent"
-            onClick={() => open({ source: 'nav', ctaLabel: 'Programmer ma démo' })}
+            onClick={() => open({ source: 'nav', ctaLabel: 'Obtenir ma démo offerte' })}
           >
-            Programmer ma démo
+            Obtenir ma démo offerte
           </button>
         </div>
       </div>

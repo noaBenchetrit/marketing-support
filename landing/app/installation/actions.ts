@@ -10,7 +10,7 @@ const CRM_TIMEOUT_MS = 10_000;
 
 const DemoFormSchema = z.object({
   fullname: z.string().trim().min(2, 'Nom et prénom requis').max(120),
-  centre: z.string().trim().min(2, 'Nom du centre requis').max(120),
+  centre: z.string().trim().max(120).optional(),
   email: z.string().trim().email('Email invalide').max(200),
   phone: z
     .string()
@@ -103,7 +103,7 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
       receivedAt: new Date().toISOString(),
     });
 
-    return { ok: true, firstname, centre };
+    return { ok: true, firstname, centre: centre ?? '' };
   } catch (err) {
     console.error('[submitDemo] Échec de l\'appel CRM', {
       error: err instanceof Error ? { name: err.name, message: err.message } : err,

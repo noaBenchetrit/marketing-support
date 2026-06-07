@@ -13,6 +13,8 @@ type Props = {
 
   centreLabel: string;
   centrePlaceholder: string;
+  /** Rend le champ "centre/entreprise" facultatif (défaut : requis). */
+  centreRequired?: boolean;
   emailPlaceholder?: string;
   phoneLabel?: ReactNode;
 
@@ -30,6 +32,7 @@ export default function DemoModal({
   defaultCtaLabel,
   centreLabel,
   centrePlaceholder,
+  centreRequired = true,
   emailPlaceholder,
   phoneLabel,
   onSuccess,
@@ -142,6 +145,7 @@ export default function DemoModal({
               showEmailHint={emailWasPrefilled}
               centreLabel={centreLabel}
               centrePlaceholder={centrePlaceholder}
+              centreRequired={centreRequired}
               emailPlaceholder={emailPlaceholder}
               phoneLabel={phoneLabel}
               submitLabel={ctaLabel ?? defaultCtaLabel}

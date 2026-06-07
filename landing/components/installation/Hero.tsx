@@ -38,9 +38,9 @@ export default function Hero() {
           <button
             type="button"
             className="btn btn-accent btn-large"
-            onClick={() => open({ source: 'hero', ctaLabel: 'Programmer ma démo' })}
+            onClick={() => open({ source: 'hero', ctaLabel: 'Obtenir ma démo offerte' })}
           >
-            Programmer ma démo
+            Obtenir ma démo offerte
             <ArrowIcon />
           </button>
         </div>

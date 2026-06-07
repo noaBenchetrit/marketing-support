@@ -55,9 +55,9 @@ export default function Section2() {
               <button
                 type="button"
                 className="btn btn-outline"
-                onClick={() => open({ source: 'sec-2', ctaLabel: 'Planifier ma démo' })}
+                onClick={() => open({ source: 'sec-2', ctaLabel: 'Obtenir ma démo offerte' })}
               >
-                Planifier ma démo
+                Obtenir ma démo offerte
               </button>
             </div>
           </div>

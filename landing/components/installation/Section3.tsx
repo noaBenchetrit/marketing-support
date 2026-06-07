@@ -65,13 +65,19 @@ export default function Section3() {
               </div>
             </div>
 
+            <div className="trust-badges reveal reveal-left delay-3" aria-label="Dispositifs et conformité">
+              <img src="/logos/cee.jpeg" alt="Certificats d'économies d'énergie (CEE)" />
+              <img src="/logos/maprimerenov.png" alt="MaPrimeRénov'" />
+              <img src="/logos/rgpd.jpg" alt="Conforme RGPD" />
+            </div>
+
             <div className="sec-cta reveal reveal-left delay-3">
               <button
                 type="button"
                 className="btn btn-accent btn-large"
-                onClick={() => open({ source: 'sec-3', ctaLabel: 'Programmer ma démo' })}
+                onClick={() => open({ source: 'sec-3', ctaLabel: 'Obtenir ma démo offerte' })}
               >
-                Programmer ma démo
+                Obtenir ma démo offerte
                 <svg className="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M13 5l7 7-7 7" />
                 </svg>

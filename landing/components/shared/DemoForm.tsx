@@ -26,6 +26,8 @@ type Props = {
 
   centreLabel: string;
   centrePlaceholder: string;
+  /** Rend le champ "centre/entreprise" facultatif (défaut : requis). */
+  centreRequired?: boolean;
   emailPlaceholder?: string;
   phoneLabel?: ReactNode;
 
@@ -56,6 +58,7 @@ export default function DemoForm({
   showEmailHint = false,
   centreLabel,
   centrePlaceholder,
+  centreRequired = true,
   emailPlaceholder = 'vous@votre-entreprise.fr',
   phoneLabel,
   submitLabel,
@@ -135,13 +138,16 @@ export default function DemoForm({
         autoComplete="name"
       />
 
-      <label htmlFor={`${idPrefix}-centre`}>{centreLabel}</label>
+      <label htmlFor={`${idPrefix}-centre`}>
+        {centreLabel}
+        {!centreRequired && <small> (optionnel)</small>}
+      </label>
       <input
         id={`${idPrefix}-centre`}
         name="centre"
         type="text"
         placeholder={centrePlaceholder}
-        required
+        required={centreRequired}
         disabled={pending}
         autoComplete="organization"
       />
