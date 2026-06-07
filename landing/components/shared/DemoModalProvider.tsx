@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { trackEvent } from './analytics';
 
 export type DemoModalOpenOptions = {
   /** Étiquette pour tracer d'où vient l'ouverture (ex: "hero", "roi-30h"). */
@@ -78,6 +79,7 @@ export function DemoModalProvider({ children }: { children: React.ReactNode }) {
       }
     }
     setIsOpen(true);
+    trackEvent('demo_modal_open', { source: options?.source ?? 'unknown' });
   }, []);
 
   const close = useCallback(() => setIsOpen(false), []);

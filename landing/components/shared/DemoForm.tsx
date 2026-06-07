@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode, RefObject, useState, useTransition } from 'react';
+import { trackEvent } from './analytics';
 
 export type DemoFormResult =
   | { ok: true; firstname: string; centre: string }
@@ -90,6 +91,7 @@ export default function DemoForm({
         setStatus('success');
         setErrorMessage('');
         form.reset();
+        trackEvent('lead_submit', { source });
         onSuccess?.(result.firstname);
       } else {
         setStatus('error');
