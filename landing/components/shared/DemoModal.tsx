@@ -16,6 +16,9 @@ type Props = {
   emailPlaceholder?: string;
   phoneLabel?: ReactNode;
 
+  /** Appelé sur un envoi de lead réellement accepté (ex. conversion Google Ads). */
+  onSuccess?: (firstname: string) => void;
+
   /** Landing-specific fields (selects, textarea…). */
   children?: ReactNode;
 };
@@ -29,6 +32,7 @@ export default function DemoModal({
   centrePlaceholder,
   emailPlaceholder,
   phoneLabel,
+  onSuccess,
   children,
 }: Props) {
   const { isOpen, source, ctaLabel, prefilledEmail, emailWasPrefilled, close } = useDemoModal();
@@ -147,6 +151,7 @@ export default function DemoModal({
               onSuccess={(firstname) => {
                 setSubmittedFirstname(firstname);
                 setShowSuccess(true);
+                onSuccess?.(firstname);
               }}
             >
               {children}
