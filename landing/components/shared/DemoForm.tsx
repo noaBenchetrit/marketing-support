@@ -27,7 +27,7 @@ type Props = {
 
   centreLabel: string;
   centrePlaceholder: string;
-  /** Rend le champ "centre/entreprise" facultatif (défaut : requis). */
+  /** @deprecated Le champ "centre/entreprise" est désormais toujours facultatif (placé dans le collapse). Prop conservée pour compat des appelants. */
   centreRequired?: boolean;
   emailPlaceholder?: string;
   phoneLabel?: ReactNode;
@@ -59,7 +59,6 @@ export default function DemoForm({
   showEmailHint = false,
   centreLabel,
   centrePlaceholder,
-  centreRequired = true,
   emailPlaceholder = 'vous@votre-entreprise.fr',
   phoneLabel,
   submitLabel,
@@ -145,20 +144,6 @@ export default function DemoForm({
         autoComplete="name"
       />
 
-      <label htmlFor={`${idPrefix}-centre`}>
-        {centreLabel}
-        {!centreRequired && <small> (optionnel)</small>}
-      </label>
-      <input
-        id={`${idPrefix}-centre`}
-        name="centre"
-        type="text"
-        placeholder={centrePlaceholder}
-        required={centreRequired}
-        disabled={pending}
-        autoComplete="organization"
-      />
-
       <label htmlFor={`${idPrefix}-phone`}>
         {phoneLabel ?? (
           <>
@@ -179,10 +164,46 @@ export default function DemoForm({
         title="Numéro de téléphone français — ex. 06 12 34 56 78 ou +33 6 12 34 56 78"
       />
 
-      {/* Landing-specific fields slot */}
-      <fieldset disabled={pending} style={{ border: 0, padding: 0, margin: 0, display: 'contents' }}>
-        {children}
-      </fieldset>
+      {/* Champs facultatifs repliés : allège le formulaire sans perdre l'info pour les leads motivés */}
+      <details className="form-extra">
+        <summary className="form-extra-summary">
+          <span>
+            Ajouter des précisions <small>(facultatif)</small>
+          </span>
+          <svg
+            className="form-extra-chevron"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </summary>
+        <div className="form-extra-body">
+          <label htmlFor={`${idPrefix}-centre`}>
+            {centreLabel} <small>(optionnel)</small>
+          </label>
+          <input
+            id={`${idPrefix}-centre`}
+            name="centre"
+            type="text"
+            placeholder={centrePlaceholder}
+            disabled={pending}
+            autoComplete="organization"
+          />
+
+          {/* Landing-specific fields slot */}
+          <fieldset disabled={pending} style={{ border: 0, padding: 0, margin: 0, display: 'contents' }}>
+            {children}
+          </fieldset>
+        </div>
+      </details>
 
       <button type="submit" className={submitClass} disabled={pending}>
         {pending ? 'Envoi en cours…' : submitLabel}
