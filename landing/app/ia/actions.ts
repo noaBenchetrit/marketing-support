@@ -23,7 +23,11 @@ const AuditFormSchema = z.object({
       'Numéro de téléphone français invalide',
     ),
   source: z.string().trim().max(60).optional().nullable(),
+  attribution: z.string().trim().max(80).optional().nullable(),
 });
+
+/** Produit associé à cette landing (ajouté au commentaire CRM). */
+const PRODUCT = 'IA';
 
 export type AuditFormResult =
   | { ok: true; firstname: string; company: string }
@@ -36,19 +40,21 @@ export async function submitAudit(formData: FormData): Promise<AuditFormResult> 
     company: formData.get('company'),
     phone: formData.get('phone'),
     source: formData.get('source'),
+    attribution: formData.get('attribution'),
   });
 
   if (!parsed.success) {
     return { ok: false, error: parsed.error.issues[0]?.message ?? 'Données invalides' };
   }
 
-  const { fullname, email, company, phone, source } = parsed.data;
+  const { fullname, email, company, phone, source, attribution } = parsed.data;
 
   const nameParts = fullname.split(/\s+/);
   const firstname = nameParts[0] ?? '';
   const lastname = nameParts.slice(1).join(' ') || firstname;
 
-  const commentParts: string[] = ['Demande : Audit de faisabilité IA (30 min)'];
+  const commentParts: string[] = [`Produit: ${PRODUCT}`, 'Demande : Audit de faisabilité IA (30 min)'];
+  if (attribution) commentParts.push(`Canal: ${attribution}`);
   if (source) commentParts.push(`Source: ${source}`);
   if (company) commentParts.push(`Entreprise: ${company}`);
   const comment = commentParts.join(' | ');

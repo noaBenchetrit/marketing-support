@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useTransition } from 'react';
 import { submitDemo } from './actions';
+import { captureAttribution, getAttribution } from '@/lib/attribution';
 
 type Status = 'idle' | 'success' | 'error';
 
@@ -33,11 +34,17 @@ export default function GenericForm({ source }: { source: string }) {
     return () => ro.disconnect();
   }, [status]);
 
+  // Capte le canal d'acquisition en first-touch dès l'affichage du formulaire.
+  useEffect(() => {
+    captureAttribution();
+  }, []);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
     formData.set('source', source);
+    formData.set('attribution', getAttribution());
 
     startTransition(async () => {
       const result = await submitDemo(formData);

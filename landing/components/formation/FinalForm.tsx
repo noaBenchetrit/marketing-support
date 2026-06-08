@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useTransition } from 'react';
 import { submitDemo } from '@/app/formation/actions';
 import { FINAL_FORM_ID } from './smoothScroll';
 import { useLeadEmail } from './LeadEmailProvider';
+import { captureAttribution, getAttribution } from '@/lib/attribution';
 
 type Status = 'idle' | 'success' | 'error';
 
@@ -27,11 +28,17 @@ export default function FinalForm() {
     return () => registerNextFocus(null);
   }, [registerNextFocus]);
 
+  // Capte le canal d'acquisition en first-touch dès l'affichage du formulaire.
+  useEffect(() => {
+    captureAttribution();
+  }, []);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
     formData.set('source', prefilledByNav ? 'nav-inline-form' : 'final-form');
+    formData.set('attribution', getAttribution());
 
     startTransition(async () => {
       const result = await submitDemo(formData);

@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import { submitAudit } from '@/app/ia/actions';
+import { captureAttribution, getAttribution } from '@/lib/attribution';
 
 type Status = 'idle' | 'success' | 'error';
 
@@ -34,11 +35,17 @@ export default function IaForm() {
   const [errorMessage, setErrorMessage] = useState('');
   const [firstname, setFirstname] = useState('');
 
+  // Capte le canal d'acquisition en first-touch dès l'affichage du formulaire.
+  useEffect(() => {
+    captureAttribution();
+  }, []);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
     formData.set('source', 'ia-audit-form');
+    formData.set('attribution', getAttribution());
 
     startTransition(async () => {
       const result = await submitAudit(formData);

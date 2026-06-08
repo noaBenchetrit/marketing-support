@@ -25,7 +25,11 @@ const DemoFormSchema = z.object({
   taille: z.string().trim().max(40).optional().nullable(),
   message: z.string().trim().max(500).optional().nullable(),
   source: z.string().trim().max(60).optional().nullable(),
+  attribution: z.string().trim().max(80).optional().nullable(),
 });
+
+/** Produit associé à cette landing (ajouté au commentaire CRM). */
+const PRODUCT = 'CRM Audit';
 
 export type DemoFormResult =
   | { ok: true; firstname: string; centre: string }
@@ -40,19 +44,21 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
     taille: formData.get('taille'),
     message: formData.get('message'),
     source: formData.get('source'),
+    attribution: formData.get('attribution'),
   });
 
   if (!parsed.success) {
     return { ok: false, error: parsed.error.issues[0]?.message ?? 'Données invalides' };
   }
 
-  const { fullname, centre, email, phone, taille, message, source } = parsed.data;
+  const { fullname, centre, email, phone, taille, message, source, attribution } = parsed.data;
 
   const nameParts = fullname.split(/\s+/);
   const firstname = nameParts[0] ?? '';
   const lastname = nameParts.slice(1).join(' ') || firstname;
 
-  const commentParts: string[] = [];
+  const commentParts: string[] = [`Produit: ${PRODUCT}`];
+  if (attribution) commentParts.push(`Canal: ${attribution}`);
   if (source) commentParts.push(`Source: ${source}`);
   if (centre) commentParts.push(`Centre: ${centre}`);
   if (taille) commentParts.push(`Taille: ${taille}`);

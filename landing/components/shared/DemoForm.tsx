@@ -1,7 +1,8 @@
 'use client';
 
-import { ReactNode, RefObject, useState, useTransition } from 'react';
+import { ReactNode, RefObject, useEffect, useState, useTransition } from 'react';
 import { trackEvent } from './analytics';
+import { captureAttribution, getAttribution } from '@/lib/attribution';
 
 export type DemoFormResult =
   | { ok: true; firstname: string; centre: string }
@@ -73,6 +74,11 @@ export default function DemoForm({
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
+  // Capte le canal d'acquisition en first-touch dès l'affichage du formulaire.
+  useEffect(() => {
+    captureAttribution();
+  }, []);
+
   const isModal = variant === 'modal';
   const idPrefix = isModal ? 'demo-modal' : 'cta';
 
@@ -87,6 +93,7 @@ export default function DemoForm({
     const form = e.currentTarget;
     const formData = new FormData(form);
     formData.set('source', source);
+    formData.set('attribution', getAttribution());
 
     startTransition(async () => {
       const result = await submitDemo(formData);

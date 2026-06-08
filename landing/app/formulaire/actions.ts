@@ -23,6 +23,7 @@ const DemoFormSchema = z.object({
       'Numéro de téléphone français invalide',
     ),
   source: z.string().trim().max(60).optional().nullable(),
+  attribution: z.string().trim().max(80).optional().nullable(),
 });
 
 export type DemoFormResult =
@@ -36,13 +37,14 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
     email: formData.get('email'),
     phone: formData.get('phone'),
     source: formData.get('source'),
+    attribution: formData.get('attribution'),
   });
 
   if (!parsed.success) {
     return { ok: false, error: parsed.error.issues[0]?.message ?? 'Données invalides' };
   }
 
-  const { fullname, centre, email, phone, source } = parsed.data;
+  const { fullname, centre, email, phone, source, attribution } = parsed.data;
 
   const nameParts = fullname.split(/\s+/).filter(Boolean);
   const firstname = nameParts[0] ?? 'Contact';
@@ -50,6 +52,7 @@ export async function submitDemo(formData: FormData): Promise<DemoFormResult> {
 
   const commentParts: string[] = [];
   commentParts.push(`Source: ${source || 'iframe'}`);
+  if (attribution) commentParts.push(`Canal: ${attribution}`);
   if (centre) commentParts.push(`Entreprise: ${centre}`);
   const comment = commentParts.join(' | ');
 
