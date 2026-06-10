@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./theme.css";
 import { DemoModalProvider } from "@/components/installation/DemoModalProvider";
 import DemoModal from "@/components/installation/DemoModal";
+import AutoDemoPopup from "@/components/installation/AutoDemoPopup";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://installation-expert.com"),
@@ -20,6 +21,7 @@ export default function InstallationLayout({
     <DemoModalProvider>
       {children}
       <DemoModal />
+      <AutoDemoPopup />
     </DemoModalProvider>
   );
 }
