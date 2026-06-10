@@ -8,6 +8,15 @@ import { captureAttribution, getAttribution } from '@/lib/attribution';
 
 type Status = 'idle' | 'success' | 'error';
 
+/** Libellé de conversion Google Ads (Lead — CRM beTool Formation). */
+const CONVERSION_SEND_TO = 'AW-18202785429/yhaPCP3LubwcEJXt4edD';
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 const CheckIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
     <path d="M20 6L9 17l-5-5" />
@@ -47,6 +56,12 @@ export default function FinalForm() {
         setErrorMessage('');
         form.reset();
         clearPrefilledByNav();
+        // Conversion Google Ads : déclenchée uniquement sur un lead réellement accepté.
+        window.gtag?.('event', 'conversion', {
+          send_to: CONVERSION_SEND_TO,
+          value: 1.0,
+          currency: 'ILS',
+        });
       } else {
         setStatus('error');
         setErrorMessage(result.error);
