@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./theme.css";
 import { DemoModalProvider } from "@/components/installation/DemoModalProvider";
 import DemoModal from "@/components/installation/DemoModal";
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+const GOOGLE_ADS_ID = "AW-18202785429";
+
 export default function InstallationLayout({
   children,
 }: Readonly<{
@@ -19,6 +22,20 @@ export default function InstallationLayout({
 }>) {
   return (
     <DemoModalProvider>
+      {/* Google tag (gtag.js) — Google Ads, landing installation (BTP) */}
+      <Script
+        id="gtag-ads-src"
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+      />
+      <Script id="gtag-ads-init" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GOOGLE_ADS_ID}');
+        `}
+      </Script>
       {children}
       <DemoModal />
       <AutoDemoPopup />
